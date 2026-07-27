@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>LAN CHENG</title>
+<style>
+:root{--bg:#000;--text:#f5f5f5;--t2:rgba(255,255,255,0.55);--brand:#78E4FF;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);font-family:"Noto Sans SC","PingFang SC","Inter",-apple-system,sans-serif;-webkit-font-smoothing:antialiased;}
+
+/* Video layers */
+.hero{position:relative;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;}
+.video-layer{position:absolute;inset:0;}
+.video-layer video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 0.8s ease;}
+.video-layer video.active{opacity:1;}
+.video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.25) 0%,rgba(0,0,0,0.05) 40%,rgba(0,0,0,0.35) 100%);z-index:2;pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:80px 80px;z-index:1;pointer-events:none;}
+
+/* Text overlay */
+.hero-content{position:relative;z-index:10;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4vh;}
+.hero-name{font-size:clamp(2.5rem,8vw,7rem);font-weight:500;letter-spacing:-0.03em;color:var(--text);line-height:1;text-shadow:0 0 120px rgba(0,0,0,0.5);}
+.hero-phase{font-size:clamp(0.9rem,1.8vw,1.25rem);font-weight:300;color:var(--t2);letter-spacing:0.06em;transition:all 0.6s ease;max-width:500px;line-height:1.6;}
+.hero-dots{display:flex;gap:12px;margin-top:2vh;}
+.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);transition:all 0.5s ease;cursor:pointer;}
+.hero-dot.active{background:var(--brand);box-shadow:0 0 10px rgba(120,228,255,0.4);transform:scale(1.3);}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:10;text-align:center;}
+.hero-scroll-line{width:1px;height:40px;background:rgba(255,255,255,0.15);margin:0 auto;}
+.hero-scroll-txt{font-size:9px;letter-spacing:0.35em;color:rgba(255,255,255,0.2);margin-top:10px;font-family:"IBM Plex Mono",monospace;}
+
+/* Responsive */
+@media(max-width:767px){
+  .hero-name{font-size:clamp(1.8rem,10vw,3.5rem);}
+  .hero-phase{font-size:0.85rem;max-width:300px;}
+  .hero-dots{gap:8px;}
+  .hero-dot{width:6px;height:6px;}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- Videos -->
+  <div class="video-layer">
+    <video id="v1" src="segments/01-idle.mp4" muted playsinline preload="auto" class="active"></video>
+    <video id="v2" src="segments/02-outline.mp4" muted playsinline preload="auto"></video>
+    <video id="v3" src="segments/03-painting.mp4" muted playsinline preload="auto"></video>
+    <video id="v4" src="segments/04-finished.mp4" muted playsinline preload="auto"></video>
+  </div>
+
+  <div class="video-overlay"></div>
+  <div class="hero-grid"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <h1 class="hero-name">LAN CHENG</h1>
+    <p class="hero-phase" id="hero-phase">把复杂的事情，做成结果。</p>
+    <div class="hero-dots" id="hero-dots">
+      <span class="hero-dot active"></span>
+      <span class="hero-dot"></span>
+      <span class="hero-dot"></span>
+      <span class="hero-dot"></span>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <div class="hero-scroll-txt">SCROLL</div>
+  </div>
+
+</section>
+
+<script>
+(function(){
+  var videos=[document.getElementById('v1'),document.getElementById('v2'),document.getElementById('v3'),document.getElementById('v4')];
+  var phase=document.getElementById('hero-phase');
+  var dots=document.querySelectorAll('.hero-dot');
+  var phases=[
+    '从一张白纸开始。',
+    '机械臂开始勾勒轮廓。',
+    '颜料在画布上蔓延。',
+    '把复杂的事情，做成结果。'
+  ];
+  var current=0;
+  var total=videos.length;
+
+  // Preload all
+  videos.forEach(function(v){v.load();});
+
+  function playSegment(idx){
+    videos.forEach(function(v,i){
+      v.classList.toggle('active',i===idx);
+      if(i===idx){v.currentTime=0;v.play();}
+      else{v.pause();}
+    });
+    dots.forEach(function(d,i){d.classList.toggle('active',i===idx);});
+    phase.style.opacity='0';
+    phase.style.transform='translateY(10px)';
+    setTimeout(function(){
+      phase.textContent=phases[idx];
+      phase.style.opacity='1';
+      phase.style.transform='translateY(0)';
+    },300);
+    current=idx;
+  }
+
+  // Auto-advance when video ends
+  videos.forEach(function(v,i){
+    v.addEventListener('ended',function(){
+      if(current===i){
+        var next=(i+1)%total;
+        playSegment(next);
+      }
+    });
+  });
+
+  // Click dots to navigate
+  dots.forEach(function(d,i){
+    d.addEventListener('click',function(){playSegment(i);});
+  });
+
+  // Start
+  playSegment(0);
+})();
+</script>
+</body>
+</html>
