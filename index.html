@@ -1622,25 +1622,25 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
   var num = panel.querySelector('.case-num');
   var title = panel.querySelector('.case-title');
 
-  // Card entrance: scale 0.92→1, fade in as it approaches center
-  gsap.fromTo(panel, {opacity:.35,scale:.92},
-    {opacity:1,scale:1,duration:1,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 88%',end:'top 45%',scrub:.8}});
+  // Card entrance: scale 0.9→1 as card approaches center from below
+  gsap.fromTo(panel, {opacity:.35,scale:.9},
+    {opacity:1,scale:1,duration:.9,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top bottom',end:'center center',scrub:1}});
 
-  // Card exit: scale→0.85, translateY up, opacity→0.6 — spatial retreat
-  gsap.to(panel, {opacity:.5,scale:.85,y:-80,duration:.8,ease:'power2.in',
-    scrollTrigger:{trigger:panel,start:'top 12%',end:'bottom 38%',scrub:.5}});
+  // Card exit: shrink to 0.85 + move up as card leaves center
+  gsap.to(panel, {opacity:.45,scale:.85,y:-100,duration:.8,ease:'power2.in',
+    scrollTrigger:{trigger:panel,start:'center center',end:'top top',scrub:.8}});
 
   // Visual entrance
-  if (visual) gsap.fromTo(visual, {opacity:0,scale:1.05}, {opacity:1,scale:1,duration:1,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 82%',end:'top 45%',scrub:.7}});
+  if (visual) gsap.fromTo(visual, {opacity:0,scale:1.05}, {opacity:1,scale:1,duration:.9,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 85%',end:'center center',scrub:.7}});
 
-  // Text entrance
-  if (num) gsap.fromTo(num, {opacity:0,y:20}, {opacity:1,y:0,duration:.7,delay:.1,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 78%',toggleActions:'play none none none'}});
+  // Text: fade-slide up once
+  if (num) gsap.fromTo(num, {opacity:0,y:20}, {opacity:1,y:0,duration:.6,delay:.1,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 82%',toggleActions:'play none none none'}});
 
-  if (title) gsap.fromTo(title, {opacity:0,y:30}, {opacity:1,y:0,duration:.8,delay:.15,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 76%',toggleActions:'play none none none'}});
+  if (title) gsap.fromTo(title, {opacity:0,y:30}, {opacity:1,y:0,duration:.7,delay:.15,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 80%',toggleActions:'play none none none'}});
 });
 
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.case-overlay.active').forEach(function(o){o.classList.remove('active');});document.body.style.overflow='';}});
