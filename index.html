@@ -192,21 +192,32 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases — Sticky Stack ===== */
-#work{overflow:visible;margin-top:4rem;}
-.case-panel{height:clamp(600px,74vh,780px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:8vh;cursor:pointer;background:var(--c-bg);will-change:transform,z-index;box-shadow:none;}
-.case-panel::after,.case-panel::before{display:none;}
-.case-panel-inner{display:flex;align-items:stretch;width:100%;max-width:1200px;height:100%;transform-origin:center top;will-change:transform,opacity;}
-.case-text{flex:0 0 38%;display:flex;flex-direction:column;gap:var(--s-16);padding:40px;height:100%;}
-.case-visual{flex:1;overflow:hidden;position:relative;height:100%;min-height:0;padding:40px;background:#f5f5f5;}
-.case-text-top{flex:1;display:flex;flex-direction:column;gap:var(--s-12);}
-.case-text-bottom{margin-top:auto;display:flex;flex-direction:column;gap:var(--s-12);}
-.case-visual video,.case-visual img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .7s cubic-bezier(.65,0,.35,1);}
-.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.4em;display:block;margin-bottom:var(--s-4);}
-.case-title{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600;color:#111;letter-spacing:-.02em;line-height:1.15;margin-bottom:var(--s-12);white-space:nowrap;}
-.case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.1em;margin-bottom:var(--s-8);}
-.case-desc{font-size:1.05rem;font-weight:400;line-height:1.8;color:#555;max-width:440px;}
-.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);}
+/* ===== Capability — independent screen ===== */
+#capabilities{min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
+
+/* ===== Section Header — SELECTED WORK ===== */
+.section-header{min-height:65vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:clamp(2rem,4vw,4rem) var(--pad-desktop);}
+.section-header .sh-label{font-size:10px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;text-transform:uppercase;margin-bottom:var(--s-16);}
+.section-header .sh-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;margin-bottom:var(--s-12);}
+.section-header .sh-desc{font-size:1rem;font-weight:300;line-height:1.8;color:var(--c-text2);max-width:480px;margin-bottom:var(--s-32);}
+.section-header .sh-scroll{font-size:10px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.3em;text-transform:uppercase;}
+
+/* ===== SECTION: Immersive Cases — Unified Frame ===== */
+#work{overflow:visible;padding-bottom:6vh;}
+.case-panel{height:clamp(600px,72vh,760px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:10vh;cursor:pointer;will-change:transform,z-index;}
+.case-panel::after,.case-panel::before{content:none;display:none;}
+.case-panel-inner{display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:24px;background:var(--c-bg);transform-origin:center top;will-change:transform,opacity;}
+.case-panel-inner::after,.case-panel-inner::before{content:none;display:none;}
+.case-text{height:100%;padding:clamp(40px,4.5vw,68px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+.case-text-content{max-width:430px;}
+.case-visual{position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background:transparent;}
+.case-visual::after,.case-visual::before{content:none;display:none;}
+.case-visual video,.case-visual img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:center;margin:0;padding:0;transition:transform .7s cubic-bezier(.65,0,.35,1);}
+.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.4em;display:block;margin-bottom:20px;}
+.case-title{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600;color:#111;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px;white-space:nowrap;}
+.case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.1em;margin-bottom:28px;}
+.case-desc{font-size:1.05rem;font-weight:400;line-height:1.8;color:#555;max-width:430px;margin-bottom:28px;}
+.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:32px;}
 .case-tags span{font-size:.8rem;font-weight:500;color:#888;font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;background:var(--c-bg);}
 .case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-8);transition:all .3s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
 .case-cta:hover{color:var(--c-brand);gap:14px;}
@@ -363,15 +374,20 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);}
-  .case-panel:nth-child(n){top:auto;z-index:auto;}
+  .case-panel{position:relative;height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);top:auto;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  .case-panel-inner{grid-template-columns:1fr;height:auto;gap:clamp(1rem,2vw,1.5rem);}
-  .case-text{text-align:center;padding:24px;}
-  .case-visual{height:auto;aspect-ratio:16/10;max-height:36vh;padding:0;background:none;}
-  .case-visual video,.case-visual img{max-height:36vh;object-fit:contain;}
-  .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
-  .case-desc{font-size:.85rem;line-height:1.85;}
+  .case-panel-inner{grid-template-columns:1fr;height:auto;border-radius:12px;overflow:hidden;}
+  .case-text{padding:28px 20px;justify-content:flex-start;}
+  .case-visual{aspect-ratio:16/10;max-height:36vh;position:relative;}
+  .case-visual video,.case-visual img{position:absolute;object-fit:contain;}
+  .case-title{font-size:clamp(1.5rem,5vw,2rem);}
+  .case-desc{font-size:.85rem;line-height:1.85;max-width:100%;}
+  .section-header{min-height:50vh;}
+  .case-num{margin-bottom:12px;}
+  .case-meta{margin-bottom:16px;}
+  .case-desc{margin-bottom:16px;}
+  .case-tags{margin-bottom:20px;}
+  #capabilities{min-height:auto;}
   .case-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:clamp(1.2rem,3vw,1.5rem);}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;max-width:100%;}
@@ -756,22 +772,26 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   </div>
 </section>
 
+<!-- ===== SECTION HEADER ===== -->
+<div class="section-header">
+  <div class="sh-label">SELECTED WORK</div>
+  <h2 class="sh-title">代表案例</h2>
+  <p class="sh-desc">从产品规划、交互设计到项目推进，以下是我参与并推动落地的产品实践</p>
+  <span class="sh-scroll">SCROLL TO EXPLORE ↓</span>
+</div>
+
 <!-- ===== IMMERSIVE CASES ===== -->
 <div id="work">
   <!-- 01 · 助浴机器人 -->
   <div class="case-panel" data-case="bath-robot">
     <div class="case-panel-inner">
       <div class="case-text">
-        <div class="case-text-top">
         <span class="case-num">01</span>
         <h2 class="case-title">助浴机器人</h2>
         <p class="case-meta">产品策划 / 概念设计 · 2026</p>
         <p class="case-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
-        </div>
-        <div class="case-text-bottom">
         <div class="case-tags"><span>竞品分析</span><span>需求整理</span><span>AI 概念</span><span>项目展示</span></div>
         <span class="case-cta">查看案例</span>
-        </div>
       </div>
       <div class="case-visual">
         <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
@@ -1700,18 +1720,18 @@ if (window.innerWidth <= 767) {
         else panel.style.zIndex = 10;
 
         if (i === activeIdx) {
-          // Current active: full scale if progress isn't too far
-          var s = p < 0.3 ? 1 : Math.max(0.84, 1 - (p - 0.3) * 0.23);
-          var y = p < 0.3 ? 0 : -(p - 0.3) * 69;
-          var o = Math.max(0.86, 1 - (p - 0.3) * 0.2);
+          // Current active: full or gentle retreat
+          var s = p < 0.35 ? 1 : Math.max(0.84, 1 - (p - 0.35) * 0.25);
+          var y = p < 0.35 ? 0 : -(p - 0.35) * 68;
+          var o = Math.max(0.88, 1 - (p - 0.35) * 0.18);
           inner.style.opacity = o.toFixed(3);
           inner.style.transform = 'translateY(' + y.toFixed(0) + 'px) scale(' + s.toFixed(3) + ')';
         } else if (i < activeIdx) {
-          // Behind — already retreated
+          // Behind — retreated, clearly visible
           var layers = activeIdx - i;
-          var s = layers === 1 ? 0.88 : 0.82;
-          var y = layers === 1 ? -40 : -60;
-          var o = layers === 1 ? 0.90 : 0.78;
+          var s = layers === 1 ? 0.87 : (layers === 2 ? 0.82 : 0.78);
+          var y = layers === 1 ? -44 : (layers === 2 ? -64 : -80);
+          var o = layers === 1 ? 0.90 : (layers === 2 ? 0.82 : 0.74);
           inner.style.opacity = o.toFixed(3);
           inner.style.transform = 'translateY(' + y + 'px) scale(' + s + ')';
         } else {
