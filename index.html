@@ -192,9 +192,13 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases ===== */
-.case-panel{min-height:90vh;display:flex;align-items:center;padding:clamp(3rem,5vw,4.5rem) var(--pad-desktop);position:relative;cursor:pointer;}
-.case-panel + .case-panel{border-top:1px solid var(--c-border);}
+/* ===== SECTION: Immersive Cases — Sticky Card Stack ===== */
+.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(3rem,5vw,4.5rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);}
+/* Stacking offsets — each card peeks 52px from behind the next */
+.case-panel:nth-child(1){top:0;z-index:4;box-shadow:0 1px 0 var(--c-border);}
+.case-panel:nth-child(2){top:52px;z-index:3;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
+.case-panel:nth-child(3){top:104px;z-index:2;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
+.case-panel:nth-child(4){top:156px;z-index:1;box-shadow:0 4px 24px rgba(0,0,0,.06);}
 .case-inner{display:grid;grid-template-columns:40fr 60fr;gap:clamp(2rem,4vw,4.5rem);align-items:center;width:100%;}
 .case-content{display:flex;flex-direction:column;gap:var(--s-12);}
 .case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.25em;display:block;margin-bottom:var(--s-4);}
@@ -211,7 +215,6 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .case-visual video,.case-visual img{width:100%;height:auto;max-height:62vh;object-fit:contain;border-radius:12px;transition:transform .7s cubic-bezier(.65,0,.35,1);}
 .case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.02);}
 .case-panel:hover .case-title{color:#1a1a2e;}
-/* Progress indicator on hover */
 .case-panel .case-num{transition:color .35s ease;}
 .case-panel:hover .case-num{color:var(--c-brand);}
 
@@ -364,14 +367,14 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{min-height:auto;padding:clamp(2.5rem,5vw,3.5rem) var(--pad-mobile);}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3.5rem) var(--pad-mobile);}
+  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   .case-inner{grid-template-columns:1fr;gap:clamp(1.5rem,3vw,2.5rem);}
   .case-visual{order:-1;}
   .case-visual video,.case-visual img{max-height:45vh;}
   .case-title{font-size:clamp(1.8rem,6vw,2.4rem);}
   .case-desc{font-size:.9rem;max-width:100%;}
-}
-@media(max-width:767px){
   .container{padding-left:var(--pad-mobile);padding-right:var(--pad-mobile);}
   .nav{padding:0 var(--pad-mobile);}
   .nav-links{gap:var(--s-16);}
@@ -379,6 +382,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .hero-name{font-size:clamp(2.5rem,13vw,72px);}
   .cap-grid{grid-template-columns:1fr;}
   .cap-card{min-height:auto;}
+  /* Disable sticky stacking on mobile */
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3.5rem) var(--pad-mobile);}
+  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   .case-title{font-size:clamp(1.6rem,7vw,2rem);}
   .contact-links{flex-direction:column;align-items:center;}
   .contact-links .btn{width:100%;max-width:280px;}
@@ -1647,6 +1654,9 @@ document.querySelectorAll('.case-panel').forEach(function(item){
 
 /* ===== IMMERSIVE CASE REVEAL (ScrollTrigger) ===== */
 document.querySelectorAll('.case-panel').forEach(function(panel, i) {
+  // Skip mobile — stacking disabled
+  if (window.innerWidth <= 767) return;
+
   var num = panel.querySelector('.case-num');
   var title = panel.querySelector('.case-title');
   var meta = panel.querySelector('.case-meta');
@@ -1655,37 +1665,36 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
   var desc = panel.querySelector('.case-desc');
   var cta = panel.querySelector('.case-cta');
 
-  // Number: fade in first
+  // Number: fade in first — when card enters from bottom
   if (num) gsap.fromTo(num, {opacity:0,y:20}, {opacity:1,y:0,duration:.8,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 82%',toggleActions:'play none none none'}});
+    scrollTrigger:{trigger:panel,start:'top 85%',toggleActions:'play none none none'}});
 
   // Title: slide up
   if (title) gsap.fromTo(title, {opacity:0,y:40}, {opacity:1,y:0,duration:.85,delay:.08,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 82%',toggleActions:'play none none none'}});
+
+  // Meta + Tags group
+  if (meta) gsap.fromTo(meta, {opacity:0,y:20}, {opacity:1,y:0,duration:.7,delay:.14,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top 78%',toggleActions:'play none none none'}});
 
-  // Meta
-  if (meta) gsap.fromTo(meta, {opacity:0,y:20}, {opacity:1,y:0,duration:.7,delay:.14,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 75%',toggleActions:'play none none none'}});
-
-  // Tags: stagger
   if (tags.length) gsap.fromTo(tags, {opacity:0,y:20}, {opacity:1,y:0,duration:.6,stagger:.07,delay:.18,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
+    scrollTrigger:{trigger:panel,start:'top 76%',toggleActions:'play none none none'}});
 
   // Description
   if (desc) gsap.fromTo(desc, {opacity:0,y:24}, {opacity:1,y:0,duration:.75,delay:.22,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 70%',toggleActions:'play none none none'}});
+    scrollTrigger:{trigger:panel,start:'top 74%',toggleActions:'play none none none'}});
 
-  // Visual: scale in
+  // Visual: scale in — slightly earlier so it's ready when card "locks in"
   if (visual) gsap.fromTo(visual, {opacity:0,scale:1.04}, {opacity:1,scale:1,duration:1.1,delay:.1,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 68%',toggleActions:'play none none none'}});
+    scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
 
   // CTA
   if (cta) gsap.fromTo(cta, {opacity:0,y:16}, {opacity:1,y:0,duration:.65,delay:.28,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 68%',toggleActions:'play none none none'}});
+    scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
 
-  // Exit: scale down + fade as panel scrolls out
-  gsap.to(panel, {scale:.96,opacity:.7,ease:'power2.inOut',
-    scrollTrigger:{trigger:panel,start:'bottom 55%',end:'bottom 15%',scrub:.5}});
+  // Subtle dim + scale when card is being covered by the next one
+  gsap.to(panel, {scale:.98,opacity:.85,ease:'power2.inOut',
+    scrollTrigger:{trigger:panel,start:'top top',end:'+=120%',scrub:.6}});
 });
 
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.case-overlay.active').forEach(function(o){o.classList.remove('active');});document.body.style.overflow='';}});
