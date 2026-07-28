@@ -206,7 +206,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 #work{overflow:visible;padding-bottom:6vh;}
 .case-panel{height:clamp(600px,72vh,760px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:10vh;cursor:pointer;will-change:transform,z-index;}
 .case-panel::after,.case-panel::before{content:none;display:none;}
-.case-panel-inner{display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:0;background:var(--c-bg);transform-origin:center top;will-change:transform,opacity;}
+.case-panel-inner{cursor:pointer;display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:0;background:var(--c-bg);transform-origin:center top;will-change:transform,opacity;}
 .case-panel-inner::after,.case-panel-inner::before{content:none;display:none;}
 .case-text{height:100%;padding:clamp(40px,4.5vw,68px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
 .case-text-content{max-width:430px;}
@@ -1720,38 +1720,37 @@ if (window.innerWidth <= 767) {
         else panel.style.zIndex = 10;
 
         if (i === activeIdx) {
-          // Current active: full or gentle retreat
+          // Current active: full clarity, no blur
           var s = p < 0.35 ? 1 : Math.max(0.84, 1 - (p - 0.35) * 0.25);
           var y = p < 0.35 ? 0 : -(p - 0.35) * 68;
-          var o = Math.max(0.88, 1 - (p - 0.35) * 0.18);
-          inner.style.opacity = o.toFixed(3);
+          inner.style.opacity = '1';
+          inner.style.filter = 'blur(0px) brightness(1)';
           inner.style.transform = 'translateY(' + y.toFixed(0) + 'px) scale(' + s.toFixed(3) + ')';
         } else if (i < activeIdx) {
-          // Behind — retreated, clearly visible
+          // Behind — blur + dim for depth, not transparent
           var layers = activeIdx - i;
           var s = layers === 1 ? 0.87 : (layers === 2 ? 0.82 : 0.78);
           var y = layers === 1 ? -44 : (layers === 2 ? -64 : -80);
-          var o = layers === 1 ? 0.90 : (layers === 2 ? 0.82 : 0.74);
-          inner.style.opacity = o.toFixed(3);
+          var blur = layers === 1 ? 'blur(2px)' : (layers === 2 ? 'blur(3px)' : 'blur(4px)');
+          var dim = layers === 1 ? 'brightness(0.85)' : (layers === 2 ? 'brightness(0.7)' : 'brightness(0.55)');
+          inner.style.opacity = '1';
+          inner.style.filter = blur + ' ' + dim;
           inner.style.transform = 'translateY(' + y + 'px) scale(' + s + ')';
         } else {
           // Below — entering
-          var dist = activeIdx - i; // negative
           if (i === activeIdx + 1) {
-            // Next card: smooth entrance
             var ep = p;
-            var s = 0.94 + ep * 0.06;
-            var y = 80 * (1 - ep);
-            var o = 0.9 + ep * 0.1;
-            inner.style.opacity = o.toFixed(3);
-            inner.style.transform = 'translateY(' + y.toFixed(0) + 'px) scale(' + s.toFixed(3) + ')';
+            var s2 = 0.94 + ep * 0.06;
+            var y2 = 80 * (1 - ep);
+            inner.style.opacity = '1';
+            inner.style.filter = 'blur(0px) brightness(' + (0.92 + ep * 0.08).toFixed(2) + ')';
+            inner.style.transform = 'translateY(' + y2.toFixed(0) + 'px) scale(' + s2.toFixed(3) + ')';
           } else {
-            // Further below
-            inner.style.opacity = '0.85';
+            inner.style.opacity = '1';
+            inner.style.filter = 'blur(0px) brightness(0.88)';
             inner.style.transform = 'translateY(120px) scale(0.92)';
           }
-        }
-      });
+        }});
     }
   });
 })();
