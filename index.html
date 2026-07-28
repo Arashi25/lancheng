@@ -192,41 +192,24 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases — Sticky Stack ===== */
-.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);will-change:transform;}
-/* 100px offsets — generous title tabs, clear depth */
-.case-panel:nth-child(1){top:0;z-index:1;}
-.case-panel:nth-child(2){top:100px;z-index:2;box-shadow:0 -2px 16px rgba(0,0,0,.04);}
-.case-panel:nth-child(3){top:200px;z-index:3;box-shadow:0 -2px 16px rgba(0,0,0,.04);}
-.case-panel:nth-child(4){top:300px;z-index:4;box-shadow:0 -2px 16px rgba(0,0,0,.04);}
-/* Depth overlay: back cards are darker */
-.case-panel:nth-child(1) .case-inner{filter:brightness(.75);}
-.case-panel:nth-child(2) .case-inner{filter:brightness(.85);}
-.case-panel:nth-child(3) .case-inner{filter:brightness(.92);}
-/* Hover */
-.case-panel{transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .5s ease;}
-.case-panel:hover{box-shadow:0 -4px 32px rgba(0,0,0,.1);}
-#work:hover .case-panel:not(:hover) .case-inner{filter:brightness(.6);}
-.case-inner{display:grid;grid-template-columns:30fr 70fr;grid-template-rows:auto 1fr auto;gap:clamp(1.5rem,3vw,2rem) clamp(2rem,3vw,3.5rem);align-items:start;width:100%;}
-.case-content{display:flex;flex-direction:column;gap:var(--s-16);padding-right:0;grid-column:1;}
-.case-content:first-child{grid-row:1;}
-.case-visual{grid-column:2;grid-row:1/4;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;align-self:stretch;}
-.case-content:last-child{grid-row:3;}
-.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-4);}
-.case-title{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;}
-.case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-4);}
-.case-desc{font-size:.95rem;font-weight:300;line-height:2.1;color:var(--c-text2);max-width:440px;}
-.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-top:var(--s-6);}
+/* ===== SECTION: Immersive Cases ===== */
+.case-panel{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;}
+.case-panel + .case-panel{border-top:1px solid var(--c-border);}
+.case-hero{width:100%;aspect-ratio:16/10;max-height:62vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
+.case-hero video,.case-hero img{width:100%;height:100%;object-fit:cover;}
+.case-info{max-width:640px;}
+.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-8);}
+.case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;margin-bottom:var(--s-8);}
+.case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-12);}
+.case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:520px;margin-bottom:var(--s-16);}
+.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);}
 .case-tags span{font-size:11px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.04em;background:var(--c-bg);}
-.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);margin-top:var(--s-12);}
+.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
 .case-cta:hover{color:var(--c-brand);gap:16px;}
 .case-cta::after{content:"→";transition:transform .35s cubic-bezier(.65,0,.35,1);}
 .case-cta:hover::after{transform:translateX(6px);}
-.case-visual video,.case-visual img{width:100%;height:100%;max-height:82vh;object-fit:cover;border-radius:0;transition:transform .7s cubic-bezier(.65,0,.35,1);}
-.case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.015);}
-.case-panel:hover .case-title{color:#1a1a2e;}
-.case-panel .case-num{transition:color .35s ease;}
-.case-panel:hover .case-num{color:var(--c-brand);}
+.case-panel:hover .case-hero video,.case-panel:hover .case-hero img{transform:scale(1.02);}
+.case-hero video,.case-hero img{transition:transform .7s cubic-bezier(.65,0,.35,1);}
 
 /* ===== CASE STUDY SYSTEM ===== */
 .case-overlay{position:fixed;inset:0;z-index:200;background:var(--c-bg);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity var(--dur-normal) var(--ease);}
@@ -377,13 +360,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);}
-  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;filter:none;}
-  .case-panel:nth-child(n) .case-inner{filter:none;}
+  .case-panel{min-height:auto;padding:clamp(2rem,4vw,2.5rem) var(--pad-mobile);}
+  .case-hero{aspect-ratio:16/10;max-height:40vh;margin-bottom:clamp(1rem,2vw,1.5rem);}
+  .case-hero video,.case-hero img{max-height:40vh;}
+  .case-info{max-width:100%;}
+  .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
+  .case-desc{font-size:.85rem;line-height:1.85;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  .case-inner{grid-template-columns:1fr;gap:clamp(1.2rem,3vw,1.5rem);}
-  .case-visual{grid-column:1;grid-row:auto;order:-1;align-self:auto;}
-  .case-visual video,.case-visual img{max-height:50vh;object-fit:cover;}
   .case-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:clamp(1.2rem,3vw,1.5rem);}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;max-width:100%;}
@@ -772,77 +755,61 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div id="work">
   <!-- 01 · 助浴机器人 -->
   <div class="case-panel" data-case="bath-robot">
-    <div class="case-inner">
-      <div class="case-content">
-        <span class="case-num">01</span>
-        <h2 class="case-title">助浴机器人</h2>
-        <p class="case-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
-      </div>
-      <div class="case-visual">
-        <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
-      </div>
-      <div class="case-content">
-        <p class="case-meta">产品策划 / 概念设计 · 2026</p>
-        <div class="case-tags"><span>竞品分析</span><span>需求整理</span><span>AI 概念</span><span>项目展示</span></div>
-        <span class="case-cta">查看案例</span>
-      </div>
+    <div class="case-hero">
+      <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="case-info">
+      <span class="case-num">01</span>
+      <h2 class="case-title">助浴机器人</h2>
+      <p class="case-meta">产品策划 / 概念设计 · 2026</p>
+      <p class="case-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
+      <div class="case-tags"><span>竞品分析</span><span>需求整理</span><span>AI 概念</span><span>项目展示</span></div>
+      <span class="case-cta">查看案例</span>
     </div>
   </div>
 
   <!-- 02 · 超显微机器人 -->
   <div class="case-panel" data-case="microscope">
-    <div class="case-inner">
-      <div class="case-content">
-        <span class="case-num">02</span>
-        <h2 class="case-title">全自主AI超显微机器人</h2>
-        <p class="case-desc">展示AI视觉识别、机器人力控与精细操作能力，定义产品功能与交互，推动项目展示落地</p>
-      </div>
-      <div class="case-visual">
-        <video src="显微/显微1.mp4" muted loop playsinline preload="metadata"></video>
-      </div>
-      <div class="case-content">
-        <p class="case-meta">产品策划 / 项目管理 · 2025</p>
-        <div class="case-tags"><span>产品策划</span><span>功能定义</span><span>交互设计</span><span>项目管理</span></div>
-        <span class="case-cta">查看案例</span>
-      </div>
+    <div class="case-hero">
+      <video src="显微/显微1.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="case-info">
+      <span class="case-num">02</span>
+      <h2 class="case-title">全自主AI超显微机器人</h2>
+      <p class="case-meta">产品策划 / 项目管理 · 2025</p>
+      <p class="case-desc">展示AI视觉识别、机器人力控与精细操作能力，定义产品功能与交互，推动项目展示落地</p>
+      <div class="case-tags"><span>产品策划</span><span>功能定义</span><span>交互设计</span><span>项目管理</span></div>
+      <span class="case-cta">查看案例</span>
     </div>
   </div>
 
   <!-- 03 · AI 绘画机器人 -->
   <div class="case-panel" data-case="ai-robot">
-    <div class="case-inner">
-      <div class="case-content">
-        <span class="case-num">03</span>
-        <h2 class="case-title">AI 绘画机器人</h2>
-        <p class="case-desc">从 0 到 1 完成 AI 绘画机器人产品规划、需求分析与交互设计，协调研发、算法与机械团队推进落地</p>
-      </div>
-      <div class="case-visual">
-        <video src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="metadata"></video>
-      </div>
-      <div class="case-content">
-        <p class="case-meta">产品负责人 · 2025 — 2024</p>
-        <div class="case-tags"><span>产品规划</span><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
-        <span class="case-cta">查看案例</span>
-      </div>
+    <div class="case-hero">
+      <video src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="metadata"></video>
+    </div>
+    <div class="case-info">
+      <span class="case-num">03</span>
+      <h2 class="case-title">AI 绘画机器人</h2>
+      <p class="case-meta">产品负责人 · 2025 — 2024</p>
+      <p class="case-desc">从 0 到 1 完成 AI 绘画机器人产品规划、需求分析与交互设计，协调研发、算法与机械团队推进落地</p>
+      <div class="case-tags"><span>产品规划</span><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
+      <span class="case-cta">查看案例</span>
     </div>
   </div>
 
   <!-- 04 · 骨科手术机器人 -->
   <div class="case-panel" data-case="orthopedic">
-    <div class="case-inner">
-      <div class="case-content">
-        <span class="case-num">04</span>
-        <h2 class="case-title">骨科手术机器人</h2>
-        <p class="case-desc">统筹骨科手术导航机器人多团队协作，负责需求分析、交互设计、研发协同与项目推进</p>
-      </div>
-      <div class="case-visual">
-        <img src="骨科场景1222.png" alt="骨科手术机器人">
-      </div>
-      <div class="case-content">
-        <p class="case-meta">项目负责人 · 2023 — 2026</p>
-        <div class="case-tags"><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
-        <span class="case-cta">查看案例</span>
-      </div>
+    <div class="case-hero">
+      <img src="骨科场景1222.png" alt="骨科手术机器人">
+    </div>
+    <div class="case-info">
+      <span class="case-num">04</span>
+      <h2 class="case-title">骨科手术机器人</h2>
+      <p class="case-meta">项目负责人 · 2023 — 2026</p>
+      <p class="case-desc">统筹骨科手术导航机器人多团队协作，负责需求分析、交互设计、研发协同与项目推进</p>
+      <div class="case-tags"><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
+      <span class="case-cta">查看案例</span>
     </div>
   </div>
 </div>
@@ -1528,7 +1495,7 @@ if (helloVideo) {
 
   // 3) User interaction — retry up to 5 times, wake ALL videos
   var interactionTries = 0, MAX_TRIES = 5;
-  var ALL_VIDEOS = '.case-visual video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video, .about-avatar-frame video';
+  var ALL_VIDEOS = '.case-hero video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video, .about-avatar-frame video';
   function onInteraction() {
     if (interactionTries >= MAX_TRIES) return;
     interactionTries++;
@@ -1559,7 +1526,7 @@ if (helloVideo) {
 
 /* ===== MOBILE: hover → scroll-based autoplay ===== */
 if (window.innerWidth <= 1023) {
-  var MOBILE_VIDEOS = '.case-visual video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video, .about-avatar-frame video';
+  var MOBILE_VIDEOS = '.case-hero video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video, .about-avatar-frame video';
   document.querySelectorAll(MOBILE_VIDEOS).forEach(function(v) {
     v.setAttribute('playsinline', '');
     v.setAttribute('webkit-playsinline', '');
@@ -1632,7 +1599,7 @@ document.querySelectorAll('.case-panel').forEach(function(c){c.addEventListener(
 
 /* ===== HOVER TO PLAY ===== */
 document.querySelectorAll('.case-panel').forEach(function(item){
-  var video = item.querySelector('video');
+  var video = item.querySelector('.case-hero video');
   if (!video) return;
   item.addEventListener('mouseenter', function(){ video.play(); });
   item.addEventListener('mouseleave', function(){ video.pause(); });
@@ -1640,58 +1607,28 @@ document.querySelectorAll('.case-panel').forEach(function(item){
 
 /* ===== IMMERSIVE CASE REVEAL (ScrollTrigger) ===== */
 document.querySelectorAll('.case-panel').forEach(function(panel, i) {
-  // Skip mobile — stacking disabled
-  if (window.innerWidth <= 767) return;
-
+  var hero = panel.querySelector('.case-hero');
   var num = panel.querySelector('.case-num');
   var title = panel.querySelector('.case-title');
-  var meta = panel.querySelector('.case-meta');
-  var tags = panel.querySelectorAll('.case-tags span');
-  var visual = panel.querySelector('.case-visual');
-  var desc = panel.querySelector('.case-desc');
-  var cta = panel.querySelector('.case-cta');
 
-  // Number: fade in first — when card enters from bottom
-  if (num) gsap.fromTo(num, {opacity:0,y:20}, {opacity:1,y:0,duration:.8,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 85%',toggleActions:'play none none none'}});
+  // Card entrance: scale 0.92→1, fade in as it enters viewport
+  gsap.fromTo(panel, {opacity:.4,scale:.92}, {opacity:1,scale:1,duration:1,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 85%',end:'top 35%',scrub:.8}});
+
+  // Card exit: shrink + fade as it scrolls away
+  gsap.to(panel, {opacity:.5,scale:.88,duration:1,ease:'power2.in',
+    scrollTrigger:{trigger:panel,start:'top 10%',end:'bottom 30%',scrub:.6}});
+
+  // Hero entrance
+  if (hero) gsap.fromTo(hero, {opacity:0,scale:1.06}, {opacity:1,scale:1,duration:1,ease:'power2.out',
+    scrollTrigger:{trigger:panel,start:'top 80%',end:'top 40%',scrub:.7}});
 
   // Title: slide up
-  if (title) gsap.fromTo(title, {opacity:0,y:40}, {opacity:1,y:0,duration:.85,delay:.08,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 82%',toggleActions:'play none none none'}});
-
-  // Meta + Tags group
-  if (meta) gsap.fromTo(meta, {opacity:0,y:20}, {opacity:1,y:0,duration:.7,delay:.14,ease:'power2.out',
+  if (num) gsap.fromTo(num, {opacity:0,y:20}, {opacity:1,y:0,duration:.7,delay:.1,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top 78%',toggleActions:'play none none none'}});
 
-  if (tags.length) gsap.fromTo(tags, {opacity:0,y:20}, {opacity:1,y:0,duration:.6,stagger:.07,delay:.18,ease:'power2.out',
+  if (title) gsap.fromTo(title, {opacity:0,y:30}, {opacity:1,y:0,duration:.8,delay:.15,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top 76%',toggleActions:'play none none none'}});
-
-  // Description
-  if (desc) gsap.fromTo(desc, {opacity:0,y:24}, {opacity:1,y:0,duration:.75,delay:.22,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 74%',toggleActions:'play none none none'}});
-
-  // Visual: scale in — slightly earlier so it's ready when card "locks in"
-  if (visual) gsap.fromTo(visual, {opacity:0,scale:1.04}, {opacity:1,scale:1,duration:1.1,delay:.1,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
-
-  // CTA
-  if (cta) gsap.fromTo(cta, {opacity:0,y:16}, {opacity:1,y:0,duration:.65,delay:.28,ease:'power2.out',
-    scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
-
-  // Depth scale: layer1=0.92, layer2=0.85 (desktop) / 0.96,0.92 (mobile)
-  var isMobile = window.innerWidth <= 767;
-  var targetScale = 1;
-  if (isMobile) {
-    if (i===0||i===1) targetScale = 0.92;
-    else if (i===2) targetScale = 0.96;
-  } else {
-    if (i===0||i===1) targetScale = 0.85;
-    else if (i===2) targetScale = 0.92;
-  }
-  if (targetScale < 1) {
-    gsap.to(panel, {scale:targetScale,opacity:.75,ease:'power3.out',
-      scrollTrigger:{trigger:panel,start:'top 30%',end:'bottom 5%',scrub:.5}});
-  }
 });
 
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.case-overlay.active').forEach(function(o){o.classList.remove('active');});document.body.style.overflow='';}});
