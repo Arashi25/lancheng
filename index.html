@@ -360,14 +360,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;height:auto;min-height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);}
-  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel{position:relative;height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);}
+  .case-panel:nth-child(n){top:auto;z-index:auto;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  #work{padding-bottom:0;}
   .case-panel-inner{grid-template-columns:1fr;height:auto;gap:clamp(1rem,2vw,1.5rem);}
   .case-text{text-align:center;padding:0;}
   .case-visual{height:auto;aspect-ratio:16/10;max-height:36vh;}
-  .case-visual video,.case-visual img{max-height:36vh;}
+  .case-visual video,.case-visual img{max-height:36vh;object-fit:contain;}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;line-height:1.85;}
   .case-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:clamp(1.2rem,3vw,1.5rem);}
