@@ -1431,18 +1431,17 @@ if (helloVideo) {
     WeixinJSBridge.invoke('getNetworkType', {}, playViaBridge);
   }, false);
 
-  // 3) User interaction — retry up to 5 times
+  // 3) User interaction — retry up to 5 times, wake ALL videos
   var interactionTries = 0, MAX_TRIES = 5;
+  var ALL_VIDEOS = '#work .work-3d video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video';
   function onInteraction() {
     if (interactionTries >= MAX_TRIES) return;
     interactionTries++;
     helloVideo.play().catch(function(){});
-    // Also try waking other work-preview videos on mobile
-    if (window.innerWidth <= 1023) {
-      document.querySelectorAll('#work .work-3d video').forEach(function(v) {
-        v.play().catch(function(){});
-      });
-    }
+    // Wake all hover-play videos after first user gesture (critical for WeChat)
+    document.querySelectorAll(ALL_VIDEOS).forEach(function(v) {
+      v.play().catch(function(){});
+    });
   }
   document.addEventListener('touchstart', onInteraction, {passive: true});
   document.addEventListener('touchmove',  onInteraction, {passive: true});
@@ -1465,8 +1464,8 @@ if (helloVideo) {
 
 /* ===== MOBILE: hover → scroll-based autoplay ===== */
 if (window.innerWidth <= 1023) {
-  // All videos with hover-play: play when scrolled into view, pause when out
-  document.querySelectorAll('#work .work-3d video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video').forEach(function(v) {
+  var MOBILE_VIDEOS = '#work .work-3d video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video';
+  document.querySelectorAll(MOBILE_VIDEOS).forEach(function(v) {
     v.setAttribute('playsinline', '');
     v.setAttribute('webkit-playsinline', '');
     var vObs = new IntersectionObserver(function(es) {
@@ -1477,14 +1476,23 @@ if (window.innerWidth <= 1023) {
           v.pause();
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
     vObs.observe(v);
-    // Also play on tap directly
+    // Tap to toggle play/pause
     v.addEventListener('click', function() {
       if (v.paused) { v.play().catch(function(){}); }
       else { v.pause(); }
     });
   });
+  // Retry: play any video already in viewport after a short delay (WeChat timing)
+  setTimeout(function() {
+    document.querySelectorAll(MOBILE_VIDEOS).forEach(function(v) {
+      var rect = v.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        v.play().catch(function(){});
+      }
+    });
+  }, 600);
 }
 
 /* ===== Case overlay videos — play on scroll into view (desktop) ===== */
