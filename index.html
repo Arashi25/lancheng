@@ -193,13 +193,14 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
 /* ===== SECTION: Immersive Cases — Sticky Stack ===== */
-#work{overflow:visible;}
-.case-panel{height:clamp(600px,74vh,780px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:8vh;cursor:pointer;background:var(--c-bg);will-change:transform,z-index;}
-.case-panel-inner{display:grid;grid-template-columns:38% 62%;width:100%;max-width:1200px;height:100%;align-items:stretch;transform-origin:center top;will-change:transform,opacity;}
-.case-text{display:flex;flex-direction:column;gap:var(--s-16);padding:40px;}
+#work{overflow:visible;margin-top:4rem;}
+.case-panel{height:clamp(600px,74vh,780px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:8vh;cursor:pointer;background:var(--c-bg);will-change:transform,z-index;box-shadow:none;}
+.case-panel::after,.case-panel::before{display:none;}
+.case-panel-inner{display:flex;align-items:stretch;width:100%;max-width:1200px;height:100%;transform-origin:center top;will-change:transform,opacity;}
+.case-text{flex:0 0 38%;display:flex;flex-direction:column;gap:var(--s-16);padding:40px;height:100%;}
+.case-visual{flex:1;overflow:hidden;position:relative;height:100%;min-height:0;padding:40px;background:#f5f5f5;}
 .case-text-top{flex:1;display:flex;flex-direction:column;gap:var(--s-12);}
 .case-text-bottom{margin-top:auto;display:flex;flex-direction:column;gap:var(--s-12);}
-.case-visual{overflow:hidden;position:relative;height:100%;min-height:0;padding:40px;background:#f5f5f5;}
 .case-visual video,.case-visual img{display:block;width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .7s cubic-bezier(.65,0,.35,1);}
 .case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.4em;display:block;margin-bottom:var(--s-4);}
 .case-title{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600;color:#111;letter-spacing:-.02em;line-height:1.15;margin-bottom:var(--s-12);white-space:nowrap;}
