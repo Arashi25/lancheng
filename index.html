@@ -710,7 +710,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div class="container about-container">
     <div class="about-avatar reveal">
       <div class="about-avatar-frame">
-        <video id="hello-video" src="打招呼.mp4" muted loop autoplay playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto" style="width:100%;height:100%;object-fit:cover;"></video>
+        <video id="hello-video" src="打招呼.mp4" muted loop autoplay playsinline webkit-playsinline x5-video-player-type="h5-page" x5-video-player-fullscreen="false" x5-video-orientation="portraint" preload="auto" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="about-avatar-name">Hi, I'm <em>Lan</em>.</div>
     </div>
@@ -1418,37 +1418,77 @@ if (contactSection) contactObserver.observe(contactSection);
 /* ===== 打招呼 video — play when About is visible ===== */
 var helloVideo = document.getElementById('hello-video');
 var aboutSection = document.getElementById('about');
-if (helloVideo && aboutSection) {
-  var helloObs = new IntersectionObserver(function(es) {
-    es.forEach(function(e) {
-      if (e.isIntersecting) {
-        helloVideo.play().catch(function(){});
-      } else {
-        helloVideo.pause();
-      }
-    });
-  }, { threshold: 0.3 });
-  helloObs.observe(aboutSection);
-  // WeChat: retry on first user interaction
-  var retried = false;
-  function wechatRetry() {
-    if (retried) return;
-    retried = true;
-    helloVideo.play().catch(function(){});
+if (helloVideo) {
+  // 1) Standard autoplay (muted + autoplay attr)
+  helloVideo.play().catch(function(){});
+
+  // 2) WeixinJSBridge (WeChat X5 kernel)
+  function playViaBridge() { helloVideo.play().catch(function(){}); }
+  if (typeof WeixinJSBridge !== 'undefined') {
+    WeixinJSBridge.invoke('getNetworkType', {}, playViaBridge);
   }
-  window.addEventListener("scroll", wechatRetry, {once: true});
-  window.addEventListener("touchstart", wechatRetry, {once: true});
+  document.addEventListener('WeixinJSBridgeReady', function() {
+    WeixinJSBridge.invoke('getNetworkType', {}, playViaBridge);
+  }, false);
+
+  // 3) User interaction — retry up to 5 times
+  var interactionTries = 0, MAX_TRIES = 5;
+  function onInteraction() {
+    if (interactionTries >= MAX_TRIES) return;
+    interactionTries++;
+    helloVideo.play().catch(function(){});
+    // Also try waking other work-preview videos on mobile
+    if (window.innerWidth <= 1023) {
+      document.querySelectorAll('#work .work-3d video').forEach(function(v) {
+        v.play().catch(function(){});
+      });
+    }
+  }
+  document.addEventListener('touchstart', onInteraction, {passive: true});
+  document.addEventListener('touchmove',  onInteraction, {passive: true});
+  document.addEventListener('click',      onInteraction, {passive: true});
+
+  // 4) IntersectionObserver fallback
+  if (aboutSection) {
+    var helloObs = new IntersectionObserver(function(es) {
+      es.forEach(function(e) {
+        if (e.isIntersecting) {
+          helloVideo.play().catch(function(){});
+        } else {
+          helloVideo.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    helloObs.observe(aboutSection);
+  }
 }
 
-/* ===== MOBILE: work preview autoplay ===== */
-if (window.innerWidth <= 767) {
-  document.querySelectorAll('#work .work-3d video').forEach(function(v) {
-    v.autoplay = true;
-    v.play().catch(function(){});
+/* ===== MOBILE: hover → scroll-based autoplay ===== */
+if (window.innerWidth <= 1023) {
+  // All videos with hover-play: play when scrolled into view, pause when out
+  document.querySelectorAll('#work .work-3d video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video').forEach(function(v) {
+    v.setAttribute('playsinline', '');
+    v.setAttribute('webkit-playsinline', '');
+    var vObs = new IntersectionObserver(function(es) {
+      es.forEach(function(e) {
+        if (e.isIntersecting) {
+          v.play().catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.3 });
+    vObs.observe(v);
+    // Also play on tap directly
+    v.addEventListener('click', function() {
+      if (v.paused) { v.play().catch(function(){}); }
+      else { v.pause(); }
+    });
   });
 }
 
-/* ===== Case overlay videos — play on scroll into view ===== */
+/* ===== Case overlay videos — play on scroll into view (desktop) ===== */
+if (window.innerWidth > 1023) {
 document.querySelectorAll('.case-overlay video').forEach(function(v) {
   var obs = new IntersectionObserver(function(es) {
     es.forEach(function(e) {
@@ -1461,6 +1501,7 @@ document.querySelectorAll('.case-overlay video').forEach(function(v) {
   }, { threshold: 0.3 });
   obs.observe(v);
 });
+}
 
 /* ===== WORK DOTS — mobile pagination ===== */
 var workWrap = document.getElementById('work');
