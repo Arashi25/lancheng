@@ -318,7 +318,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .growth-node.final .growth-card .card-title{font-size:clamp(1.15rem,1.3vw,1.3rem);}
 .growth-node.final.current .growth-card{border-color:var(--c-brand);background:var(--c-brand-dim);box-shadow:0 0 40px rgba(15,98,254,0.06);}
 
-@media(max-width:1023px){.growth-nodes{flex-wrap:wrap;justify-content:center;gap:24px 20px;}.growth-node{flex:0 0 auto;}.growth-node-card{width:140px;min-height:110px;padding:16px 12px;}}
+@media(max-width:1023px){.growth-nodes{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;}.growth-nodes::-webkit-scrollbar{display:none;}.growth-node{flex:0 0 auto;min-width:160px;scroll-snap-align:start;}.growth-node-card{width:140px;min-height:110px;padding:16px 12px;}}
 
 /* ===== SECTION: Contact ===== */
 .contact-sec{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
@@ -368,16 +368,27 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .hero-name{font-size:clamp(2.5rem,13vw,72px);}
   .cap-grid{grid-template-columns:1fr;}
   .cap-card{min-height:auto;}
+  /* 案例横向滑动 */
+  #work{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:0;}
+  #work::-webkit-scrollbar{display:none;}
+  #work .work-item{flex:0 0 88vw;scroll-snap-align:start;min-height:auto;grid-template-columns:1fr;}
+  #work .work-text{padding-right:0;}
   .work-3d{height:40vh;}
   .contact-links{flex-direction:column;align-items:center;}
   .contact-links .btn{width:100%;max-width:280px;}
-  .modal-card{flex-direction:column;max-width:400px;min-height:auto;}
-  .modal-qr{border-right:none;border-bottom:1px solid var(--c-border);padding:40px 32px 32px;}
+  .modal-card{flex-direction:column;max-width:400px;min-height:auto;overflow:visible;}
+  .modal-qr{border-right:none;border-bottom:1px solid var(--c-border);padding:48px 32px 32px;overflow:hidden;}
   .modal-info{padding:32px;}
   .modal-info-sub{margin-bottom:28px;}
   .modal-qr-img{width:140px;height:140px;}
   .modal-qr{width:100%;border-right:none;border-bottom:1px solid var(--c-border);}
   .modal-info{width:100%;}
+  .modal-close{top:12px;right:12px;width:36px;height:36px;}
+  /* 案例分页点 — 手机端可见 */
+  .work-dots{display:flex;justify-content:center;gap:8px;padding:16px 0;}
+  @media(min-width:768px){.work-dots{display:none;}}
+  .work-dot{width:6px;height:6px;border-radius:50%;background:var(--c-border);transition:background .3s;}
+  .work-dot.on{background:var(--c-brand);width:18px;border-radius:3px;}
 }
 
 	/* ===== CASE STUDY: AI ROBOT — Typography & Spacing System ===== */
@@ -680,10 +691,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <nav class="nav" id="nav">
   <span class="nav-logo" id="nav-logo">程岚</span>
   <div class="nav-links" id="nav-links">
-    <a data-target="#about">能力</a>
+    <a data-target="#about">关于</a>
     <a data-target="#capabilities">能力</a>
     <a data-target="#work">案例</a>
-    <a data-target="#growth">能力</a>
+    <a data-target="#growth">成长</a>
     <a data-target="#contact">联系</a>
   </div>
 </nav>
@@ -692,10 +703,6 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <section class="hero">
   <h1 class="hero-name" style="font-family:var(--font-display);text-transform:uppercase;">LAN CHENG</h1>
   <p class="hero-tag" id="hero-tag">从设计执行者，转变为能够推动产品落地的人</p>
-  <div class="hero-scroll" id="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <div class="hero-scroll-txt">SCROLL</div>
-  </div>
 </section>
 
 <!-- ===== ABOUT ===== -->
@@ -703,7 +710,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div class="container about-container">
     <div class="about-avatar reveal">
       <div class="about-avatar-frame">
-        <video src="打招呼.mov" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>
+        <video id="hello-video" src="打招呼.mp4" muted loop autoplay playsinline webkit-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="true" preload="auto" style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
       <div class="about-avatar-name">Hi, I'm <em>Lan</em>.</div>
     </div>
@@ -714,14 +721,14 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       </div>
       <div class="about-divider"></div>
       <div class="about-bio">
-        <p>2021 年毕业于 IED（欧洲设计学院）产品设计专业，拥有 3 年多产品与设计经验。</p>
+        <p>2021 年毕业于 IED（欧洲设计学院）产品设计专业，拥有 4 年产品与设计经验。</p>
         <p>从设计到产品，逐步完成角色转变，参与 AI、机器人与医疗产品的规划与落地，专注于需求分析、产品设计、项目推进及跨团队协作，推动产品从 0 到 1 实现落地。</p>
       </div>
       <div class="about-brand-line">Design × Business × Product × Delivery</div>
       <div class="about-divider"></div>
       <div class="about-stats">
         <div class="about-stat reveal-stagger"><div class="val">4+</div><div class="lbl">产品项目</div></div>
-        <div class="about-stat reveal-stagger"><div class="val">3+</div><div class="lbl">年工作经验</div></div>
+        <div class="about-stat reveal-stagger"><div class="val">4+</div><div class="lbl">年工作经验</div></div>
         <div class="about-stat reveal-stagger"><div class="val">0→1</div><div class="lbl">产品实践</div></div>
       </div>
     </div>
@@ -742,17 +749,18 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 </section>
 
 <!-- ===== SELECTED WORK ===== -->
+<div id="work">
 <div class="work-item" data-case="bath-robot" id="wi-bath">
       <div class="container work-text" style="padding-left:var(--pad-desktop);">
         <p class="work-num">01 / 04</p>
-        <h3 class="work-ttl">AI 助浴机器人</h3>
+        <h3 class="work-ttl">助浴机器人</h3>
         <p class="work-role">产品策划 / 概念设计</p>
         <p class="work-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
         <div class="work-keywords"><span>竞品分析</span><span>需求整理</span><span>AI 概念</span><span>项目展示</span></div>
-        <p class="work-meta">2024</p>
+        <p class="work-meta">2026</p>
         <span class="work-cta">查看案例</span>
       </div>
-      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/外观.mov" muted loop playsinline preload="auto" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
+      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/外观.mp4" muted loop playsinline preload="none" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
     </div>
 
 <div class="work-item" data-case="microscope" id="wi-micro">
@@ -765,7 +773,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <p class="work-meta">2025</p>
         <span class="work-cta">查看案例</span>
       </div>
-      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微1.mov" muted loop playsinline preload="auto" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
+      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微1.mp4" muted loop playsinline preload="none" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
     </div>
 
 <div class="work-item" data-case="ai-robot" id="wi-ai">
@@ -775,10 +783,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <p class="work-role">产品负责人</p>
         <p class="work-desc">从 0 到 1 完成 AI 绘画机器人产品规划、需求分析与交互设计，协调研发、算法与机械团队推进落地</p>
         <div class="work-keywords"><span>产品规划</span><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
-        <p class="work-meta">2024 — 2025</p>
+        <p class="work-meta">2026 — 2025</p>
         <span class="work-cta">查看案例</span>
       </div>
-      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="auto" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
+      <div class="work-3d"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="none" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></video></div>
     </div>
 
 <div class="work-item" data-case="orthopedic" id="wi-ortho">
@@ -788,11 +796,20 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <p class="work-role">项目负责人</p>
         <p class="work-desc">统筹骨科手术导航机器人多团队协作，负责需求分析、交互设计、研发协同与项目推进</p>
         <div class="work-keywords"><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
-        <p class="work-meta">2023 — 2024</p>
+        <p class="work-meta">2023 — 2026</p>
         <span class="work-cta">查看案例</span>
       </div>
       <div class="work-3d"><img src="骨科场景1222.png" alt="骨科手术机器人" style="width:85%;height:85%;object-fit:contain;border-radius:16px;"></div>
     </div>
+</div>
+
+<!-- ===== WORK PAGINATION ===== -->
+<div class="work-dots" aria-hidden="true">
+  <span class="work-dot on"></span>
+  <span class="work-dot"></span>
+  <span class="work-dot"></span>
+  <span class="work-dot"></span>
+</div>
 
 <!-- ===== CASE OVERLAYS ===== -->
 
@@ -828,7 +845,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       </div>
       <div class="cs-ai-sb-group">
         <div class="cs-ai-sb-label">项目周期<br>Project Duration</div>
-        <div class="cs-ai-sb-value">2024 — 2025</div>
+        <div class="cs-ai-sb-value">2026 — 2025</div>
       </div>
       <div class="cs-ai-sb-group">
         <div class="cs-ai-sb-label">我的职责<br>Responsibilities</div>
@@ -858,13 +875,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段一</div>
             <div class="cs-evo-card-title">机器人自动绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/福_22s.mov" muted loop playsinline preload="auto" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/福_22s.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">机器人完成基础绘画动作</div>
           </div>
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段二</div>
             <div class="cs-evo-card-title">AI驱动机器人绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/笔触.mov" muted loop playsinline preload="auto" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/笔触.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">建立AI内容到机器人动作的转换流程</div>
           </div>
           <div class="cs-evo-card">
@@ -1014,7 +1031,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">04 产品成长过程</div>
         <div class="cs-ai-sec-en">Evolution</div>
         <div class="cs-timeline-v">
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2024</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:12px;aspect-ratio:auto;min-height:auto;overflow:hidden;">
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:12px;aspect-ratio:auto;min-height:auto;overflow:hidden;">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" style="width:100%;display:block;">
     <defs>
       <linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#00b894"/></linearGradient>
@@ -1027,7 +1044,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <rect x="248" y="56" width="228" height="96" rx="8" fill="#1a1040" stroke="#4a2a8a" stroke-width="0.4"/><text x="258" y="74" fill="#a855f7" font-size="9" font-weight="700">02 D.O.U.G. 钟愫君</text><text x="258" y="90" fill="#ccccdd" font-size="7">🇨🇦 人机共创 · AI笔迹学习</text><text x="258" y="106" fill="#a855f7" font-size="7">⭐⭐⭐⭐⭐ 人机协同</text><rect x="258" y="116" width="80" height="14" rx="7" fill="#2a1a4a"/><text x="298" y="127" text-anchor="middle" fill="#a855f7" font-size="6">人机协同</text><rect x="344" y="116" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="404" y="127" text-anchor="middle" fill="#8888bb" font-size="6">Human+AI Co-Creation</text>
     <rect x="484" y="56" width="228" height="96" rx="8" fill="#0f2840" stroke="#2a5a8a" stroke-width="0.4"/><text x="494" y="74" fill="#f59e0b" font-size="9" font-weight="700">03 e-David</text><text x="494" y="90" fill="#ccccdd" font-size="7">🇩🇪 闭环视觉 · 自动修正笔触</text><text x="494" y="106" fill="#f59e0b" font-size="7">⭐⭐⭐⭐⭐ 视觉反馈</text><rect x="494" y="116" width="80" height="14" rx="7" fill="#1a2a4a"/><text x="534" y="127" text-anchor="middle" fill="#f59e0b" font-size="6">视觉反馈</text><rect x="580" y="116" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="640" y="127" text-anchor="middle" fill="#8888bb" font-size="6">Closed-loop Painting</text>
     <rect x="720" y="56" width="228" height="96" rx="8" fill="#0f2840" stroke="#2a5a8a" stroke-width="0.4"/><text x="730" y="74" fill="#3b82f6" font-size="9" font-weight="700">04 Ai-Da Robot</text><text x="730" y="90" fill="#ccccdd" font-size="7">🇬🇧 AI艺术家 · 肖像自动绘制</text><text x="730" y="106" fill="#3b82f6" font-size="7">⭐⭐⭐⭐ AI生成绘画</text><rect x="730" y="116" width="80" height="14" rx="7" fill="#1a2a4a"/><text x="770" y="127" text-anchor="middle" fill="#3b82f6" font-size="6">AI生成绘画</text><rect x="816" y="116" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="876" y="127" text-anchor="middle" fill="#8888bb" font-size="6">首位AI机器人艺术家</text>
-    <rect x="956" y="56" width="230" height="96" rx="8" fill="#0f2840" stroke="#2a5a8a" stroke-width="0.4"/><text x="966" y="74" fill="#3b82f6" font-size="9" font-weight="700">05 SketcherX</text><text x="966" y="90" fill="#ccccdd" font-size="7">🇰🇷 KAIST · SD+双机械臂</text><text x="966" y="106" fill="#3b82f6" font-size="7">⭐⭐⭐⭐⭐ AI生成绘画</text><rect x="966" y="116" width="80" height="14" rx="7" fill="#1a2a4a"/><text x="1006" y="127" text-anchor="middle" fill="#3b82f6" font-size="6">扩散模型</text><rect x="1052" y="116" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="1112" y="127" text-anchor="middle" fill="#8888bb" font-size="6">2024最新方案</text>
+    <rect x="956" y="56" width="230" height="96" rx="8" fill="#0f2840" stroke="#2a5a8a" stroke-width="0.4"/><text x="966" y="74" fill="#3b82f6" font-size="9" font-weight="700">05 SketcherX</text><text x="966" y="90" fill="#ccccdd" font-size="7">🇰🇷 KAIST · SD+双机械臂</text><text x="966" y="106" fill="#3b82f6" font-size="7">⭐⭐⭐⭐⭐ AI生成绘画</text><rect x="966" y="116" width="80" height="14" rx="7" fill="#1a2a4a"/><text x="1006" y="127" text-anchor="middle" fill="#3b82f6" font-size="6">扩散模型</text><rect x="1052" y="116" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="1112" y="127" text-anchor="middle" fill="#8888bb" font-size="6">2026最新方案</text>
     <rect x="12" y="164" width="228" height="96" rx="8" fill="#0f3028" stroke="#1a6a5a" stroke-width="0.4"/><text x="22" y="182" fill="#22d3ee" font-size="9" font-weight="700">06 ABB Robot</text><text x="22" y="198" fill="#ccccdd" font-size="7">🇨🇭 工业六轴 · 大幅面绘画</text><text x="22" y="214" fill="#22d3ee" font-size="7">⭐⭐⭐⭐ 机器人控制</text><rect x="22" y="224" width="80" height="14" rx="7" fill="#1a3a2a"/><text x="62" y="235" text-anchor="middle" fill="#22d3ee" font-size="6">运动控制</text><rect x="108" y="224" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="168" y="235" text-anchor="middle" fill="#8888bb" font-size="6">工业级大幅绘画</text>
     <rect x="248" y="164" width="228" height="96" rx="8" fill="#0f3028" stroke="#1a6a5a" stroke-width="0.4"/><text x="258" y="182" fill="#22d3ee" font-size="9" font-weight="700">07 KUKA Robot Art</text><text x="258" y="198" fill="#ccccdd" font-size="7">🇩🇪 精密轨迹 · 数字艺术</text><text x="258" y="214" fill="#22d3ee" font-size="7">⭐⭐⭐⭐ 机器人控制</text><rect x="258" y="224" width="80" height="14" rx="7" fill="#1a3a2a"/><text x="298" y="235" text-anchor="middle" fill="#22d3ee" font-size="6">精密轨迹</text><rect x="344" y="224" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="404" y="235" text-anchor="middle" fill="#8888bb" font-size="6">精密轨迹控制艺术</text>
     <rect x="484" y="164" width="228" height="96" rx="8" fill="#0f2840" stroke="#2a5a8a" stroke-width="0.4"/><text x="494" y="182" fill="#3b82f6" font-size="9" font-weight="700">08 CloudPainter</text><text x="494" y="198" fill="#ccccdd" font-size="7">🇺🇸 GAN+CV · 双AI创作评价</text><text x="494" y="214" fill="#3b82f6" font-size="7">⭐⭐⭐⭐⭐ AI自主创作</text><rect x="494" y="224" width="80" height="14" rx="7" fill="#1a2a4a"/><text x="534" y="235" text-anchor="middle" fill="#3b82f6" font-size="6">GAN系统</text><rect x="580" y="224" width="120" height="14" rx="7" fill="#1a1a2e"/><text x="640" y="235" text-anchor="middle" fill="#8888bb" font-size="6">双AI：创作+评价</text>
@@ -1037,8 +1054,8 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <rect x="12" y="310" width="1176" height="18" rx="9" fill="#12121f"/><circle cx="30" cy="319" r="4" fill="#a855f7"/><text x="38" y="323" fill="#aaaacc" font-size="6">人机协同</text><circle cx="105" cy="319" r="4" fill="#3b82f6"/><text x="113" y="323" fill="#aaaacc" font-size="6">AI生成绘画</text><circle cx="190" cy="319" r="4" fill="#22d3ee"/><text x="198" y="323" fill="#aaaacc" font-size="6">机器人控制</text><circle cx="275" cy="319" r="4" fill="#f59e0b"/><text x="283" y="323" fill="#aaaacc" font-size="6">视觉反馈</text><text x="360" y="323" fill="#555577" font-size="6">|</text><text x="378" y="323" fill="#8888aa" font-size="6">借鉴指数最高：Paul · D.O.U.G. · e-David · SketcherX · CloudPainter · FRIDA</text>
   </svg>
 </div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2024</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:12px;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="auto" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;"></video></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:12px;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;"></video></div></div></div>
           <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
         </div>
       </div>
@@ -1048,9 +1065,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">05 项目成果</div>
         <div class="cs-ai-sec-en">Achievement</div>
         <div class="cs-achievements">
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="auto" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
           <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/IMG_4652.JPG" alt="客户合作" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">Human × Robot</span><span class="cs-ach-desc">展台亮相 · 2026</span></div></div>
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/英伟达_30s.mov" muted loop playsinline preload="auto" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/英伟达_30s.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
           <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/39.JPG" alt="安永展会" style="width:100%;height:100%;border-radius:16px;object-fit:cover;display:block;;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">安永创新展</span><span class="cs-ach-desc">客户合作意向</span></div></div>
         </div>
       </div>
@@ -1085,7 +1102,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div style="padding-top: 1rem; padding-bottom: 2rem;">
     <div class="cs-hero-title" style="font-size:clamp(2rem,4vw,3rem);">全自主AI超显微机器人 Demo</div>
     <div class="cs-hero-sub">AI Autonomous Manipulation Demo</div>
-    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微.mov" muted loop playsinline preload="auto" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
+    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
     <div class="cs-hero-desc">展示AI视觉识别、机器人力控与精细操作能力，最终于WAIC正式亮相</div>
     <div class="cs-hero-meta">Role · Product Planning · Project Management</div>
   </div>
@@ -1164,7 +1181,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div class="cs-ai-layout">
   <aside class="cs-ai-sidebar">
     <div class="cs-ai-sb-header"><div class="cs-ai-sb-logo">骨科手术机器人</div><div class="cs-ai-sb-logo-sub">Orthopedic Surgical Robot</div></div>
-    <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">项目周期<br>Duration</div><div class="cs-ai-sb-value">2023 — 2024</div></div>
+    <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">项目周期<br>Duration</div><div class="cs-ai-sb-value">2023 — 2026</div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">我的职责<br>Role</div><div class="cs-ai-sb-value highlight">项目负责人<span class="en">Project Lead</span></div><div class="cs-ai-sb-value highlight">产品设计师<span class="en">Product Designer</span></div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">协作团队<br>Team</div><div class="cs-ai-sb-value">Algorithm</div><div class="cs-ai-sb-value">Software</div><div class="cs-ai-sb-value">Mechanical</div><div class="cs-ai-sb-value">Clinical</div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">职责范围<br>Responsibility</div><div class="cs-ai-sb-value highlight">产品规划</div><div class="cs-ai-sb-value highlight">交互设计</div><div class="cs-ai-sb-value highlight">UI设计</div><div class="cs-ai-sb-value highlight">工业设计</div></div>
@@ -1193,20 +1210,20 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div class="cs-progress"><div class="cs-progress-bar" id="cs-prog-bath"></div></div>
 <div class="container cs-page-wrap">
 <div style="padding-top:2rem;padding-bottom:1rem;">
-  <div class="cs-hero-title" style="font-size:clamp(2.8rem,5vw,3.8rem);">AI 助浴机器人</div>
+  <div class="cs-hero-title" style="font-size:clamp(2.8rem,5vw,3.8rem);">助浴机器人</div>
   <div class="cs-hero-sub" style="display:none;"></div>
   <div class="cs-hero-desc">基于养老护理场景研究，结合竞品分析与 AI 辅助设计，探索未来助浴机器人的产品概念</div>
   <div class="cs-hero-meta">Product Planning · Concept Design · AI Exploration</div>
 
   <!-- 产品演示视频 -->
   <div style="width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin:1.5rem 0 0 0;background:var(--c-card);border:1px solid var(--c-border);">
-    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/云百生按刷助浴椅%203.mp4" muted loop playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;"></video>
+    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/云百生按刷助浴椅%203.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:cover;"></video>
   </div>
 </div>
 
 <div class="cs-ai-layout">
   <aside class="cs-ai-sidebar">
-    <div class="cs-ai-sb-header"><div class="cs-ai-sb-logo">AI 助浴机器人</div><div class="cs-ai-sb-logo-sub" style="display:none;"></div></div>
+    <div class="cs-ai-sb-header"><div class="cs-ai-sb-logo">助浴机器人</div><div class="cs-ai-sb-logo-sub" style="display:none;"></div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">项目周期<br>Duration</div><div class="cs-ai-sb-value">2026</div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">我的职责<br>Role</div><div class="cs-ai-sb-value highlight">产品策划<span class="en">Product Planning</span></div><div class="cs-ai-sb-value highlight">概念设计<span class="en">Concept Design</span></div></div>
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">协作团队<br>Team</div><div class="cs-ai-sb-value">工业设计</div><div class="cs-ai-sb-value">技术研发</div><div class="cs-ai-sb-value">用户研究</div></div>
@@ -1301,8 +1318,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <section class="contact-sec container" id="contact" style="background:#F0F2F5;">
   <h2 class="contact-ttl">一起做点有意思的产品</h2>
   <div class="contact-links">
-    <a href="mailto:lancheng_ara@zohomail.cn" class="btn">邮箱联系</a>
-    <button class="btn" id="ct-wechat">微信</button>
+    <button class="btn" id="ct-wechat">找我聊聊</button>
   </div>
 </section>
 
@@ -1311,7 +1327,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div class="modal-card">
     <button class="modal-close" id="modal-close-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/></svg></button>
     <div class="modal-qr">
-      <div class="modal-qr-img"><img src="IMG_0001.jpg" alt="QR" style="width:220px;height:220px;object-fit:cover;border-radius:14px;"></div>
+      <div class="modal-qr-img"><img src="IMG_0001.jpg" alt="QR" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
       <p class="qr-hint">微信扫码</p>
       <p class="qr-id">lancheng_ara</p>
     </div>
@@ -1332,28 +1348,34 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
 /* ===== HERO SEQUENCE ===== */
 (function(){
-  // CSS already sets opacity:0 + transition on all hero/nav elements
-  // Just trigger opacity:1 after delays
+  // ── Hero animation: concentrated in 3.5s, then auto-scroll to About ──
+  var heroTL = gsap.timeline({
+    defaults: { ease: 'power3.out' },
+    onComplete: function() {
+      var aboutEl = document.getElementById('about');
+      if (aboutEl) aboutEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+  heroTL
+    .fromTo('.hero-name',
+      { opacity: 0, y: 80, scale: 0.92 },
+      { opacity: 1, y: 0, scale: 1, duration: 0.9 },
+      0
+    )
+    .fromTo('#hero-tag',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.7 },
+      1.5
+    )
+    .to({}, { duration: 1.3 }, 2.2); // Pad to exactly 3.5s
+
+  // Reveal nav after hero name animation completes
   setTimeout(function(){
-    var n=document.querySelector('.hero-name');
-    if(n){ n.style.opacity='1'; n.style.transform='translateY(0)'; }
-  },300);
-  setTimeout(function(){
-    var t=document.getElementById('hero-tag');
-    if(t) t.style.opacity='1';
-  },2300);
-  setTimeout(function(){
-    var sc=document.getElementById('hero-scroll');
-    if(sc) sc.style.opacity='1';
-  },3600);
-  setTimeout(function(){
-    var l=document.getElementById('nav-logo');
-    if(l) l.style.opacity='1';
-  },3600);
-  setTimeout(function(){
-    var l=document.getElementById('nav-links');
-    if(l) l.style.opacity='1';
-  },3600);
+    var l = document.getElementById('nav-logo');
+    if (l) l.style.opacity = '1';
+    var nl = document.getElementById('nav-links');
+    if (nl) nl.style.opacity = '1';
+  }, 950);
 })();
 
 /* ===== NAV SCROLL ===== */
@@ -1379,6 +1401,84 @@ var wm=document.getElementById('wechat-modal');
 document.getElementById('ct-wechat').addEventListener('click',function(){wm.classList.add('open');});
 document.getElementById('modal-close-btn').addEventListener('click',function(){wm.classList.remove('open');});
 wm.addEventListener('click',function(e){if(e.target===wm)wm.classList.remove('open');});
+
+// ── Contact: auto-popup 2s after scrolling into view ──
+var contactFired = false;
+var contactObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting && !contactFired) {
+      contactFired = true;
+      setTimeout(function() { wm.classList.add('open'); }, 2000);
+    }
+  });
+}, { threshold: 0.3 });
+var contactSection = document.getElementById('contact');
+if (contactSection) contactObserver.observe(contactSection);
+
+/* ===== 打招呼 video — play when About is visible ===== */
+var helloVideo = document.getElementById('hello-video');
+var aboutSection = document.getElementById('about');
+if (helloVideo && aboutSection) {
+  var helloObs = new IntersectionObserver(function(es) {
+    es.forEach(function(e) {
+      if (e.isIntersecting) {
+        helloVideo.play().catch(function(){});
+      } else {
+        helloVideo.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+  helloObs.observe(aboutSection);
+  // WeChat: retry on first user interaction
+  var retried = false;
+  function wechatRetry() {
+    if (retried) return;
+    retried = true;
+    helloVideo.play().catch(function(){});
+  }
+  window.addEventListener("scroll", wechatRetry, {once: true});
+  window.addEventListener("touchstart", wechatRetry, {once: true});
+}
+
+/* ===== MOBILE: work preview autoplay ===== */
+if (window.innerWidth <= 767) {
+  document.querySelectorAll('#work .work-3d video').forEach(function(v) {
+    v.autoplay = true;
+    v.play().catch(function(){});
+  });
+}
+
+/* ===== Case overlay videos — play on scroll into view ===== */
+document.querySelectorAll('.case-overlay video').forEach(function(v) {
+  var obs = new IntersectionObserver(function(es) {
+    es.forEach(function(e) {
+      if (e.isIntersecting) {
+        v.play().catch(function(){});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.3 });
+  obs.observe(v);
+});
+
+/* ===== WORK DOTS — mobile pagination ===== */
+var workWrap = document.getElementById('work');
+var workDots = document.querySelectorAll('.work-dot');
+if (workWrap && workDots.length) {
+  var workItems = workWrap.querySelectorAll('.work-item');
+  var dotObs = new IntersectionObserver(function(es) {
+    es.forEach(function(e) {
+      if (e.isIntersecting) {
+        var idx = Array.from(workItems).indexOf(e.target);
+        workDots.forEach(function(d, i) { d.classList.toggle('on', i === idx); });
+      }
+    });
+  }, { threshold: 0.5, root: workWrap });
+  workItems.forEach(function(item) { dotObs.observe(item); });
+}
+
+
 
 /* ===== CASE OVERLAYS ===== */
 window.openCase=function(id){var ov=document.getElementById(id);if(ov){ov.classList.add('active');document.body.style.overflow='hidden';}};
