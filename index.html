@@ -1468,10 +1468,22 @@ if (window.innerWidth <= 1023) {
   document.querySelectorAll(MOBILE_VIDEOS).forEach(function(v) {
     v.setAttribute('playsinline', '');
     v.setAttribute('webkit-playsinline', '');
+    v.setAttribute('x5-video-player-type', 'h5-page');
+    v.setAttribute('x5-video-player-fullscreen', 'false');
+    // Force GPU layer: prevents WeChat X5 blank frame bug
+    v.style.transform = 'translateZ(0)';
+    v.style.willChange = 'transform';
     var vObs = new IntersectionObserver(function(es) {
       es.forEach(function(e) {
         if (e.isIntersecting) {
+          // WeChat X5 fix: force reflow then play to ensure first frame renders
+          v.offsetHeight;
           v.play().catch(function(){});
+          // Double-tap: brief pause+play cycle ensures decoder outputs a frame
+          setTimeout(function() {
+            if (!v.paused) { v.pause(); }
+            v.play().catch(function(){});
+          }, 100);
         } else {
           v.pause();
         }
@@ -1489,7 +1501,12 @@ if (window.innerWidth <= 1023) {
     document.querySelectorAll(MOBILE_VIDEOS).forEach(function(v) {
       var rect = v.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
+        v.offsetHeight;
         v.play().catch(function(){});
+        setTimeout(function() {
+          if (!v.paused) { v.pause(); }
+          v.play().catch(function(){});
+        }, 100);
       }
     });
   }, 600);
