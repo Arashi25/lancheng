@@ -193,27 +193,28 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
 /* ===== SECTION: Immersive Cases — Sticky Card Stack ===== */
-.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(3rem,5vw,4.5rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);}
-/* Stacking offsets — each card peeks 52px from behind the next */
+.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);}
+/* Stacking offsets — each card peeks 48px from behind the next */
 .case-panel:nth-child(1){top:0;z-index:4;box-shadow:0 1px 0 var(--c-border);}
-.case-panel:nth-child(2){top:52px;z-index:3;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
-.case-panel:nth-child(3){top:104px;z-index:2;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
-.case-panel:nth-child(4){top:156px;z-index:1;box-shadow:0 4px 24px rgba(0,0,0,.06);}
-.case-inner{display:grid;grid-template-columns:40fr 60fr;gap:clamp(2rem,4vw,4.5rem);align-items:center;width:100%;}
-.case-content{display:flex;flex-direction:column;gap:var(--s-12);}
-.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.25em;display:block;margin-bottom:var(--s-4);}
-.case-title{font-size:clamp(2.2rem,4vw,3.8rem);font-weight:400;color:var(--c-text);letter-spacing:-.02em;line-height:1.08;}
-.case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.05em;}
-.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);}
-.case-tags span{font-size:11px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:3px 13px;border-radius:999px;letter-spacing:.03em;background:var(--c-bg);}
-.case-desc{font-size:1rem;font-weight:300;line-height:1.85;color:var(--c-text2);max-width:480px;}
-.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-8);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);margin-top:var(--s-4);}
+.case-panel:nth-child(2){top:48px;z-index:3;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
+.case-panel:nth-child(3){top:96px;z-index:2;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
+.case-panel:nth-child(4){top:144px;z-index:1;box-shadow:0 4px 24px rgba(0,0,0,.06);}
+.case-inner{display:grid;grid-template-columns:38fr 62fr;gap:clamp(2rem,4vw,5rem);align-items:center;width:100%;}
+.case-content{display:flex;flex-direction:column;gap:var(--s-10);padding-right:0;}
+.case-num{font-size:10px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.3em;display:block;margin-bottom:var(--s-2);}
+.case-title{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:400;color:var(--c-text);letter-spacing:-.02em;line-height:1.06;}
+.case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.06em;}
+.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-6);margin-top:var(--s-4);}
+.case-tags span{font-size:10px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:3px 12px;border-radius:999px;letter-spacing:.03em;background:var(--c-bg);}
+.case-desc{font-size:.95rem;font-weight:300;line-height:1.9;color:var(--c-text2);max-width:440px;margin-top:var(--s-4);}
+.case-cta{font-size:.8rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-8);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);margin-top:var(--s-8);}
 .case-cta:hover{color:var(--c-brand);gap:14px;}
 .case-cta::after{content:"→";transition:transform .35s cubic-bezier(.65,0,.35,1);}
 .case-cta:hover::after{transform:translateX(5px);}
-.case-visual{display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px;}
-.case-visual video,.case-visual img{width:100%;height:auto;max-height:62vh;object-fit:contain;border-radius:12px;transition:transform .7s cubic-bezier(.65,0,.35,1);}
-.case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.02);}
+.case-visual{display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:14px;position:relative;}
+.case-visual::before{content:'';position:absolute;inset:0;background:var(--c-card);border-radius:14px;z-index:0;pointer-events:none;}
+.case-visual video,.case-visual img{width:100%;height:auto;max-height:68vh;object-fit:contain;border-radius:14px;transition:transform .7s cubic-bezier(.65,0,.35,1);position:relative;z-index:1;}
+.case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.015);}
 .case-panel:hover .case-title{color:#1a1a2e;}
 .case-panel .case-num{transition:color .35s ease;}
 .case-panel:hover .case-num{color:var(--c-brand);}
@@ -367,14 +368,14 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3.5rem) var(--pad-mobile);}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);}
   .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  .case-inner{grid-template-columns:1fr;gap:clamp(1.5rem,3vw,2.5rem);}
+  .case-inner{grid-template-columns:1fr;gap:clamp(1.2rem,3vw,2rem);}
   .case-visual{order:-1;}
-  .case-visual video,.case-visual img{max-height:45vh;}
-  .case-title{font-size:clamp(1.8rem,6vw,2.4rem);}
-  .case-desc{font-size:.9rem;max-width:100%;}
+  .case-visual video,.case-visual img{max-height:40vh;}
+  .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
+  .case-desc{font-size:.85rem;max-width:100%;}
   .container{padding-left:var(--pad-mobile);padding-right:var(--pad-mobile);}
   .nav{padding:0 var(--pad-mobile);}
   .nav-links{gap:var(--s-16);}
@@ -770,7 +771,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="洗澡/外观.mp4" muted loop playsinline preload="none"></video>
+        <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
       </div>
     </div>
   </div>
@@ -787,7 +788,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="显微/显微1.mp4" muted loop playsinline preload="none"></video>
+        <video src="显微/显微1.mp4" muted loop playsinline preload="metadata"></video>
       </div>
     </div>
   </div>
@@ -804,7 +805,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="none"></video>
+        <video src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="metadata"></video>
       </div>
     </div>
   </div>
@@ -891,13 +892,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段一</div>
             <div class="cs-evo-card-title">机器人自动绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/福_22s.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/福_22s.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">机器人完成基础绘画动作</div>
           </div>
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段二</div>
             <div class="cs-evo-card-title">AI驱动机器人绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/笔触.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/笔触.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">建立AI内容到机器人动作的转换流程</div>
           </div>
           <div class="cs-evo-card">
@@ -1071,7 +1072,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   </svg>
 </div></div></div>
           <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:12px;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;"></video></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;"></video></div></div></div>
           <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
         </div>
       </div>
@@ -1081,9 +1082,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">05 项目成果</div>
         <div class="cs-ai-sec-en">Achievement</div>
         <div class="cs-achievements">
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
           <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/IMG_4652.JPG" alt="客户合作" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">Human × Robot</span><span class="cs-ach-desc">展台亮相 · 2026</span></div></div>
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/英伟达_30s.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画图片/英伟达_30s.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
           <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/39.JPG" alt="安永展会" style="width:100%;height:100%;border-radius:16px;object-fit:cover;display:block;;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">安永创新展</span><span class="cs-ach-desc">客户合作意向</span></div></div>
         </div>
       </div>
@@ -1118,7 +1119,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div style="padding-top: 1rem; padding-bottom: 2rem;">
     <div class="cs-hero-title" style="font-size:clamp(2rem,4vw,3rem);">全自主AI超显微机器人 Demo</div>
     <div class="cs-hero-sub">AI Autonomous Manipulation Demo</div>
-    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微.mp4" muted loop playsinline preload="none" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
+    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="显微/显微.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
     <div class="cs-hero-desc">展示AI视觉识别、机器人力控与精细操作能力，最终于WAIC正式亮相</div>
     <div class="cs-hero-meta">Role · Product Planning · Project Management</div>
   </div>
@@ -1233,7 +1234,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
   <!-- 产品演示视频 -->
   <div style="width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin:1.5rem 0 0 0;background:var(--c-card);border:1px solid var(--c-border);">
-    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/云百生按刷助浴椅%203.mp4" muted loop playsinline preload="none" style="width:100%;height:100%;object-fit:cover;"></video>
+    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/云百生按刷助浴椅%203.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;"></video>
   </div>
 </div>
 
