@@ -192,17 +192,13 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases — Sticky Stack ===== */
-.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);will-change:transform;}
-/* Stack with 72px offsets — title tabs visible, scale handles depth */
-.case-panel:nth-child(1){top:0;z-index:1;}
-.case-panel:nth-child(2){top:72px;z-index:2;box-shadow:0 -1px 8px rgba(0,0,0,.03);}
-.case-panel:nth-child(3){top:144px;z-index:3;box-shadow:0 -1px 8px rgba(0,0,0,.03);}
-.case-panel:nth-child(4){top:216px;z-index:4;box-shadow:0 -1px 8px rgba(0,0,0,.03);}
-/* Hover: card floats up, siblings dim */
+/* ===== SECTION: Immersive Cases — Scroll-snap Stack ===== */
+#work{scroll-snap-type:y proximity;}
+.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform;scroll-snap-align:center;}
+/* Hover: card focus, siblings dim */
 .case-panel{transition:transform .6s cubic-bezier(.22,1,.36,1),opacity .4s ease,box-shadow .5s ease;}
-.case-panel:hover{box-shadow:0 -4px 32px rgba(0,0,0,.1);}
-#work:hover .case-panel:not(:hover){opacity:.65;}
+.case-panel:hover{box-shadow:0 0 40px rgba(0,0,0,.08);}
+#work:hover .case-panel:not(:hover){opacity:.6;}
 .case-inner{display:grid;grid-template-columns:30fr 70fr;grid-template-rows:auto 1fr auto;gap:clamp(1.5rem,3vw,2rem) clamp(2rem,3vw,3.5rem);align-items:start;width:100%;}
 .case-content{display:flex;flex-direction:column;gap:var(--s-16);padding-right:0;grid-column:1;}
 .case-content:first-child{grid-row:1;}
@@ -373,10 +369,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);}
-  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);scroll-snap-align:none;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   .case-inner{grid-template-columns:1fr;gap:clamp(1.2rem,3vw,1.5rem);}
+  #work{scroll-snap-type:none;}
   .case-visual{grid-column:1;grid-row:auto;order:-1;align-self:auto;}
   .case-visual video,.case-visual img{max-height:50vh;object-fit:cover;}
   .case-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:clamp(1.2rem,3vw,1.5rem);}
@@ -1684,8 +1680,8 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
     else if (i===2) targetScale = 0.92;
   }
   if (targetScale < 1) {
-    gsap.to(panel, {scale:targetScale,opacity:.75,ease:'power4.out',
-      scrollTrigger:{trigger:panel,start:'top 20%',end:'bottom 5%',scrub:.6}});
+    gsap.to(panel, {scale:targetScale,y:-60,opacity:.7,ease:'power3.out',
+      scrollTrigger:{trigger:panel,start:'top 20%',end:'bottom 2%',scrub:.6}});
   }
 });
 
