@@ -6,12 +6,6 @@
 ehthumbs.db
 Thumbs.db
 
-# Videos (too large for GitHub, host on Aliyun OSS)
-*.mov
-*.MOV
-*.mp4
-*.MP4
-
 # Misc large files
 *.HEIC
 *.heic
