@@ -138,7 +138,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 var(--s-32);}
 .hero.cinematic{will-change:transform,opacity;transition:none;}
 .about-cinematic-init{opacity:0!important;transform:translateY(30px)!important;transition:none!important;}
-.about-cinematic-done{transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)!important;opacity:1!important;transform:translateY(0)!important;}
+.about-cinematic-done{transition:opacity .9s cubic-bezier(.4,0,.2,1),transform .9s cubic-bezier(.4,0,.2,1)!important;opacity:1!important;transform:translateY(0)!important;}
 .hero-name{font-size:clamp(3.5rem,12vw,180px);font-weight:900;letter-spacing:-.02em;line-height:.9;text-align:center;color:var(--c-text);white-space:nowrap;font-family:var(--font-display);opacity:0;transform:translateY(80px);transition:opacity 2s ease-in,transform 2s ease-in;}
 .hero-name.on{opacity:1;transform:translateY(0);}
 .hero-tag{font-size:clamp(0.9rem,1.6vw,1.4rem);font-weight:300;color:var(--c-text2);margin-top:var(--s-24);text-align:center;letter-spacing:.03em;font-family:var(--font-body);opacity:0;transition:opacity 1.3s ease-in;}
@@ -194,11 +194,11 @@ body{overflow-x:hidden;background:var(--c-bg);}
 
 /* ===== SECTION: Immersive Cases — Sticky Card Stack ===== */
 .case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);}
-/* Stacking offsets — each card peeks 48px from behind the next */
-.case-panel:nth-child(1){top:0;z-index:4;box-shadow:0 1px 0 var(--c-border);}
-.case-panel:nth-child(2){top:48px;z-index:3;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
-.case-panel:nth-child(3){top:96px;z-index:2;box-shadow:0 4px 24px rgba(0,0,0,.06),0 1px 0 var(--c-border);}
-.case-panel:nth-child(4){top:144px;z-index:1;box-shadow:0 4px 24px rgba(0,0,0,.06);}
+/* Stacking — later cards overlap earlier ones, 100px offsets for visible cascade */
+.case-panel:nth-child(1){top:0;z-index:1;box-shadow:0 1px 0 var(--c-border);}
+.case-panel:nth-child(2){top:100px;z-index:2;box-shadow:0 -4px 20px rgba(0,0,0,.08),0 1px 0 var(--c-border);}
+.case-panel:nth-child(3){top:200px;z-index:3;box-shadow:0 -4px 20px rgba(0,0,0,.08),0 1px 0 var(--c-border);}
+.case-panel:nth-child(4){top:300px;z-index:4;box-shadow:0 -4px 20px rgba(0,0,0,.08);}
 .case-inner{display:grid;grid-template-columns:38fr 62fr;gap:clamp(2rem,4vw,5rem);align-items:center;width:100%;}
 .case-content{display:flex;flex-direction:column;gap:var(--s-10);padding-right:0;}
 .case-num{font-size:10px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.3em;display:block;margin-bottom:var(--s-2);}
@@ -1446,17 +1446,18 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       heroEl.style.transform = '';
       heroEl.style.opacity = '';
       if (instant) window.scrollTo(0, targetY);
+      // Always use CSS transition — never flash instant
       aboutEls.forEach(function(el, i) {
         el.classList.remove('about-cinematic-init');
         el.classList.add('about-cinematic-done');
-        if (instant) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
       });
+      // Restore reveal on containers
+      aboutContainers.forEach(function(c){ c.classList.add('reveal'); });
     }
 
-    // Cancel on any user interaction — give control back
-    ['wheel','touchstart','keydown'].forEach(function(evt) {
-      document.addEventListener(evt, cancel, { once: true, passive: true });
-    });
+    // Cancel on explicit user action — NOT on trackpad scroll
+    document.addEventListener('keydown', cancel, { once: true });
+    document.addEventListener('touchstart', cancel, { once: true, passive: true });
 
     function step(ts) {
       if (scrollCancelled) return;
