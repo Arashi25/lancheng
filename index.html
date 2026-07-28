@@ -1616,6 +1616,24 @@ document.querySelectorAll('.case-panel').forEach(function(item){
   item.addEventListener('mouseleave', function(){ video.pause(); });
 });
 
+/* ===== MOBILE: Intersection Observer case scale ===== */
+if (window.innerWidth <= 767) {
+  document.querySelectorAll('.case-panel').forEach(function(panel) {
+    var obs = new IntersectionObserver(function(es) {
+      es.forEach(function(e) {
+        var ratio = e.intersectionRatio;
+        // Current: ratio→1 = scale 1, opacity 1
+        // Leaving: ratio→0 = scale 0.92, opacity 0.55
+        var s = 0.92 + ratio * 0.08;
+        var o = 0.55 + ratio * 0.45;
+        panel.style.transform = 'scale(' + s + ')';
+        panel.style.opacity = o;
+      });
+    }, { threshold: [0, 0.25, 0.5, 0.75, 1] });
+    obs.observe(panel);
+  });
+}
+
 /* ===== IMMERSIVE CASE REVEAL (ScrollTrigger) ===== */
 document.querySelectorAll('.case-panel').forEach(function(panel, i) {
   var visual = panel.querySelector('.case-visual');
@@ -1627,8 +1645,8 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
     {opacity:1,scale:1,duration:.9,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top bottom',end:'center center',scrub:1}});
 
-  // Card exit: shrink to 0.85 + move up as card leaves center
-  gsap.to(panel, {opacity:.45,scale:.85,y:-100,duration:.8,ease:'power2.in',
+  // Card exit: shrink to 0.80 + strong retreat upward
+  gsap.to(panel, {opacity:.4,scale:.8,y:-120,duration:.8,ease:'power2.in',
     scrollTrigger:{trigger:panel,start:'center center',end:'top top',scrub:.8}});
 
   // Visual entrance
