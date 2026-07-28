@@ -193,21 +193,21 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
 /* ===== SECTION: Immersive Cases — snap + stack ===== */
-#work{scroll-snap-type:y proximity;}
-.case-panel{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;scroll-snap-align:center;}
+#work{scroll-snap-type:y mandatory;}
+.case-panel{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;scroll-snap-align:center;text-align:center;}
 .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-/* Sticky title — stays visible when card shrinks */
-.case-title-bar{position:sticky;top:0;z-index:5;background:var(--c-bg);padding:var(--s-8) 0;display:flex;align-items:baseline;gap:var(--s-12);}
-.case-hero{width:100%;aspect-ratio:16/10;max-height:58vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
-.case-hero video,.case-hero img{width:100%;height:100%;object-fit:cover;}
+/* Sticky title — stays visible when card shrinks past */
+.case-title-bar{position:sticky;top:0;z-index:5;background:var(--c-bg);padding:var(--s-8) 0;display:flex;align-items:baseline;gap:var(--s-12);width:100%;text-align:left;}
+.case-hero{width:100%;max-width:900px;aspect-ratio:16/10;max-height:55vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
+.case-hero video,.case-hero img{width:100%;height:100%;object-fit:contain;}
 .case-info{max-width:640px;}
-.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;}
+.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-4);}
 .case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;margin-bottom:var(--s-12);}
 .case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-12);}
-.case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:520px;margin-bottom:var(--s-16);}
-.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);}
+.case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:520px;margin:0 auto var(--s-16);}
+.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);justify-content:center;}
 .case-tags span{font-size:11px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.04em;background:var(--c-bg);}
-.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
+.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);margin:0 auto;}
 .case-cta:hover{color:var(--c-brand);gap:16px;}
 .case-cta::after{content:"→";transition:transform .35s cubic-bezier(.65,0,.35,1);}
 .case-cta:hover::after{transform:translateX(6px);}
@@ -1620,9 +1620,9 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
   gsap.fromTo(panel, {opacity:.4,scale:.92}, {opacity:1,scale:1,duration:1,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top 85%',end:'top 35%',scrub:.8}});
 
-  // Card exit: shrink + fade as it scrolls away
-  gsap.to(panel, {opacity:.5,scale:.88,duration:1,ease:'power2.in',
-    scrollTrigger:{trigger:panel,start:'top 10%',end:'bottom 30%',scrub:.6}});
+  // Card exit: shrink to 0.85 + fade as it scrolls away
+  gsap.to(panel, {opacity:.45,scale:.85,duration:.8,ease:'power2.in',
+    scrollTrigger:{trigger:panel,start:'top 15%',end:'bottom 35%',scrub:.5}});
 
   // Hero entrance
   if (hero) gsap.fromTo(hero, {opacity:0,scale:1.06}, {opacity:1,scale:1,duration:1,ease:'power2.out',
