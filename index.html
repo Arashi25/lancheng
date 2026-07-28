@@ -1665,39 +1665,38 @@ if (window.innerWidth <= 767) {
     end: 'bottom bottom',
     onUpdate: function(self) {
       var vh = window.innerHeight;
-      var vc = vh / 2; // viewport center
+      var scrollY = window.scrollY;
+      var activeTop = scrollY + vh * 0.28;
+      var activeBot = scrollY + vh * 0.68
 
       panels.forEach(function(panel, i) {
         var inner = inners[i];
         if (!inner) return;
-        var rect = panel.getBoundingClientRect();
-        var cardCenter = rect.top + rect.height / 2; // card center relative to viewport
-        var dist = cardCenter - vc; // distance from viewport center: 0 = centered, negative = above, positive = below
+        // offsetTop = position in document flow (sticky doesn't affect it)
+        var cardTop = panel.offsetTop;
+        var cardBot = cardTop + panel.offsetHeight;
 
-        var absDist = Math.abs(dist);
-        var retreat = Math.max(0, -dist / vh); // 0 when at/below center, up to ~1 when fully above
-
-        // Active: full scale at center
-        // Above: retreat with visible upward movement
-        // Below: entrance, pushing up from bottom
-        if (absDist < vh * 0.25) {
+        if (cardBot < activeTop) {
+          // Above active zone — retreat
+          var distAbove = activeTop - cardBot;
+          var t2 = Math.min(1, distAbove / (vh * 1.2));
+          var s2 = 1 - t2 * 0.15;
+          var y2 = -t2 * 160;
+          var o2 = 1 - t2 * 0.25;
+          inner.style.opacity = o2.toFixed(3);
+          inner.style.transform = 'scale(' + s2.toFixed(3) + ') translateY(' + y2.toFixed(0) + 'px)';
+        } else if (cardTop > activeBot) {
+          // Below active zone — entrance prep
+          var distBelow = cardTop - activeBot;
+          var et2 = Math.min(1, distBelow / (vh * 0.6));
+          inner.style.opacity = (0.8 + et2 * 0.2).toFixed(3);
+          inner.style.transform = 'scale(' + (0.92 + et2 * 0.08).toFixed(3) + ') translateY(' + Math.round(90 * (1 - et2)) + 'px)';
+        } else {
+          // Within active zone — current card
           inner.style.opacity = '1';
           inner.style.transform = 'scale(1) translateY(0)';
-        } else if (dist < 0) {
-          // Above — retreat: scale 1→0.89, translateY 0→-140px for visible backward movement
-          var t = Math.min(1, retreat);
-          var s = 1 - t * 0.11;
-          var y = -t * 140;
-          var o = 1 - t * 0.15;
-          inner.style.opacity = o.toFixed(3);
-          inner.style.transform = 'scale(' + s.toFixed(3) + ') translateY(' + y.toFixed(0) + 'px)';
-        } else {
-          // Below — entrance: scale 0.93→1, translateY 80px→0
-          var et = Math.min(1, dist / (vh * 0.5));
-          inner.style.opacity = (0.85 + et * 0.15).toFixed(3);
-          inner.style.transform = 'scale(' + (0.93 + et * 0.07).toFixed(3) + ') translateY(' + Math.round(80 * (1 - et)) + 'px)';
         }
-        inner.style.transition = 'none'; // instant per-frame, scrub-smooth
+        inner.style.transition = 'none';
       });
     }
   });
