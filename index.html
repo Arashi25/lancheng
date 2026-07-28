@@ -192,9 +192,13 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases — Scroll-driven ===== */
-.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);}
-.case-panel + .case-panel{border-top:1px solid var(--c-border);}
+/* ===== SECTION: Immersive Cases — Sticky Stack ===== */
+.case-panel{min-height:100vh;display:flex;align-items:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);}
+/* Card 1 (back) → Card 4 (front), each exposes 72px title-tab of previous */
+.case-panel:nth-child(1){top:0;z-index:1;box-shadow:0 1px 0 var(--c-border);}
+.case-panel:nth-child(2){top:72px;z-index:2;box-shadow:0 -2px 16px rgba(0,0,0,.05),0 1px 0 var(--c-border);}
+.case-panel:nth-child(3){top:144px;z-index:3;box-shadow:0 -2px 16px rgba(0,0,0,.05),0 1px 0 var(--c-border);}
+.case-panel:nth-child(4){top:216px;z-index:4;box-shadow:0 -2px 16px rgba(0,0,0,.05);}
 .case-inner{display:grid;grid-template-columns:38fr 62fr;gap:clamp(2rem,4vw,5rem);align-items:center;width:100%;}
 .case-content{display:flex;flex-direction:column;gap:var(--s-10);padding-right:0;}
 .case-num{font-size:10px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.3em;display:block;margin-bottom:var(--s-2);}
@@ -364,7 +368,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3rem) var(--pad-mobile);}
+  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   .case-inner{grid-template-columns:1fr;gap:clamp(1.2rem,3vw,2rem);}
   .case-visual{order:-1;}
   .case-visual video,.case-visual img{max-height:40vh;}
@@ -1653,9 +1659,9 @@ document.querySelectorAll('.case-panel').forEach(function(panel, i) {
   if (cta) gsap.fromTo(cta, {opacity:0,y:16}, {opacity:1,y:0,duration:.65,delay:.28,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top 72%',toggleActions:'play none none none'}});
 
-  // Previous card dims as next card takes over: "前弱后强"
-  gsap.to(panel, {scale:.97,opacity:.45,ease:'power2.in',
-    scrollTrigger:{trigger:panel,start:'top 25%',end:'bottom 15%',scrub:.5}});
+  // Previous card shrinks + dims as next card covers it
+  gsap.to(panel, {scale:.96,opacity:.55,ease:'power2.in',
+    scrollTrigger:{trigger:panel,start:'top 35%',end:'bottom 10%',scrub:.4}});
 });
 
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.case-overlay.active').forEach(function(o){o.classList.remove('active');});document.body.style.overflow='';}});
