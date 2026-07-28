@@ -1636,17 +1636,21 @@ if (window.innerWidth <= 767) {
 
 /* ===== IMMERSIVE CASE REVEAL (ScrollTrigger) ===== */
 document.querySelectorAll('.case-panel').forEach(function(panel, i) {
+  var inner = panel.querySelector('.case-panel-inner');
   var visual = panel.querySelector('.case-visual');
   var num = panel.querySelector('.case-num');
   var title = panel.querySelector('.case-title');
 
+  // Apply transforms to INNER element — avoids scroll-snap conflict
+  if (!inner) return;
+
   // Card entrance: scale 0.9→1 as card approaches center from below
-  gsap.fromTo(panel, {opacity:.35,scale:.9},
+  gsap.fromTo(inner, {opacity:.35,scale:.9},
     {opacity:1,scale:1,duration:.9,ease:'power2.out',
     scrollTrigger:{trigger:panel,start:'top bottom',end:'center center',scrub:1}});
 
-  // Card exit: shrink to 0.80 + strong retreat upward
-  gsap.to(panel, {opacity:.4,scale:.8,y:-120,duration:.8,ease:'power2.in',
+  // Card exit: shrink to 0.80 + retreat upward
+  gsap.to(inner, {opacity:.4,scale:.8,y:-120,duration:.8,ease:'power2.in',
     scrollTrigger:{trigger:panel,start:'center center',end:'top top',scrub:.8}});
 
   // Visual entrance
