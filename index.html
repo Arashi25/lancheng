@@ -192,14 +192,17 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases ===== */
-.case-panel{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;}
+/* ===== SECTION: Immersive Cases — snap + stack ===== */
+#work{scroll-snap-type:y proximity;}
+.case-panel{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;scroll-snap-align:center;}
 .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-.case-hero{width:100%;aspect-ratio:16/10;max-height:62vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
+/* Sticky title — stays visible when card shrinks */
+.case-title-bar{position:sticky;top:0;z-index:5;background:var(--c-bg);padding:var(--s-8) 0;display:flex;align-items:baseline;gap:var(--s-12);}
+.case-hero{width:100%;aspect-ratio:16/10;max-height:58vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
 .case-hero video,.case-hero img{width:100%;height:100%;object-fit:cover;}
 .case-info{max-width:640px;}
-.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-8);}
-.case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;margin-bottom:var(--s-8);}
+.case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;}
+.case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;margin-bottom:var(--s-12);}
 .case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-12);}
 .case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:520px;margin-bottom:var(--s-16);}
 .case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);}
@@ -360,7 +363,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{min-height:auto;padding:clamp(2rem,4vw,2.5rem) var(--pad-mobile);}
+  .case-panel{min-height:auto;padding:clamp(2rem,4vw,2.5rem) var(--pad-mobile);scroll-snap-align:none;}
+  #work{scroll-snap-type:none;}
+  .case-title-bar{display:none;}
   .case-hero{aspect-ratio:16/10;max-height:40vh;margin-bottom:clamp(1rem,2vw,1.5rem);}
   .case-hero video,.case-hero img{max-height:40vh;}
   .case-info{max-width:100%;}
@@ -755,11 +760,11 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div id="work">
   <!-- 01 · 助浴机器人 -->
   <div class="case-panel" data-case="bath-robot">
+    <div class="case-title-bar"><span class="case-num">01</span> <span style="font-size:.8rem;font-family:var(--font-mono);color:var(--c-text3);">助浴机器人</span></div>
     <div class="case-hero">
       <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
     </div>
     <div class="case-info">
-      <span class="case-num">01</span>
       <h2 class="case-title">助浴机器人</h2>
       <p class="case-meta">产品策划 / 概念设计 · 2026</p>
       <p class="case-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
@@ -770,11 +775,11 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
   <!-- 02 · 超显微机器人 -->
   <div class="case-panel" data-case="microscope">
+    <div class="case-title-bar"><span class="case-num">02</span> <span style="font-size:.8rem;font-family:var(--font-mono);color:var(--c-text3);">全自主AI超显微机器人</span></div>
     <div class="case-hero">
       <video src="显微/显微1.mp4" muted loop playsinline preload="metadata"></video>
     </div>
     <div class="case-info">
-      <span class="case-num">02</span>
       <h2 class="case-title">全自主AI超显微机器人</h2>
       <p class="case-meta">产品策划 / 项目管理 · 2025</p>
       <p class="case-desc">展示AI视觉识别、机器人力控与精细操作能力，定义产品功能与交互，推动项目展示落地</p>
@@ -785,11 +790,11 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
   <!-- 03 · AI 绘画机器人 -->
   <div class="case-panel" data-case="ai-robot">
+    <div class="case-title-bar"><span class="case-num">03</span> <span style="font-size:.8rem;font-family:var(--font-mono);color:var(--c-text3);">AI 绘画机器人</span></div>
     <div class="case-hero">
       <video src="绘画机器人/ai-robot-preview.mp4" muted loop playsinline preload="metadata"></video>
     </div>
     <div class="case-info">
-      <span class="case-num">03</span>
       <h2 class="case-title">AI 绘画机器人</h2>
       <p class="case-meta">产品负责人 · 2025 — 2024</p>
       <p class="case-desc">从 0 到 1 完成 AI 绘画机器人产品规划、需求分析与交互设计，协调研发、算法与机械团队推进落地</p>
@@ -800,11 +805,11 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
   <!-- 04 · 骨科手术机器人 -->
   <div class="case-panel" data-case="orthopedic">
+    <div class="case-title-bar"><span class="case-num">04</span> <span style="font-size:.8rem;font-family:var(--font-mono);color:var(--c-text3);">骨科手术机器人</span></div>
     <div class="case-hero">
       <img src="骨科场景1222.png" alt="骨科手术机器人">
     </div>
     <div class="case-info">
-      <span class="case-num">04</span>
       <h2 class="case-title">骨科手术机器人</h2>
       <p class="case-meta">项目负责人 · 2023 — 2026</p>
       <p class="case-desc">统筹骨科手术导航机器人多团队协作，负责需求分析、交互设计、研发协同与项目推进</p>
