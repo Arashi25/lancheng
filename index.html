@@ -193,27 +193,27 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
 /* ===== SECTION: Immersive Cases — Sticky Stack ===== */
-#work{overflow:visible;padding-bottom:10vh;}
-.case-panel{min-height:75vh;display:flex;align-items:flex-start;justify-content:center;padding:clamp(2rem,3vw,3rem) var(--pad-desktop) clamp(1.5rem,2vw,2rem);position:sticky;cursor:pointer;background:var(--c-bg);will-change:transform;}
-/* z-index cascade: card 4 (last) on top, 32px offsets */
-.case-panel:nth-child(1){top:6vh;z-index:1;box-shadow:0 1px 0 var(--c-border);}
-.case-panel:nth-child(2){top:calc(6vh + 32px);z-index:2;box-shadow:0 -1px 12px rgba(0,0,0,.04);}
-.case-panel:nth-child(3){top:calc(6vh + 64px);z-index:3;box-shadow:0 -1px 12px rgba(0,0,0,.04);}
-.case-panel:nth-child(4){top:calc(6vh + 96px);z-index:4;box-shadow:0 -1px 12px rgba(0,0,0,.04);}
-.case-panel-inner{display:flex;align-items:center;gap:clamp(2rem,4vw,4rem);width:100%;max-width:1200px;max-height:78vh;transition:transform .3s ease,opacity .3s ease;}
-.case-text{flex:0 0 42%;display:flex;flex-direction:column;gap:var(--s-20);}
-.case-visual{flex:1;display:flex;align-items:center;justify-content:center;overflow:visible;position:relative;min-height:40vh;}
-.case-visual video,.case-visual img{width:100%;height:auto;max-height:60vh;object-fit:contain;transition:transform .7s cubic-bezier(.65,0,.35,1);}
+#work{overflow:visible;padding-bottom:5vh;}
+.case-panel{height:clamp(580px,72vh,780px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);will-change:transform;}
+/* All cards same sticky top — creates push-up stacking */
+.case-panel:nth-child(1){top:6vh;z-index:1;}
+.case-panel:nth-child(2){top:6vh;z-index:2;box-shadow:0 -2px 12px rgba(0,0,0,.05);}
+.case-panel:nth-child(3){top:6vh;z-index:3;box-shadow:0 -2px 12px rgba(0,0,0,.05);}
+.case-panel:nth-child(4){top:6vh;z-index:4;box-shadow:0 -2px 12px rgba(0,0,0,.05);}
+.case-panel-inner{display:grid;grid-template-columns:38% 62%;width:100%;max-width:1200px;height:100%;align-items:stretch;transition:transform .3s ease,opacity .3s ease;}
+.case-text{display:flex;flex-direction:column;justify-content:center;gap:var(--s-16);padding:clamp(1.5rem,3vw,2.5rem) clamp(1rem,2vw,2rem);}
+.case-visual{overflow:hidden;position:relative;height:100%;}
+.case-visual video,.case-visual img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s cubic-bezier(.65,0,.35,1);}
 .case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-4);}
-.case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.12;margin-bottom:var(--s-16);}
-.case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-12);}
-.case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:480px;margin-bottom:var(--s-24);}
-.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-16);}
+.case-title{font-size:clamp(2rem,3.5vw,3.2rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.12;margin-bottom:var(--s-12);}
+.case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-8);}
+.case-desc{font-size:.9rem;font-weight:300;line-height:1.85;color:var(--c-text2);max-width:440px;margin-bottom:var(--s-16);}
+.case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);}
 .case-tags span{font-size:11px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.04em;background:var(--c-bg);}
-.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
-.case-cta:hover{color:var(--c-brand);gap:16px;}
-.case-cta::after{content:"→";transition:transform .35s cubic-bezier(.65,0,.35,1);}
-.case-cta:hover::after{transform:translateX(6px);}
+.case-cta{font-size:.8rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-8);transition:all .3s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
+.case-cta:hover{color:var(--c-brand);gap:14px;}
+.case-cta::after{content:"→";transition:transform .3s cubic-bezier(.65,0,.35,1);}
+.case-cta:hover::after{transform:translateX(5px);}
 .case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.02);}
 
 /* ===== CASE STUDY SYSTEM ===== */
@@ -365,13 +365,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{position:relative;min-height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);}
+  .case-panel{position:relative;height:auto;min-height:auto;padding:clamp(1.5rem,3vw,2rem) var(--pad-mobile);}
   .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
   .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   #work{padding-bottom:0;}
-  .case-panel-inner{flex-direction:column;gap:clamp(1rem,2vw,1.5rem);max-height:none;}
-  .case-text{flex:auto;text-align:center;}
-  .case-visual{min-height:auto;}
+  .case-panel-inner{grid-template-columns:1fr;height:auto;gap:clamp(1rem,2vw,1.5rem);}
+  .case-text{text-align:center;padding:0;}
+  .case-visual{height:auto;aspect-ratio:16/10;max-height:36vh;}
   .case-visual video,.case-visual img{max-height:36vh;}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;line-height:1.85;}
@@ -1677,39 +1677,26 @@ if (window.innerWidth <= 767) {
         var absDist = Math.abs(dist);
         var retreat = Math.max(0, -dist / vh); // 0 when at/below center, up to ~1 when fully above
 
-        // Active card (within 25% of center): full scale
-        // Above center: gradual retreat over full scroll range
-        // Below center: entrance prep, gradually approaches center
-        if (absDist < vh * 0.25) {
-          // Active — full visibility
+        // Active (nearest to center): full — scale 1, opacity 1
+        // Above center: retreat progressively
+        // Below center: entrance, pushing up
+        if (absDist < vh * 0.3) {
           inner.style.opacity = '1';
           inner.style.transform = 'scale(1) translateY(0)';
         } else if (dist < 0) {
-          // Above — retreat: scale 1→0.90 (1 layer), 0.90→0.84 (2+ layers)
-          // translateY: 0→-24px (1 layer), -24→-52px (2+ layers)
+          // Above — retreat as next card pushes up
           var t = Math.min(1, retreat);
-          // Two-stage: gentler at first, stronger deeper
-          var s, y, o;
-          if (t < 0.5) {
-            // First stage: 1→0.90, y 0→-24, opacity 1→0.94
-            var t1 = t / 0.5;
-            s = 1 - t1 * 0.10;
-            y = -t1 * 24;
-            o = 1 - t1 * 0.06;
-          } else {
-            // Second stage: 0.90→0.84, y -24→-52, opacity 0.94→0.82
-            var t2 = (t - 0.5) / 0.5;
-            s = 0.90 - t2 * 0.06;
-            y = -24 - t2 * 28;
-            o = 0.94 - t2 * 0.12;
-          }
+          // Gentle progressive: 0.97→0.93→0.89
+          var s = 1 - t * 0.11;
+          var y = -t * 28;
+          var o = 1 - t * 0.12;
           inner.style.opacity = o.toFixed(3);
           inner.style.transform = 'scale(' + s.toFixed(3) + ') translateY(' + y.toFixed(0) + 'px)';
         } else {
-          // Below center — entrance: scale 0.94→1, translateY 60px→0
-          var et = Math.min(1, dist / (vh * 0.5));
-          inner.style.opacity = (0.9 + et * 0.1).toFixed(3);
-          inner.style.transform = 'scale(' + (0.94 + et * 0.06).toFixed(3) + ') translateY(' + Math.round(60 * (1 - et)) + 'px)';
+          // Below — entrance: scale 0.94→1, translateY 50px→0
+          var et = Math.min(1, dist / (vh * 0.45));
+          inner.style.opacity = (0.88 + et * 0.12).toFixed(3);
+          inner.style.transform = 'scale(' + (0.94 + et * 0.06).toFixed(3) + ') translateY(' + Math.round(50 * (1 - et)) + 'px)';
         }
         inner.style.transition = 'none'; // instant per-frame, scrub-smooth
       });
