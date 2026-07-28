@@ -192,22 +192,28 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
 .cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
 
-/* ===== SECTION: Immersive Cases — snap + stack ===== */
-#work{scroll-snap-type:y mandatory;}
-.case-panel{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:clamp(2rem,4vw,3.5rem) var(--pad-desktop);position:relative;cursor:pointer;background:var(--c-bg);will-change:transform,opacity;scroll-snap-align:center;text-align:center;}
-.case-panel + .case-panel{border-top:1px solid var(--c-border);}
-/* Sticky title — stays visible when card shrinks past */
-.case-title-bar{position:sticky;top:0;z-index:5;background:var(--c-bg);padding:var(--s-8) 0;display:flex;align-items:baseline;gap:var(--s-12);width:100%;text-align:left;}
-.case-hero{width:100%;max-width:900px;aspect-ratio:16/10;max-height:55vh;overflow:hidden;margin-bottom:clamp(1.5rem,3vw,2.5rem);position:relative;}
+/* ===== SECTION: Immersive Cases — Sticky Card Stack ===== */
+.case-panel{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:clamp(2.5rem,4vw,4rem) var(--pad-desktop);position:sticky;cursor:pointer;background:var(--c-bg);will-change:transform;text-align:center;}
+/* 4-card cascade — each card peeks 96px of the previous */
+.case-panel:nth-child(1){top:0;z-index:1;box-shadow:0 1px 0 var(--c-border);}
+.case-panel:nth-child(2){top:96px;z-index:2;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+.case-panel:nth-child(3){top:192px;z-index:3;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+.case-panel:nth-child(4){top:288px;z-index:4;box-shadow:0 -4px 20px rgba(0,0,0,.06);}
+/* Depth: back cards darker */
+.case-panel:nth-child(1)::after{content:'';position:absolute;inset:0;pointer-events:none;background:rgba(255,255,255,.25);z-index:99;}
+.case-panel:nth-child(2)::after{content:'';position:absolute;inset:0;pointer-events:none;background:rgba(255,255,255,.15);z-index:99;}
+.case-panel:nth-child(3)::after{content:'';position:absolute;inset:0;pointer-events:none;background:rgba(255,255,255,.06);z-index:99;}
+.case-panel-inner{display:flex;flex-direction:column;align-items:center;gap:clamp(1.5rem,3vw,2.5rem);width:100%;max-width:900px;}
+.case-hero{width:100%;aspect-ratio:16/10;max-height:52vh;overflow:hidden;position:relative;}
 .case-hero video,.case-hero img{width:100%;height:100%;object-fit:contain;}
-.case-info{max-width:640px;}
+.case-info{max-width:600px;}
 .case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.35em;display:block;margin-bottom:var(--s-4);}
 .case-title{font-size:clamp(2.2rem,4vw,3.6rem);font-weight:400;color:var(--c-text);letter-spacing:-.01em;line-height:1.15;margin-bottom:var(--s-12);}
 .case-meta{font-size:.78rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-12);}
 .case-desc{font-size:.95rem;font-weight:300;line-height:2;color:var(--c-text2);max-width:520px;margin:0 auto var(--s-16);}
 .case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:var(--s-12);justify-content:center;}
 .case-tags span{font-size:11px;color:var(--c-text2);font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.04em;background:var(--c-bg);}
-.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);margin:0 auto;}
+.case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-10);transition:all .35s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
 .case-cta:hover{color:var(--c-brand);gap:16px;}
 .case-cta::after{content:"→";transition:transform .35s cubic-bezier(.65,0,.35,1);}
 .case-cta:hover::after{transform:translateX(6px);}
@@ -363,15 +369,15 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-avatar-frame{max-width:340px;margin:0 auto;}
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
-  .case-panel{min-height:auto;padding:clamp(2rem,4vw,2.5rem) var(--pad-mobile);scroll-snap-align:none;}
-  #work{scroll-snap-type:none;}
-  .case-title-bar{display:none;}
-  .case-hero{aspect-ratio:16/10;max-height:40vh;margin-bottom:clamp(1rem,2vw,1.5rem);}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2rem,4vw,2.5rem) var(--pad-mobile);}
+  .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
+  .case-panel:nth-child(n)::after{display:none;}
+  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
+  .case-hero{aspect-ratio:16/10;max-height:40vh;}
   .case-hero video,.case-hero img{max-height:40vh;}
   .case-info{max-width:100%;}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;line-height:1.85;}
-  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
   .case-inner{grid-template-columns:1fr;grid-template-rows:auto;gap:clamp(1.2rem,3vw,1.5rem);}
   .case-title{font-size:clamp(1.6rem,6vw,2.2rem);}
   .case-desc{font-size:.85rem;max-width:100%;}
@@ -760,7 +766,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div id="work">
   <!-- 01 · 助浴机器人 -->
   <div class="case-panel" data-case="bath-robot">
-    <div class="case-title-bar"><span class="case-num">01</span> <span style="font-size:.8rem;font-family:var(--font-mono);color:var(--c-text3);">助浴机器人</span></div>
+    <div class="case-panel-inner">
     <div class="case-hero">
       <video src="洗澡/外观.mp4" muted loop playsinline preload="metadata"></video>
     </div>
@@ -770,6 +776,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       <p class="case-desc">面向养老场景，完成竞品分析、需求整理、AI 概念方案与项目宣传展示</p>
       <div class="case-tags"><span>竞品分析</span><span>需求整理</span><span>AI 概念</span><span>项目展示</span></div>
       <span class="case-cta">查看案例</span>
+    </div>
     </div>
   </div>
 
@@ -786,6 +793,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       <div class="case-tags"><span>产品策划</span><span>功能定义</span><span>交互设计</span><span>项目管理</span></div>
       <span class="case-cta">查看案例</span>
     </div>
+    </div>
   </div>
 
   <!-- 03 · AI 绘画机器人 -->
@@ -801,6 +809,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       <div class="case-tags"><span>产品规划</span><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
       <span class="case-cta">查看案例</span>
     </div>
+    </div>
   </div>
 
   <!-- 04 · 骨科手术机器人 -->
@@ -815,6 +824,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       <p class="case-desc">统筹骨科手术导航机器人多团队协作，负责需求分析、交互设计、研发协同与项目推进</p>
       <div class="case-tags"><span>需求分析</span><span>交互设计</span><span>研发协同</span><span>项目推进</span></div>
       <span class="case-cta">查看案例</span>
+    </div>
     </div>
   </div>
 </div>
