@@ -846,7 +846,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="洗澡/外观.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <video src="洗澡/外观.mp4" muted loop autoplay playsinline webkit-playsinline preload="auto"></video>
       </div>
     </div>
   </div>
@@ -863,7 +863,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="显微/显微1.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <video src="显微/显微1.mp4" muted loop autoplay playsinline webkit-playsinline preload="auto"></video>
       </div>
     </div>
   </div>
@@ -880,7 +880,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <span class="case-cta">查看案例</span>
       </div>
       <div class="case-visual">
-        <video src="绘画机器人/ai-robot-preview.mp4" muted loop autoplay playsinline preload="metadata"></video>
+        <video src="绘画机器人/ai-robot-preview.mp4" muted loop autoplay playsinline webkit-playsinline preload="auto"></video>
       </div>
     </div>
   </div>
@@ -1580,7 +1580,19 @@ var contactObserver = new IntersectionObserver(function(entries) {
 var contactSection = document.getElementById('contact');
 if (contactSection) contactObserver.observe(contactSection);
 
-/* ===== 打招呼 video — play when About is visible ===== */
+/* ===== Safari video autoplay kick ===== */
+  // Safari needs explicit play() after DOM ready
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      document.querySelectorAll('video[autoplay]').forEach(function(v) {
+        v.muted = true;
+        v.playsInline = true;
+        v.play().catch(function(){});
+      });
+    }, 500);
+  });
+
+  /* ===== 打招呼 video — play when About is visible ===== */
 var helloVideo = document.getElementById('hello-video');
 var aboutSection = document.getElementById('about');
 if (helloVideo) {
