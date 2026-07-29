@@ -382,12 +382,12 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .about-bio p{max-width:100%;}
   .cap-grid{grid-template-columns:repeat(2,1fr);}
 
-  .case-panel{position:relative;min-height:auto;height:auto;padding:0;top:auto;}
+  .case-panel{position:relative;min-height:auto;height:auto;max-height:88vh;padding:0;top:auto;}
   .case-panel:nth-child(n){top:auto;z-index:auto;box-shadow:none;}
-  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  .case-panel-inner{grid-template-columns:1fr;height:auto;border-radius:0;overflow:visible;border:none;}
+  .case-panel + .case-panel{border-top:1px solid rgba(0,0,0,.08);}
+  .case-panel-inner{grid-template-columns:1fr;height:auto;border-radius:0;overflow:visible;border:none!important;gap:0;}
   .case-text{grid-column:1;grid-row:1;padding:32px 24px 0;text-align:left;}
-  .case-visual{grid-column:1;grid-row:2;aspect-ratio:16/9;max-height:40vh;padding:0;margin:16px 24px 24px;background:transparent;}
+  .case-visual{grid-column:1;grid-row:2;aspect-ratio:16/9;max-height:42vh;padding:0;margin:16px 0 20px 0;background:transparent;}
   .case-visual video,.case-visual img{object-fit:cover;width:100%;height:100%;}
   .case-title{font-size:clamp(1.5rem,5vw,2.2rem);}
   .case-desc{font-size:.9rem;line-height:1.75;max-width:100%;}
@@ -401,27 +401,30 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .cap-grid{grid-template-columns:1fr;}
   .cap-card{min-height:auto;}
   /* Disable sticky stacking on mobile */
-  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3.  /* ── Mobile: single-column content-first ── */
-  .case-panel{position:relative;min-height:auto;height:auto;padding:0;top:auto;box-shadow:none;}
+  .case-panel{position:relative;min-height:auto;padding:clamp(2.5rem,5vw,3.  /* ── Mobile: one-screen case, border separators, smooth rhythm ── */
+  .case-panel{position:relative;min-height:auto;height:auto;max-height:88vh;padding:0 24px;top:auto;box-shadow:none;display:flex;align-items:center;}
   .case-panel:nth-child(n){top:auto;z-index:auto;}
-  .case-panel + .case-panel{border-top:1px solid var(--c-border);}
-  .case-panel-inner{grid-template-columns:1fr;height:auto;overflow:visible;border:none;}
-  .case-text{grid-column:1;grid-row:1;padding:32px 24px 0 24px;text-align:left;}
-  .case-visual{grid-column:1;grid-row:2;height:auto;aspect-ratio:16/9;padding:0;background:transparent;margin:20px 24px 32px 24px;}
+  .case-panel + .case-panel{border-top:1px solid rgba(0,0,0,.08);}
+  .case-panel-inner{grid-template-columns:1fr;height:auto;overflow:visible;border:none!important;gap:0;}
+  .case-text{grid-column:1;grid-row:1;padding:28px 0 0 0;text-align:left;}
+  .case-visual{grid-column:1;grid-row:2;aspect-ratio:16/9;max-height:42vh;padding:0;background:transparent;margin:16px 0 20px 0;}
   .case-visual video,.case-visual img{width:100%;height:100%;object-fit:cover;}
-  .case-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:12px;}
-  .case-desc{font-size:.9rem;line-height:1.75;max-width:100%;margin-bottom:20px;}
-  .case-meta{margin-bottom:16px;}
-  .case-tags{margin-bottom:16px;}
-  .case-num{margin-bottom:12px;}
+  .case-title{font-size:clamp(1.6rem,6vw,2.2rem);margin-bottom:10px;}
+  .case-desc{font-size:.88rem;line-height:1.7;max-width:100%;margin-bottom:16px;}
+  .case-meta{margin-bottom:12px;}
+  .case-tags{margin-bottom:14px;}
+  .case-num{margin-bottom:10px;}
   .case-cta{margin-bottom:0;}
-  .section-header{min-height:50vh;padding:2rem 24px;}
+  .section-header{min-height:45vh;padding:2rem 24px;}
   #capabilities{min-height:auto;}
-  .cap-grid{grid-template-columns:1fr;}
-  .cap-card{min-height:auto;}
+  .cap-grid{grid-template-columns:1fr;gap:1px;}
+  .cap-card{min-height:auto;border-bottom:1px solid rgba(0,0,0,.06);}
   .hero-name{font-size:clamp(2.5rem,13vw,72px);}
   .container{padding-left:24px;padding-right:24px;}
   #work{padding-bottom:0;}
+  /* Smooth section entrance */
+  section{animation:fadeUp .4s ease-out both;animation-timeline:view();animation-range:entry 0% entry 100%;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   .contact-links{flex-direction:column;align-items:center;}
   .contact-links .btn{width:100%;max-width:280px;}
   .modal-card{flex-direction:column;max-width:400px;min-height:auto;overflow:visible;}
