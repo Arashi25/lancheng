@@ -1700,6 +1700,29 @@ document.querySelectorAll('.case-panel').forEach(function(item){
   item.addEventListener('mouseleave', function(){ video.pause(); });
 });
 
+/* ===== MOBILE: Capability Accordion ===== */
+if (window.innerWidth <= 767) {
+  document.querySelectorAll('.cap-card').forEach(function(card) {
+    var desc = card.querySelector('.cap-card-desc');
+    var tag = card.querySelector('.cap-card-tag');
+    if (!desc) return;
+    desc.style.maxHeight = '0';
+    desc.style.overflow = 'hidden';
+    desc.style.transition = 'max-height 0.35s ease';
+    card.addEventListener('click', function() {
+      var open = desc.style.maxHeight !== '0px';
+      // Close all
+      document.querySelectorAll('.cap-card .cap-card-desc').forEach(function(d) {
+        d.style.maxHeight = '0';
+      });
+      // Toggle clicked
+      if (!open) {
+        desc.style.maxHeight = desc.scrollHeight + 'px';
+      }
+    });
+  });
+}
+
 /* ===== MOBILE: Intersection Observer case scale ===== */
 if (window.innerWidth <= 767) {
   document.querySelectorAll('.case-panel').forEach(function(panel) {
