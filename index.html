@@ -438,7 +438,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   #mobileBar a{flex:1;display:flex;align-items:center;justify-content:center;height:52px;font-size:13px;font-weight:500;text-decoration:none;color:var(--c-text2);gap:6px;border-right:1px solid var(--c-border);}
   #mobileBar a:last-child{border-right:none;}
   #mobileBar a.primary{background:var(--c-brand);color:#fff;font-weight:600;}
-  @media(min-width:768px){#mobileBar,#backToTop{display:none}}
+  #mobileBar,#backToTop{display:none!important;}
+  /* Kill case animations on mobile */
+  .case-panel,.case-panel-inner{transition:none!important;animation:none!important;transform:none!important;}
+  .case-num,.case-title,.case-meta,.case-desc{opacity:1!important;transform:none!important;transition:none!important;}
+  /* Nav baseline alignment */
+  .nav{display:flex;align-items:center!important;}
+  .nav-logo,.nav-links,.nav-links a{vertical-align:middle;line-height:1;}
   .contact-links{flex-direction:column;align-items:center;}
   .contact-links .btn{width:100%;max-width:280px;}
   .modal-card{flex-direction:column;max-width:400px;min-height:auto;overflow:visible;}
@@ -606,7 +612,8 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	  .cs-ai-sec-text{font-size:1rem;}
 	  .cs-challenge-worlds{grid-template-columns:1fr;gap:var(--s-32);}
 	  .cs-flow{flex-direction:column;gap:var(--s-8);padding:var(--s-24);}
-	  .cs-flow-arrow{transform:rotate(90deg);}
+	  .cs-flow-arrow{transform:rotate(90deg);align-self:center!important;margin:0!important;line-height:1!important;}
+  .cs-flow-step{display:flex;align-items:center;justify-content:center;}
 	  .cs-motion{flex-direction:column;gap:var(--s-6);padding:var(--s-24);}
 	  .cs-motion-arrow{transform:rotate(90deg);}
 	  .cs-achievements{gap:var(--s-40);}
