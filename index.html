@@ -220,9 +220,9 @@ body{overflow-x:hidden;background:var(--c-bg);}
 
 /* ===== SECTION: Immersive Cases — Unified Frame ===== */
 #work{overflow:visible;padding-bottom:6vh;}
-.case-panel{height:clamp(680px,80vh,840px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:10vh;cursor:pointer;will-change:transform,z-index;}
+.case-panel{height:clamp(680px,80vh,840px);display:flex;align-items:stretch;justify-content:center;padding:0 var(--pad-desktop);position:sticky;top:10vh;cursor:pointer;will-change:transform,z-index;box-shadow:none;}
 .case-panel::after,.case-panel::before{content:none;display:none;}
-.case-panel-inner{cursor:pointer;display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:0;background:var(--c-bg);transform-origin:center top;will-change:transform,opacity;position:relative;}
+.case-panel-inner{cursor:pointer;display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:0;background:var(--c-bg);border:1px solid rgba(0,0,0,.06);transform-origin:center top;will-change:transform,opacity;position:relative;box-shadow:none;}
 /* VIEW cursor follower */
 .view-cursor{position:fixed;pointer-events:none;z-index:9999;font-family:var(--font-mono);font-size:12px;color:#fff;letter-spacing:.2em;background:var(--c-brand);padding:6px 14px;border-radius:4px;opacity:0;transform:translate(-50%,-50%);transition:opacity .15s ease;}
 .view-cursor.on{opacity:1;}
@@ -1833,35 +1833,34 @@ if (window.innerWidth <= 767) {
         else panel.style.zIndex = 10;
 
         if (i === activeIdx) {
-          // Current active: full clarity, no blur
-          var s = p < 0.35 ? 1 : Math.max(0.84, 1 - (p - 0.35) * 0.25);
-          var y = p < 0.35 ? 0 : -(p - 0.35) * 68;
+          // Current active: full size, no blur
+          var s = 1;
+          var y = 0;
           inner.style.opacity = '1';
-          inner.style.filter = 'blur(0px) brightness(1)';
-          inner.style.transform = 'translateY(' + y.toFixed(0) + 'px) scale(' + s.toFixed(3) + ')';
+          inner.style.filter = 'none';
+          inner.style.transform = 'scale(1) translateY(0)';
         } else if (i < activeIdx) {
-          // Behind — blur + dim for depth, not transparent
+          // Behind — pure scale stack, no blur/shadow
           var layers = activeIdx - i;
-          var s = layers === 1 ? 0.87 : (layers === 2 ? 0.82 : 0.78);
-          var y = layers === 1 ? -44 : (layers === 2 ? -64 : -80);
-          var blur = layers === 1 ? 'blur(2px)' : (layers === 2 ? 'blur(3px)' : 'blur(4px)');
-          var dim = layers === 1 ? 'brightness(0.85)' : (layers === 2 ? 'brightness(0.7)' : 'brightness(0.55)');
-          inner.style.opacity = '1';
-          inner.style.filter = blur + ' ' + dim;
+          var s = layers === 1 ? 0.85 : (layers === 2 ? 0.70 : 0.55);
+          var y = layers === 1 ? -30 : (layers === 2 ? -60 : -90);
+          var o = layers === 1 ? 0.50 : (layers === 2 ? 0.20 : 0.05);
+          inner.style.opacity = o;
+          inner.style.filter = 'none';
           inner.style.transform = 'translateY(' + y + 'px) scale(' + s + ')';
         } else {
           // Below — entering
           if (i === activeIdx + 1) {
             var ep = p;
-            var s2 = 0.94 + ep * 0.06;
-            var y2 = 80 * (1 - ep);
+            var s2 = 0.95 + ep * 0.05;
+            var y2 = 60 * (1 - ep);
             inner.style.opacity = '1';
-            inner.style.filter = 'blur(0px) brightness(' + (0.92 + ep * 0.08).toFixed(2) + ')';
+            inner.style.filter = 'none';
             inner.style.transform = 'translateY(' + y2.toFixed(0) + 'px) scale(' + s2.toFixed(3) + ')';
           } else {
-            inner.style.opacity = '1';
-            inner.style.filter = 'blur(0px) brightness(0.88)';
-            inner.style.transform = 'translateY(120px) scale(0.92)';
+            inner.style.opacity = '0.9';
+            inner.style.filter = 'none';
+            inner.style.transform = 'translateY(80px) scale(0.92)';
           }
         }});
     }
