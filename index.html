@@ -1433,14 +1433,18 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   }
 
   function finishTyping() {
+    // Quick glitch settle
     heroName.classList.add('glitching');
-    setTimeout(function(){ heroName.classList.remove('glitching'); }, 150);
+    setTimeout(function(){ heroName.classList.remove('glitching'); }, 120);
     removeCursor();
-    // Reveal nav + tag together
-    if (navLogo) navLogo.style.opacity = '1';
-    if (navLinks) navLinks.style.opacity = '1';
-    if (heroTag) { heroTag.style.opacity = '1'; heroTag.style.transform = 'translateY(0)'; }
-    setTimeout(startCinematicScroll, 1800);
+    // Hold LAN CHENG 1s, THEN reveal nav + tag
+    setTimeout(function(){
+      if (navLogo) navLogo.style.opacity = '1';
+      if (navLinks) navLinks.style.opacity = '1';
+      if (heroTag) { heroTag.style.opacity = '1'; heroTag.style.transform = 'translateY(0)'; }
+      // After nav revealed, wait then cinematic scroll
+      setTimeout(startCinematicScroll, 1500);
+    }, 1000);
   }
 
   // Stream from Claude API with SSE
@@ -1501,13 +1505,13 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     var chars = 'LAN CHENG'.split(''), i = 0;
     heroName.textContent = ''; heroName.style.opacity='1'; createCursor();
     function burst() {
-      var n = 1+Math.floor(Math.random()*3);
+      var n = 1+Math.floor(Math.random()*2);
       for (var j=0;j<n&&i<chars.length;j++,i++) heroName.textContent += chars[i];
-      glitchBurst(40+Math.random()*50);
-      if (i<chars.length) setTimeout(burst, 15+Math.random()*40);
-      else finishTyping();
+      glitchBurst(50+Math.random()*70);
+      if (i<chars.length) setTimeout(burst, 120+Math.random()*80);
+      else setTimeout(finishTyping, 200);
     }
-    setTimeout(burst, 80);
+    setTimeout(burst, 100);
   }
 
   // Start
