@@ -1417,36 +1417,36 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   // Grid fade in
   setTimeout(function(){ if(heroGrid) heroGrid.classList.add('on'); }, 150);
 
-  // Build characters one by one
+  // Build characters one by one — slow, deliberate pace
   var chars = fullText.split(''), i = 0;
   function typeChar() {
     if (i < chars.length) {
       heroName.textContent += chars[i]; i++;
       heroName.appendChild(cursor);
-      // Accelerate: start slower, finish faster
-      var delay = i < 2 ? 120 : (i < 5 ? 80 : 50);
+      // Slow pace: ~1.8s total
+      var delay = i < 3 ? 200 : (i < 6 ? 170 : 140);
       setTimeout(typeChar, delay);
     } else {
-      // Build complete
+      // Build complete — hold on LAN CHENG
       heroName.classList.add('built');
-      cursor.classList.add('off');
-      setTimeout(function(){ cursor.remove(); }, 200);
-      // Stagger nav: Logo → Links
+      setTimeout(function(){ cursor.classList.add('off'); }, 200);
+      setTimeout(function(){ cursor.remove(); }, 500);
+      // Hold 0.8s, THEN reveal nav + tag
       setTimeout(function(){
         if (navLogo) { navLogo.style.opacity = '1'; navLogo.style.transform = 'translateY(0)'; }
-      }, 100);
+      }, 800);
       setTimeout(function(){
         if (navLinks) { navLinks.style.opacity = '1'; navLinks.style.transform = 'translateY(0)'; }
-      }, 200);
+      }, 950);
       // Tag
       setTimeout(function(){
         if (heroTag) heroTag.classList.add('on');
-      }, 250);
+      }, 1050);
       // Cinematic scroll
-      setTimeout(startCinematicScroll, 1200);
+      setTimeout(startCinematicScroll, 2200);
     }
   }
-  setTimeout(typeChar, 300);
+  setTimeout(typeChar, 500);
 
   // ── Step 2: Cinematic scroll ──
   function startCinematicScroll() {
