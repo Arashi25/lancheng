@@ -1580,14 +1580,16 @@ var contactObserver = new IntersectionObserver(function(entries) {
 var contactSection = document.getElementById('contact');
 if (contactSection) contactObserver.observe(contactSection);
 
-/* ===== Safari: play all videos on first user touch ===== */
-  document.addEventListener('touchstart', function wakeAll() {
+/* ===== Safari: play all videos on first user interaction ===== */
+  function wakeAllVids() {
     document.querySelectorAll('video[autoplay]').forEach(function(v) {
       v.muted = true; v.playsInline = true;
       v.play().catch(function(){});
     });
-    document.removeEventListener('touchstart', wakeAll);
-  }, {passive: true, once: true});
+  }
+  ['touchstart','click','wheel','mousedown'].forEach(function(evt) {
+    document.addEventListener(evt, wakeAllVids, {passive: true, once: true});
+  });
 
   /* ===== 打招呼 video — play when About is visible ===== */
 var helloVideo = document.getElementById('hello-video');
