@@ -126,7 +126,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 /* ===== COMPONENT: Nav ===== */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--pad-desktop);background:transparent;transition:background var(--dur-fast) var(--ease);}
 .nav.scrolled{background:rgba(247,248,250,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--c-border);}
-.nav-logo{font-size:16px;font-weight:normal;color:var(--c-text);cursor:pointer;letter-spacing:.08em;white-space:nowrap;opacity:0;transition:opacity 3s ease-in;font-family:'QingNiaoHuaGuangJianXingCao-1';}
+.nav-logo{font-size:16px;font-weight:normal;color:var(--c-text);cursor:pointer;letter-spacing:.08em;opacity:0;transition:opacity 3s ease-in;font-family:'QingNiaoHuaGuangJianXingCao-1';}
 .nav-logo.on{opacity:1;}
 .nav-links{display:flex;gap:var(--s-32);opacity:0;transition:opacity 1s ease-in;}
 .nav-links.on{opacity:1;}
@@ -139,9 +139,9 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .hero.cinematic{will-change:transform,opacity;transition:none;}
 .about-cinematic-init{opacity:0!important;transform:translateY(30px)!important;transition:none!important;}
 .about-cinematic-done{transition:opacity .9s cubic-bezier(.4,0,.2,1),transform .9s cubic-bezier(.4,0,.2,1)!important;opacity:1!important;transform:translateY(0)!important;}
-.hero-name{font-size:clamp(3.5rem,12vw,180px);font-weight:900;letter-spacing:-.02em;line-height:.9;text-align:center;color:var(--c-text);white-space:nowrap;font-family:var(--font-display);position:relative;}
+.hero-name{font-size:clamp(3.5rem,12vw,180px);font-weight:900;letter-spacing:-.02em;line-height:.9;text-align:center;color:var(--c-text);font-family:var(--font-display);position:relative;}
 /* Glitch RGB split + scan lines */
-.hero-name::before,.hero-name::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;pointer-events:none;white-space:nowrap;font:inherit;}
+.hero-name::before,.hero-name::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;pointer-events:none;font:inherit;}
 .hero-name::before{color:transparent;text-shadow:none;z-index:-1;}
 .hero-name::after{color:transparent;text-shadow:none;z-index:-2;}
 .hero-name.glitching::before{animation:glitch-tear1 .25s infinite;opacity:1;color:inherit;text-shadow:2px 0 var(--c-text);}
@@ -227,13 +227,13 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .view-cursor{position:fixed;pointer-events:none;z-index:9999;font-family:var(--font-mono);font-size:12px;color:#fff;letter-spacing:.2em;background:var(--c-brand);padding:6px 14px;border-radius:4px;opacity:0;transform:translate(-50%,-50%);transition:opacity .15s ease;}
 .view-cursor.on{opacity:1;}
 .case-panel-inner::after,.case-panel-inner::before{content:none;display:none;}
-.case-text{height:100%;padding:clamp(48px,5vw,80px) clamp(32px,3.5vw,56px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
+.case-text{grid-column:1;height:100%;padding:clamp(48px,5vw,80px) clamp(32px,3.5vw,56px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
 .case-text-content{max-width:430px;}
-.case-visual{position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,40px);}
+.case-visual{grid-column:2;position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;background:transparent;display:flex;align-items:center;justify-content:center;padding:clamp(20px,3vw,40px);}
 .case-visual::after,.case-visual::before{content:none;display:none;}
 .case-visual video,.case-visual img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:transparent;transition:transform .7s cubic-bezier(.65,0,.35,1);}
 .case-num{font-size:11px;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:.4em;display:block;margin-bottom:24px;}
-.case-title{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600;color:#111;letter-spacing:-.02em;line-height:1.15;margin-bottom:18px;white-space:nowrap;}
+.case-title{font-size:clamp(1.8rem,3.2vw,3rem);font-weight:600;color:#111;letter-spacing:-.02em;line-height:1.15;margin-bottom:18px;}
 .case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.1em;margin-bottom:32px;}
 .case-desc{font-size:1.05rem;font-weight:400;line-height:1.8;color:#555;max-width:430px;margin-bottom:32px;}
 .case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:40px;}
@@ -304,8 +304,8 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cs-outcomes{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--s-16);}
 .cs-outcome{border:1px solid var(--c-border);border-radius:var(--r-card);padding:var(--s-32);text-align:center;transition:all var(--dur-fast) var(--ease);cursor:default;}
 .cs-outcome:hover{border-color:var(--c-brand);}
-.cs-outcome .co-val{font-size:clamp(1.3rem,2vw,1.8rem);font-weight:300;color:var(--c-text);margin-bottom:var(--s-8);white-space:nowrap;}
-.cs-outcome .co-lbl{font-size:11px;color:var(--c-text3);font-family:var(--font-mono);white-space:nowrap;}
+.cs-outcome .co-val{font-size:clamp(1.3rem,2vw,1.8rem);font-weight:300;color:var(--c-text);margin-bottom:var(--s-8);}
+.cs-outcome .co-lbl{font-size:11px;color:var(--c-text3);font-family:var(--font-mono);}
 .img-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin:1.5rem 0}
 @media(max-width:1023px){.img-grid-2{grid-template-columns:1fr;gap:1rem}}
 @media(max-width:767px){.img-grid-2{gap:0.75rem}}
@@ -1074,10 +1074,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:37.5%;top:71.4%;">2</div>
     <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:52.4%;top:71.7%;">4</div>
     <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:35.2%;top:83.0%;">3</div>
-    <div style="position:absolute;pointer-events:none;white-space:nowrap;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(43.1% + 20px);top:52.0%;">取笔</div>
-    <div style="position:absolute;pointer-events:none;white-space:nowrap;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translate(-100%,-50%);left:calc(37.5% - 20px);top:71.4%;">蘸颜料</div>
-    <div style="position:absolute;pointer-events:none;white-space:nowrap;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(52.4% + 20px);top:71.7%;">清洗</div>
-    <div style="position:absolute;pointer-events:none;white-space:nowrap;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(35.2% + 20px);top:83.0%;">绘画</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(43.1% + 20px);top:52.0%;">取笔</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translate(-100%,-50%);left:calc(37.5% - 20px);top:71.4%;">蘸颜料</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(52.4% + 20px);top:71.7%;">清洗</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(35.2% + 20px);top:83.0%;">绘画</div>
 </div>
         </div>
         <div style="margin-top: 3rem;">
