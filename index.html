@@ -63,8 +63,8 @@ if(track)observer.observe(track);
 --c-text:#1C1C1E;--c-text2:#4A4A4E;--c-text3:#8E8E93;
 --c-border:#E2E4E8;--c-border-hover:#0F62FE;
 --c-brand:#0F62FE;--c-brand-dim:rgba(15,98,254,0.06);
---shadow-card:0 2px 8px rgba(0,0,0,0.04),0 8px 24px rgba(0,0,0,0.02);
---shadow-card-hover:0 4px 16px rgba(0,0,0,0.06),0 16px 48px rgba(15,98,254,0.04);
+--shadow-card:none;
+--shadow-card-hover:none;
 
 /* Typography */
 --font-display:"Canela","Noto Sans SC","Source Han Sans SC",serif;
@@ -110,7 +110,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 
 /* ===== COMPONENT: Card ===== */
 .card{background:var(--c-card);border:1px solid var(--c-border);border-radius:var(--r-card);padding:var(--s-32) clamp(1.5rem,3vw,40px);transition:all .4s cubic-bezier(0.25,0.1,0.25,1);cursor:default;box-shadow:var(--shadow-card);}
-.card:hover{background:var(--c-card-hover);border-color:var(--c-border-hover);transform:translateY(-6px);box-shadow:var(--shadow-card-hover);}
+.card:hover{background:var(--c-card-hover);border-color:var(--c-border-hover);transform:translateY(-2px);box-shadow:none;}
 
 /* ===== COMPONENT: Tag ===== */
 .tag{display:inline-flex;align-items:center;padding:5px 14px;font-size:11px;font-weight:400;font-family:var(--font-mono);border:1px solid var(--c-border);border-radius:var(--r-btn);color:var(--c-text2);letter-spacing:.03em;}
@@ -175,7 +175,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .about-bio .highlight-line em{color:var(--c-brand);font-style:normal;}
 .about-stats{display:flex;gap:clamp(1rem,2vw,2rem);margin-top:var(--s-8);flex-wrap:wrap;}
 .about-stat{flex:1;min-width:100px;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:clamp(1.2rem,1.5vw,1.8rem) clamp(0.8rem,1.2vw,1.2rem);text-align:center;transition:all var(--dur-fast) var(--ease);cursor:default;}
-.about-stat:hover{background:var(--c-card-hover);border-color:var(--c-brand);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
+.about-stat:hover{background:var(--c-card-hover);border-color:var(--c-brand);transform:translateY(-2px);box-shadow:none;}
 .about-stat .val{font-size:clamp(2.2rem,3vw,3rem);font-weight:400;color:var(--c-text);line-height:1;letter-spacing:-0.02em;}
 .about-stat .lbl{font-size:clamp(0.75rem,0.85vw,0.85rem);color:var(--c-text3);margin-top:var(--s-8);font-weight:300;letter-spacing:0.06em;font-family:var(--font-mono);}
 
@@ -229,7 +229,8 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .case-cta:hover{color:var(--c-brand);gap:14px;}
 .case-cta::after{content:"→";transition:transform .3s cubic-bezier(.65,0,.35,1);}
 .case-cta:hover::after{transform:translateX(5px);}
-.case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.02);}
+.case-panel:hover .case-visual video,.case-panel:hover .case-visual img{transform:scale(1.015);}
+.case-panel:hover .case-panel-inner{transform:translateY(-2px);}
 
 /* ===== CASE STUDY SYSTEM ===== */
 .case-overlay{position:fixed;inset:0;z-index:200;background:var(--c-bg);overflow-y:auto;opacity:0;pointer-events:none;transition:opacity var(--dur-normal) var(--ease);}
@@ -335,12 +336,12 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .growth-card:hover .card-tags span{border-color:var(--c-border-hover);}
 .growth-card .card-desc{font-size:13px;color:var(--c-text3);line-height:1.6;margin-top:0;font-weight:300;}
 .growth-node:not(.pending):not(.current):hover .growth-marker{transform:scale(1.1);border-color:var(--c-brand);}
-.growth-node:not(.pending):not(.current):hover .growth-card{background:var(--c-card-hover);border-color:var(--c-border-hover);transform:translateY(-4px);box-shadow:var(--shadow-card-hover);}
+.growth-node:not(.pending):not(.current):hover .growth-card{background:var(--c-card-hover);border-color:var(--c-border-hover);transform:translateY(-2px);box-shadow:none;}
 .growth-node.current:hover .growth-marker{transform:scale(1.08);}
 .growth-node.current:hover .growth-card{border-color:var(--c-brand);}
 .growth-node.final .growth-card{max-width:220px;border-color:var(--c-border-hover);}
 .growth-node.final .growth-card .card-title{font-size:clamp(1.15rem,1.3vw,1.3rem);}
-.growth-node.final.current .growth-card{border-color:var(--c-brand);background:var(--c-brand-dim);box-shadow:0 0 40px rgba(15,98,254,0.06);}
+.growth-node.final.current .growth-card{border-color:var(--c-brand);background:var(--c-brand-dim);box-shadow:none;}
 
 @media(max-width:1023px){.growth-nodes{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:12px;}.growth-nodes::-webkit-scrollbar{display:none;}.growth-node{flex:0 0 auto;min-width:160px;scroll-snap-align:start;}.growth-node-card{width:140px;min-height:110px;padding:16px 12px;}}
 
@@ -1417,36 +1418,29 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   // Grid fade in
   setTimeout(function(){ if(heroGrid) heroGrid.classList.add('on'); }, 150);
 
-  // Build characters one by one — slow, deliberate pace
+  // Build characters — tight pace ~1.2s total
   var chars = fullText.split(''), i = 0;
   function typeChar() {
     if (i < chars.length) {
       heroName.textContent += chars[i]; i++;
       heroName.appendChild(cursor);
-      // Slow pace: ~1.8s total
-      var delay = i < 3 ? 200 : (i < 6 ? 170 : 140);
+      var delay = i < 3 ? 140 : (i < 6 ? 110 : 80);
       setTimeout(typeChar, delay);
     } else {
-      // Build complete — hold on LAN CHENG
+      // Build complete — quick hold, then reveal
       heroName.classList.add('built');
-      setTimeout(function(){ cursor.classList.add('off'); }, 200);
-      setTimeout(function(){ cursor.remove(); }, 500);
-      // Hold 0.8s, THEN reveal nav + tag
+      setTimeout(function(){ cursor.classList.add('off'); }, 150);
+      // Nav + tag appear together
       setTimeout(function(){
         if (navLogo) { navLogo.style.opacity = '1'; navLogo.style.transform = 'translateY(0)'; }
-      }, 800);
-      setTimeout(function(){
         if (navLinks) { navLinks.style.opacity = '1'; navLinks.style.transform = 'translateY(0)'; }
-      }, 950);
-      // Tag
-      setTimeout(function(){
         if (heroTag) heroTag.classList.add('on');
-      }, 1050);
+      }, 350);
       // Cinematic scroll
-      setTimeout(startCinematicScroll, 2200);
+      setTimeout(startCinematicScroll, 1400);
     }
   }
-  setTimeout(typeChar, 500);
+  setTimeout(typeChar, 300);
 
   // ── Step 2: Cinematic scroll ──
   function startCinematicScroll() {
