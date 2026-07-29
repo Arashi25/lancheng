@@ -431,7 +431,14 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   .case-panel-inner{max-width:100%!important;}
   .hero-name{font-size:clamp(2.5rem,13vw,72px);}
   .container{padding-left:24px;padding-right:24px;}
-  #work{padding-bottom:0;display:flex;flex-direction:column;}
+  #work{padding-bottom:60px;display:flex;flex-direction:column;}
+  #backToTop{position:fixed;bottom:80px;right:20px;width:44px;height:44px;background:var(--c-bg);border:1px solid var(--c-border);border-radius:0;display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--c-text2);z-index:999;opacity:0;pointer-events:none;transition:opacity .3s ease;cursor:pointer;}
+  #backToTop.on{opacity:1;pointer-events:auto;}
+  #mobileBar{position:fixed;bottom:0;left:0;right:0;z-index:998;display:flex;background:var(--c-bg);border-top:1px solid var(--c-border);}
+  #mobileBar a{flex:1;display:flex;align-items:center;justify-content:center;height:52px;font-size:13px;font-weight:500;text-decoration:none;color:var(--c-text2);gap:6px;border-right:1px solid var(--c-border);}
+  #mobileBar a:last-child{border-right:none;}
+  #mobileBar a.primary{background:var(--c-brand);color:#fff;font-weight:600;}
+  @media(min-width:768px){#mobileBar,#backToTop{display:none}}
   .contact-links{flex-direction:column;align-items:center;}
   .contact-links .btn{width:100%;max-width:280px;}
   .modal-card{flex-direction:column;max-width:400px;min-height:auto;overflow:visible;}
@@ -1525,7 +1532,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 })();
 
 /* ===== NAV SCROLL ===== */
-window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);var b=document.getElementById('backToTop');if(b)b.classList.toggle('on',window.scrollY>window.innerHeight);},{passive:true});
 
 /* ===== REVEAL ===== */
 var rvs=document.querySelectorAll('.reveal');
@@ -1909,6 +1916,13 @@ var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeou
 
 })();
 </script>
+<div id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+<div id="mobileBar">
+  <a href="/">首页</a>
+  <a href="#work">案例</a>
+  <a href="tel:18858198035" class="primary">📞 电话</a>
+  <a href="#" onclick="document.getElementById('wechat-modal').classList.add('open');return false" class="primary">💬 微信</a>
+</div>
 </body>
 </html>
 
