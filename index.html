@@ -136,30 +136,19 @@ body{overflow-x:hidden;background:var(--c-bg);}
 
 /* ===== SECTION: Hero ===== */
 .hero{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:0 var(--s-32);}
-.hero.cinematic{will-change:transform,opacity;transition:none;}
-.about-cinematic-init{opacity:0!important;transform:translateY(30px)!important;transition:none!important;}
-.about-cinematic-done{transition:opacity .9s cubic-bezier(.4,0,.2,1),transform .9s cubic-bezier(.4,0,.2,1)!important;opacity:1!important;transform:translateY(0)!important;}
-.hero-name{font-size:clamp(3.5rem,12vw,180px);font-weight:900;letter-spacing:-.02em;line-height:.9;text-align:center;color:var(--c-text);font-family:var(--font-display);position:relative;}
-/* Glitch RGB split + scan lines */
-.hero-name::before,.hero-name::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;pointer-events:none;font:inherit;}
-.hero-name::before{color:transparent;text-shadow:none;z-index:-1;}
-.hero-name::after{color:transparent;text-shadow:none;z-index:-2;}
-.hero-name.glitching::before{animation:glitch-tear1 .25s infinite;opacity:1;color:inherit;text-shadow:2px 0 var(--c-text);}
-.hero-name.glitching::after{animation:glitch-tear2 .3s infinite .08s;opacity:1;color:inherit;text-shadow:-2px 0 var(--c-text);}
-/* Scan-line overlay */
-.hero-name .scanline{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.06) 2px,rgba(0,0,0,.06) 4px);pointer-events:none;display:none;}
-.hero-name.glitching .scanline{display:block;}
-/* Blinking cursor */
-.hero-cursor{display:inline-block;width:3px;height:0.8em;background:var(--c-brand);margin-left:2px;vertical-align:baseline;animation:cursor-blink .8s step-end infinite;}
+.hero-light{position:absolute;inset:-20%;background:radial-gradient(ellipse at 50% 40%,rgba(0,0,0,.015) 0%,transparent 70%);pointer-events:none;animation:light-drift 12s ease-in-out infinite alternate;}
+@keyframes light-drift{0%{transform:translate(0,0)}100%{transform:translate(1%,-1%)}}
+.hero-grid{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,0,0,.03) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;opacity:0;transition:opacity 1s ease;}
+.hero-grid.on{opacity:1;}
+.hero.cinematic{will-change:transform,opacity,filter;transition:none;}
+.hero-name{font-size:clamp(3.5rem,12vw,180px);font-weight:700;letter-spacing:-.02em;line-height:.9;text-align:center;color:var(--c-text);white-space:nowrap;font-family:var(--font-display);position:relative;opacity:0;transform:scale(.98);filter:blur(8px);transition:opacity .4s ease,transform .6s cubic-bezier(.22,1,.36,1),filter .6s ease,font-weight .5s ease;}
+.hero-name.built{opacity:1;transform:scale(1);filter:blur(0);font-weight:700;}
+.hero-cursor{display:inline-block;width:3px;height:0.75em;background:var(--c-brand);margin-left:2px;vertical-align:baseline;animation:cursor-blink .9s step-end infinite;}
 @keyframes cursor-blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes glitch-tear1{0%,100%{transform:translate(0);clip-path:polygon(0 10%,100% 10%,100% 45%,0 45%)}20%{transform:translate(-4px,2px);clip-path:polygon(0 60%,100% 55%,100% 75%,0 80%)}40%{transform:translate(3px,-3px);clip-path:polygon(0 0,100% 0,100% 30%,0 25%)}60%{transform:translate(-2px,4px);clip-path:polygon(0 40%,100% 35%,100% 70%,0 65%)}80%{transform:translate(5px,-1px);clip-path:polygon(0 70%,100% 65%,100% 100%,0 90%)}}
-@keyframes glitch-tear2{0%,100%{transform:translate(0);clip-path:polygon(0 50%,100% 45%,100% 80%,0 75%)}25%{transform:translate(-3px,4px);clip-path:polygon(0 0,100% 5%,100% 35%,0 30%)}50%{transform:translate(4px,-2px);clip-path:polygon(0 30%,100% 25%,100% 60%,0 55%)}75%{transform:translate(-1px,3px);clip-path:polygon(0 70%,100% 75%,100% 100%,0 95%)}}
-/* Screen shake */
-.hero-name.shaking{animation:screen-shake .15s ease-out;}
-@keyframes screen-shake{0%,100%{transform:translate(0)}10%{transform:translate(-6px,3px)}30%{transform:translate(5px,-2px)}50%{transform:translate(-3px,5px)}70%{transform:translate(4px,-4px)}90%{transform:translate(-2px,2px)}}
-.hero-tag{font-size:clamp(0.9rem,1.6vw,1.4rem);font-weight:300;color:var(--c-text2);margin-top:var(--s-24);text-align:center;letter-spacing:.03em;font-family:var(--font-body);opacity:0;transition:opacity 1.3s ease-in;}
+.hero-cursor.off{opacity:0;animation:none;}
+.hero-tag{font-size:clamp(0.9rem,1.6vw,1.4rem);font-weight:300;color:var(--c-text2);margin-top:var(--s-24);text-align:center;letter-spacing:.03em;font-family:var(--font-body);opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1);}
+.hero-tag.on{opacity:1;transform:translateY(0);}
 .hero-role{font-size:clamp(1.2rem,2vw,2.2rem);font-weight:300;color:var(--c-brand);margin-top:var(--s-12);text-align:center;letter-spacing:.05em;font-family:var(--font-mono);opacity:0;transition:opacity 1.3s ease-in;}
-.hero-tag.on{opacity:1;}
 .hero-role.on{opacity:1;}
 .hero-subtitle{opacity:0;transition:opacity 1s ease-in;}
 .hero-subtitle.on{opacity:1;}
@@ -745,7 +734,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <h1 class="hero-name" data-text="LAN CHENG" style="font-family:var(--font-display);text-transform:uppercase;"><span class="scanline"></span></h1>
+  <div class="hero-light"></div>
+  <div class="hero-grid" id="heroGrid"></div>
+  <h1 class="hero-name" data-text="LAN CHENG" style="font-family:var(--font-display);text-transform:uppercase;"></h1>
   <p class="hero-tag" id="hero-tag">从设计执行者，转变为能够推动产品落地的人</p>
 </section>
 
@@ -1412,111 +1403,52 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 (function(){
   var scrollDone = false, scrollCancelled = false;
 
-  // ── Step 1: Claude-Stream Glitch Typewriter ──
+  // ── Step 1: AI Build Animation ──
   var heroName = document.querySelector('.hero-name');
   var heroTag = document.getElementById('hero-tag');
+  var heroGrid = document.getElementById('heroGrid');
   var navLogo = document.getElementById('nav-logo');
   var navLinks = document.getElementById('nav-links');
-  var cursor = null;
+  var fullText = 'LAN CHENG';
+  heroName.textContent = '';
+  heroName.style.opacity = '1';
+  var cursor = document.createElement('span');
+  cursor.className = 'hero-cursor';
+  heroName.appendChild(cursor);
 
-  function createCursor() {
-    cursor = document.createElement('span');
-    cursor.className = 'hero-cursor';
-    heroName.appendChild(cursor);
-  }
-  function removeCursor() { if (cursor) { cursor.remove(); cursor = null; } }
+  // Grid fade in
+  setTimeout(function(){ if(heroGrid) heroGrid.classList.add('on'); }, 150);
 
-  function glitchBurst(d) {
-    heroName.classList.add('glitching');
-    if (Math.random() < 0.15) heroName.classList.add('shaking');
-    setTimeout(function(){ heroName.classList.remove('glitching','shaking'); }, d || 80);
-  }
-
-  function finishTyping() {
-    // Quick glitch settle
-    heroName.classList.add('glitching');
-    setTimeout(function(){ heroName.classList.remove('glitching'); }, 120);
-    removeCursor();
-    // Hold LAN CHENG 1s, THEN reveal nav + tag
-    setTimeout(function(){
-      if (navLogo) navLogo.style.opacity = '1';
-      if (navLinks) navLinks.style.opacity = '1';
-      if (heroTag) { heroTag.style.opacity = '1'; heroTag.style.transform = 'translateY(0)'; }
-      // After nav revealed, wait then cinematic scroll
-      setTimeout(startCinematicScroll, 1500);
-    }, 1000);
-  }
-
-  // Stream from Claude API with SSE
-  async function streamClaude() {
-    var API_KEY = localStorage.getItem('claude_api_key');
-    var urlKey = new URLSearchParams(window.location.search).get('key');
-    if (urlKey) { API_KEY = urlKey; localStorage.setItem('claude_api_key', urlKey); window.history.replaceState({},'','/'); }
-    if (!API_KEY) { fallbackTypewriter(); return; }
-
-    try {
-      var resp = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type':'application/json', 'x-api-key':API_KEY, 'anthropic-version':'2023-06-01' },
-        body: JSON.stringify({ model:'claude-sonnet-5-20251001', max_tokens:20, stream:true,
-          messages:[{role:'user',content:'Output ONLY the text "LAN CHENG" with no other words, punctuation, or explanation.'}] })
-      });
-      if (!resp.ok) { fallbackTypewriter(); return; }
-
-      var reader = resp.body.getReader(), decoder = new TextDecoder(), buf = '', queue = [], busy = false;
-
-      function process(chunk) {
-        buf += chunk;
-        var lines = buf.split('\n'); buf = lines.pop()||'';
-        lines.forEach(function(l) {
-          if (!l.startsWith('data: ')) return; var d = l.slice(6);
-          if (d==='[DONE]') return;
-          try { var j = JSON.parse(d); if (j.type==='content_block_delta' && j.delta && j.delta.text) { for (var c of j.delta.text) queue.push(c); } } catch(e){}
-        });
-      }
-
-      function render() {
-        if (busy) return; busy = true;
-        function tick() {
-          if (!queue.length) { busy=false; return; }
-          var n = Math.min(1+Math.floor(Math.random()*3), queue.length);
-          for (var i=0;i<n;i++) { var ch = queue.shift(); heroName.textContent += ch; }
-          glitchBurst(40+Math.random()*60);
-          setTimeout(tick, 15+Math.random()*35);
-        }
-        tick();
-      }
-
-      heroName.textContent = ''; heroName.style.opacity='1'; createCursor();
-
-      while (true) {
-        var r = await reader.read(); if (r.done) break;
-        process(decoder.decode(r.value,{stream:true}));
-        if (queue.length && !busy) render();
-      }
-      process(decoder.decode());
-      if (queue.length) render();
-      while (queue.length || busy) { await new Promise(function(rs){ setTimeout(rs,40); }); }
-      finishTyping();
-    } catch(e) { fallbackTypewriter(); }
-  }
-
-  function fallbackTypewriter() {
-    var chars = 'LAN CHENG'.split(''), i = 0;
-    heroName.textContent = ''; heroName.style.opacity='1'; createCursor();
-    function burst() {
-      var n = 1+Math.floor(Math.random()*2);
-      for (var j=0;j<n&&i<chars.length;j++,i++) heroName.textContent += chars[i];
-      glitchBurst(50+Math.random()*70);
-      if (i<chars.length) setTimeout(burst, 120+Math.random()*80);
-      else setTimeout(finishTyping, 200);
+  // Build characters one by one
+  var chars = fullText.split(''), i = 0;
+  function typeChar() {
+    if (i < chars.length) {
+      heroName.textContent += chars[i]; i++;
+      heroName.appendChild(cursor);
+      // Accelerate: start slower, finish faster
+      var delay = i < 2 ? 120 : (i < 5 ? 80 : 50);
+      setTimeout(typeChar, delay);
+    } else {
+      // Build complete
+      heroName.classList.add('built');
+      cursor.classList.add('off');
+      setTimeout(function(){ cursor.remove(); }, 200);
+      // Stagger nav: Logo → Links
+      setTimeout(function(){
+        if (navLogo) { navLogo.style.opacity = '1'; navLogo.style.transform = 'translateY(0)'; }
+      }, 100);
+      setTimeout(function(){
+        if (navLinks) { navLinks.style.opacity = '1'; navLinks.style.transform = 'translateY(0)'; }
+      }, 200);
+      // Tag
+      setTimeout(function(){
+        if (heroTag) heroTag.classList.add('on');
+      }, 250);
+      // Cinematic scroll
+      setTimeout(startCinematicScroll, 1200);
     }
-    setTimeout(burst, 100);
   }
-
-  // Start
-  heroName.classList.add('glitching');
-  setTimeout(function(){ heroName.classList.remove('glitching'); streamClaude(); }, 150);
+  setTimeout(typeChar, 300);
 
   // ── Step 2: Cinematic scroll ──
   function startCinematicScroll() {
