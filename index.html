@@ -86,7 +86,7 @@ if(track)observer.observe(track);
 --ease-out:cubic-bezier(0.16,1,0.3,1);
 
 /* Radius */
---r-card:20px;--r-btn:999px;--r-img:20px;
+--r-card:0;--r-btn:2px;--r-img:0;
 
 /* Shadows */
 }
@@ -159,7 +159,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .about-section{min-height:100vh;display:flex;align-items:center;padding:var(--section-gap) 0;}
 .about-container{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,5rem);align-items:center;width:100%;}
 .about-avatar{display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.about-avatar-frame{width:100%;max-width:520px;aspect-ratio:1/1;border-radius:8px;overflow:hidden;background:var(--c-card);border:1px solid var(--c-border);position:relative;}
+.about-avatar-frame{width:100%;max-width:520px;aspect-ratio:1/1;border-radius:0;overflow:hidden;background:var(--c-card);border:1px solid var(--c-border);position:relative;}
 .about-avatar-frame video{width:100%;height:100%;object-fit:cover;}
 .about-avatar-name{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:400;color:var(--c-text);margin-top:var(--s-24);letter-spacing:-0.01em;font-family:var(--font-display);}
 .about-avatar-name em{color:var(--c-brand);font-style:normal;}
@@ -174,7 +174,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .about-bio .highlight-line{color:var(--c-text);font-weight:400;border-left:2px solid var(--c-brand);padding-left:var(--s-20);}
 .about-bio .highlight-line em{color:var(--c-brand);font-style:normal;}
 .about-stats{display:flex;gap:clamp(1rem,2vw,2rem);margin-top:var(--s-8);flex-wrap:wrap;}
-.about-stat{flex:1;min-width:100px;background:var(--c-card);border:1px solid var(--c-border);border-radius:8px;padding:clamp(1.2rem,1.5vw,1.8rem) clamp(0.8rem,1.2vw,1.2rem);text-align:center;transition:all var(--dur-fast) var(--ease);cursor:default;}
+.about-stat{flex:1;min-width:100px;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:clamp(1.2rem,1.5vw,1.8rem) clamp(0.8rem,1.2vw,1.2rem);text-align:center;transition:all var(--dur-fast) var(--ease);cursor:default;}
 .about-stat:hover{background:var(--c-card-hover);border-color:var(--c-brand);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3);}
 .about-stat .val{font-size:clamp(2.2rem,3vw,3rem);font-weight:400;color:var(--c-text);line-height:1;letter-spacing:-0.02em;}
 .about-stat .lbl{font-size:clamp(0.75rem,0.85vw,0.85rem);color:var(--c-text3);margin-top:var(--s-8);font-weight:300;letter-spacing:0.06em;font-family:var(--font-mono);}
@@ -193,7 +193,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cap-card-num{font-size:13px;font-family:var(--font-mono);color:var(--c-text3);margin-bottom:var(--s-16);}
 .cap-card-ttl{font-size:clamp(1.3rem,2vw,28px);font-weight:400;color:var(--c-text);margin-bottom:var(--s-20);min-height:1.3em;}
 .cap-card-desc{font-size:clamp(.8rem,1vw,14px);font-weight:300;line-height:1.6;color:var(--c-text2);margin-top:auto;margin-bottom:var(--s-24);}
-.cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:999px;background:var(--c-brand-dim);opacity:.5;}
+.cap-card-tag{display:inline-block;font-size:10px;font-family:var(--font-mono);color:var(--c-brand);letter-spacing:.05em;margin-top:var(--s-8);border:1px solid var(--c-brand-dim);padding:3px 12px;border-radius:0;background:var(--c-brand-dim);opacity:.5;}
 
 /* ===== Capability — independent screen ===== */
 #capabilities{min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;}
@@ -211,7 +211,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .case-panel::after,.case-panel::before{content:none;display:none;}
 .case-panel-inner{cursor:pointer;display:grid;grid-template-columns:minmax(320px,0.38fr) minmax(0,0.62fr);width:100%;max-width:1200px;height:100%;overflow:hidden;border-radius:0;background:var(--c-bg);border:1px solid rgba(0,0,0,.06);transform-origin:center top;will-change:transform,opacity;position:relative;box-shadow:none;}
 /* VIEW cursor follower */
-.view-cursor{position:fixed;pointer-events:none;z-index:9999;font-family:var(--font-mono);font-size:12px;color:#fff;letter-spacing:.2em;background:var(--c-brand);padding:6px 14px;border-radius:4px;opacity:0;transform:translate(-50%,-50%);transition:opacity .15s ease;}
+.view-cursor{position:fixed;pointer-events:none;z-index:9999;font-family:var(--font-mono);font-size:12px;color:#fff;letter-spacing:.2em;background:var(--c-brand);padding:6px 14px;border-radius:0;opacity:0;transform:translate(-50%,-50%);transition:opacity .15s ease;}
 .view-cursor.on{opacity:1;}
 .case-panel-inner::after,.case-panel-inner::before{content:none;display:none;}
 .case-text{grid-column:1;height:100%;padding:clamp(48px,5vw,80px) clamp(32px,3.5vw,56px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;}
@@ -224,7 +224,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .case-meta{font-size:.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.1em;margin-bottom:32px;}
 .case-desc{font-size:1.05rem;font-weight:400;line-height:1.8;color:#555;max-width:430px;margin-bottom:32px;}
 .case-tags{display:flex;flex-wrap:wrap;gap:var(--s-8);margin-bottom:40px;}
-.case-tags span{font-size:.8rem;font-weight:500;color:#888;font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:999px;letter-spacing:.05em;text-transform:uppercase;background:var(--c-bg);}
+.case-tags span{font-size:.8rem;font-weight:500;color:#888;font-family:var(--font-mono);border:1px solid var(--c-border);padding:4px 14px;border-radius:0;letter-spacing:.05em;text-transform:uppercase;background:var(--c-bg);}
 .case-cta{font-size:.85rem;color:var(--c-text3);display:inline-flex;align-items:center;gap:var(--s-8);transition:all .3s cubic-bezier(.65,0,.35,1);font-family:var(--font-mono);}
 .case-cta:hover{color:var(--c-brand);gap:14px;}
 .case-cta::after{content:"→";transition:transform .3s cubic-bezier(.65,0,.35,1);}
@@ -253,7 +253,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cs-overview .cs-ov-left .cs-ov-meta{font-size:13px;color:var(--c-text2);line-height:2.4;font-family:var(--font-mono);}
 .cs-overview .cs-ov-left .cs-ov-meta span{color:var(--c-text3);}
 .cs-overview .cs-ov-left .cs-ov-prog{font-size:10px;color:var(--c-text3);font-family:var(--font-mono);margin-top:var(--s-32);letter-spacing:.1em;}
-.cs-overview .cs-ov-left .cs-ov-prog .cs-ov-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--c-brand);margin-right:var(--s-8);}
+.cs-overview .cs-ov-left .cs-ov-prog .cs-ov-dot{display:inline-block;width:6px;height:6px;border-radius:0;background:var(--c-brand);margin-right:var(--s-8);}
 .cs-overview .cs-ov-right h3{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--c-text3);margin-bottom:var(--s-16);font-family:var(--font-mono);}
 .cs-overview .cs-ov-right p{font-size:.95rem;font-weight:300;line-height:1.9;color:var(--c-text2);margin-bottom:var(--s-16);}
 
@@ -275,7 +275,7 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .cs-step{flex:0 0 auto;min-width:140px;padding-right:var(--s-40);position:relative;}
 .cs-step::after{content:"";position:absolute;top:7px;left:calc(100% - 30px);width:20px;height:1px;background:var(--c-border);}
 .cs-step:last-child::after{display:none;}
-.cs-step .st-dot{width:8px;height:8px;border-radius:50%;background:var(--c-border);margin-bottom:var(--s-16);transition:all var(--dur-fast) var(--ease);}
+.cs-step .st-dot{width:8px;height:8px;border-radius:0;background:var(--c-border);margin-bottom:var(--s-16);transition:all var(--dur-fast) var(--ease);}
 .cs-step:hover .st-dot,.cs-step.on .st-dot{background:var(--c-brand);box-shadow:0 0 8px var(--c-brand-dim);}
 .cs-step .st-label{font-size:13px;font-weight:400;color:var(--c-text);margin-bottom:4px;}
 .cs-step .st-sub{font-size:10px;color:var(--c-text3);font-family:var(--font-mono);max-width:120px;}
@@ -325,13 +325,13 @@ body{overflow-x:hidden;background:var(--c-bg);}
 .growth-node.pending .growth-marker{background:var(--c-bg);border-color:var(--c-border);}
 .growth-node.current .growth-marker{background:var(--c-brand);border-color:var(--c-brand);box-shadow:0 0 0 4px var(--c-brand-dim);}
 .growth-node.current .growth-marker::after{content:"";position:absolute;inset:3px;background:var(--c-bg);border-radius:1px;}
-.growth-card{width:100%;max-width:200px;padding:28px 24px;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;text-align:center;transition:all .4s cubic-bezier(0.25,0.1,0.25,1);cursor:default;position:relative;overflow:hidden;}
+.growth-card{width:100%;max-width:200px;padding:28px 24px;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;text-align:center;transition:all .4s cubic-bezier(0.25,0.1,0.25,1);cursor:default;position:relative;overflow:hidden;}
 .growth-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(15,98,254,0.08),transparent);opacity:0;transition:opacity .4s ease;}
 .growth-card:hover::before{opacity:1;}
 .growth-card .card-title{font-size:clamp(1.1rem,1.3vw,1.25rem);font-weight:500;color:var(--c-text);margin-bottom:4px;font-family:var(--font-display);letter-spacing:-.01em;}
 .growth-card .card-title-en{font-size:clamp(.75rem,.85vw,.8rem);font-weight:300;color:var(--c-text3);font-family:var(--font-mono);letter-spacing:.04em;margin-bottom:14px;}
 .growth-card .card-tags{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:12px;}
-.growth-card .card-tags span{font-size:10px;color:var(--c-text);font-family:var(--font-mono);padding:3px 10px;border:1px solid var(--c-border);border-radius:999px;background:var(--c-card-hover);transition:all .25s ease;}
+.growth-card .card-tags span{font-size:10px;color:var(--c-text);font-family:var(--font-mono);padding:3px 10px;border:1px solid var(--c-border);border-radius:0;background:var(--c-card-hover);transition:all .25s ease;}
 .growth-card:hover .card-tags span{border-color:var(--c-border-hover);}
 .growth-card .card-desc{font-size:13px;color:var(--c-text3);line-height:1.6;margin-top:0;font-weight:300;}
 .growth-node:not(.pending):not(.current):hover .growth-marker{transform:scale(1.1);border-color:var(--c-brand);}
@@ -354,12 +354,12 @@ body{overflow-x:hidden;background:var(--c-bg);}
 /* ===== COMPONENT: Modal ===== */
 .modal-overlay{position:fixed;inset:0;z-index:300;background:rgba(247,248,250,.94);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity var(--dur-normal) var(--ease);}
 .modal-overlay.open{opacity:1;pointer-events:auto;}
-.modal-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:20px;width:90vw;max-width:800px;min-height:520px;display:flex;position:relative;transform:translateY(12px);transition:transform var(--dur-normal) var(--ease-out);overflow:hidden;}
+.modal-card{background:var(--c-card);border:1px solid var(--c-border);border-radius:0;width:90vw;max-width:800px;min-height:520px;display:flex;position:relative;transform:translateY(12px);transition:transform var(--dur-normal) var(--ease-out);overflow:hidden;}
 .modal-overlay.open .modal-card{transform:translateY(0);}
-.modal-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--c-text3);font-size:28px;cursor:pointer;transition:all var(--dur-fast) var(--ease);z-index:2;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;}
+.modal-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--c-text3);font-size:28px;cursor:pointer;transition:all var(--dur-fast) var(--ease);z-index:2;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:0;}
 .modal-close:hover{color:var(--c-text);background:rgba(255,255,255,0.04);}
 .modal-qr{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px 48px;border-right:1px solid var(--c-border);gap:16px;}
-.modal-qr-img{width:220px;height:220px;border:1px solid var(--c-border);border-radius:14px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);}
+.modal-qr-img{width:220px;height:220px;border:1px solid var(--c-border);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);}
 .modal-qr .qr-hint{font-size:13px;color:var(--c-text3);font-family:var(--font-mono);letter-spacing:0.06em;}
 .modal-qr .qr-id{font-size:18px;color:var(--c-text2);font-weight:300;letter-spacing:0.02em;}
 .modal-info{flex:1;display:flex;flex-direction:column;justify-content:center;padding:64px 48px;gap:0;}
@@ -428,9 +428,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 
 /* ----- Page Container & Image System ----- */
 .cs-page-wrap{padding-left:clamp(32px,8.3vw,120px);padding-right:clamp(32px,8.3vw,120px);}
-.cs-img-16-9{width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.75rem;font-family:var(--font-mono);}
-.cs-img-4-3{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.6875rem;font-family:var(--font-mono);}
-.cs-img-1-1{width:100%;aspect-ratio:1/1;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.75rem;font-family:var(--font-mono);}
+.cs-img-16-9{width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.75rem;font-family:var(--font-mono);}
+.cs-img-4-3{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.6875rem;font-family:var(--font-mono);}
+.cs-img-1-1{width:100%;aspect-ratio:1/1;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:0.75rem;font-family:var(--font-mono);}
 
 /* Grid: sidebar 300px | gap 96px | content ~780px | page margins 120px */
 	.cs-ai-layout{display:grid;grid-template-columns:300px 1fr;gap:calc(var(--s-96) + 24px);padding:0 clamp(32px,8.3vw,120px);align-items:start;}
@@ -470,7 +470,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	.cs-evo-card:hover{transform:translateY(-4px);}
 	.cs-evo-card-num{font-size:0.75rem;color:var(--c-brand);font-family:var(--font-mono);letter-spacing:.08em;margin-bottom:var(--s-8);}
 	.cs-evo-card-title{font-size:1rem;font-weight:400;color:var(--c-text);margin-bottom:var(--s-12);line-height:1.4;}
-	.cs-evo-card-img{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);margin-bottom:var(--s-16);}
+	.cs-evo-card-img{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);margin-bottom:var(--s-16);}
 	.cs-evo-card-desc{font-size:0.8125rem;color:var(--c-text3);line-height:1.7;}
 
 	/* Challenge — AI World vs Robot World, visual-first */
@@ -478,7 +478,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	.cs-cw-col{display:flex;flex-direction:column;gap:var(--s-16);}
 	.cs-cw-label{font-size:0.8125rem;font-weight:500;color:var(--c-text);letter-spacing:.04em;margin-bottom:var(--s-8);}
 	.cs-cw-item{display:flex;align-items:center;gap:var(--s-12);font-size:1rem;color:var(--c-text2);font-weight:300;}
-	.cs-cw-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+	.cs-cw-dot{width:6px;height:6px;border-radius:0;flex-shrink:0;}
 	.cs-cw-dot.ai{background:var(--c-brand);}
 	.cs-cw-dot.robot{background:var(--c-text3);}
 	.cs-cw-divider{width:1px;background:var(--c-border);align-self:stretch;opacity:.5;}
@@ -488,7 +488,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	.cs-compare{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-24);}
 	.cs-compare-col{text-align:center;}
 	.cs-compare-col-label{font-size:0.9375rem;font-weight:400;color:var(--c-text);margin-bottom:var(--s-16);}
-	.cs-compare-col-img{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:11px;font-family:var(--font-mono);}
+	.cs-compare-col-img{width:100%;aspect-ratio:4/3;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:11px;font-family:var(--font-mono);}
 	.cs-compare-issues{display:flex;flex-wrap:wrap;gap:var(--s-16);justify-content:center;margin-top:var(--s-32);}
 	.cs-compare-issue-tag{font-size:0.8125rem;color:var(--c-text2);padding:var(--s-8) var(--s-20);border:1px solid var(--c-border);border-radius:var(--r-btn);font-family:var(--font-mono);}
 
@@ -496,36 +496,36 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	.cs-flow-wrap{margin-top:var(--s-64);}
 	.cs-flow{display:flex;align-items:flex-start;justify-content:center;gap:var(--s-12);padding:var(--s-40) var(--s-24);background:var(--c-card);border-radius:var(--r-card);flex-wrap:wrap;}
 	.cs-flow-step{text-align:center;flex:0 0 auto;}
-	.cs-flow-step-box{width:110px;height:68px;background:var(--c-surface);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--c-text2);font-size:11px;font-family:var(--font-mono);margin-bottom:var(--s-8);transition:all var(--dur-fast) var(--ease);}
+	.cs-flow-step-box{width:110px;height:68px;background:var(--c-surface);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text2);font-size:11px;font-family:var(--font-mono);margin-bottom:var(--s-8);transition:all var(--dur-fast) var(--ease);}
 	.cs-flow-arrow{color:var(--c-text3);font-size:18px;flex-shrink:0;line-height:68px;}
 	.cs-flow-step:hover .cs-flow-step-box{color:var(--c-brand);}
 	.cs-flow-step-label{font-size:0.6875rem;color:var(--c-text3);}
 	.cs-flow-arrow{color:var(--c-text3);font-size:18px;flex-shrink:0;align-self:flex-start;margin-top:24px;line-height:1;}
 
 	/* Color mapping table */
-	.cs-color-table{display:flex;flex-direction:column;margin-top:var(--s-56);border-radius:16px;overflow:hidden;}
+	.cs-color-table{display:flex;flex-direction:column;margin-top:var(--s-56);border-radius:0;overflow:hidden;}
 	.cs-color-row{display:grid;grid-template-columns:1fr 60px 1fr;background:var(--c-card);}
 	.cs-color-row:not(:last-child){border-bottom:1px solid rgba(255,255,255,.04);}
 	.cs-color-row.header{background:transparent;}
 	.cs-color-row.header .cs-color-cell{font-size:0.75rem;color:var(--c-text3);font-family:var(--font-mono);letter-spacing:.05em;padding:var(--s-10) var(--s-24);}
 	.cs-color-cell{padding:var(--s-20) var(--s-24);display:flex;align-items:center;gap:var(--s-16);font-size:0.9375rem;color:var(--c-text2);line-height:1.6;}
-	.cs-color-swatch{width:36px;height:36px;border-radius:8px;flex-shrink:0;}
+	.cs-color-swatch{width:36px;height:36px;border-radius:0;flex-shrink:0;}
 	.cs-color-mid{display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:14px;}
 
 	/* Motion trajectory */
 	.cs-motion-wrap{margin-top:var(--s-56);}
 	.cs-motion{display:flex;align-items:center;justify-content:center;gap:var(--s-10);padding:var(--s-40) var(--s-24);background:var(--c-card);border-radius:var(--r-card);flex-wrap:wrap;}
-	.cs-motion-step{padding:var(--s-16) var(--s-28);background:var(--c-surface);border-radius:12px;font-size:0.9375rem;color:var(--c-text2);text-align:center;transition:all var(--dur-fast) var(--ease);}
+	.cs-motion-step{padding:var(--s-16) var(--s-28);background:var(--c-surface);border-radius:0;font-size:0.9375rem;color:var(--c-text2);text-align:center;transition:all var(--dur-fast) var(--ease);}
 	.cs-motion-step:hover{color:var(--c-text);}
 	.cs-motion-arrow{color:var(--c-text3);font-size:18px;flex-shrink:0;}
 
 	/* Hardware interaction image */
-	.cs-hw-img{width:100%;max-width:100%;aspect-ratio:16/10;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:12px;font-family:var(--font-mono);margin-top:var(--s-56);}
+	.cs-hw-img{width:100%;max-width:100%;aspect-ratio:16/10;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:12px;font-family:var(--font-mono);margin-top:var(--s-56);}
 
 	/* Achievement — large image showcase */
 	.cs-achievements{display:flex;flex-direction:column;gap:var(--s-80);margin-top:var(--s-56);}
 	.cs-ach-item{display:grid;grid-template-columns:1fr;gap:var(--s-16);}
-	.cs-ach-img{width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:12px;font-family:var(--font-mono);transition:all var(--dur-fast) var(--ease);}
+	.cs-ach-img{width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:12px;font-family:var(--font-mono);transition:all var(--dur-fast) var(--ease);}
 	.cs-ach-img:hover{border-color:var(--c-brand);}
 	.cs-ach-meta{display:flex;justify-content:space-between;align-items:baseline;}
 	.cs-ach-title{font-size:1.125rem;font-weight:400;color:var(--c-text);}
@@ -538,11 +538,11 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 	.cs-tl-v-year{font-size:0.875rem;font-weight:500;color:var(--c-brand);font-family:var(--font-mono);padding-top:3px;}
 	.cs-tl-v-title{font-size:1.125rem;font-weight:400;color:var(--c-text);margin-bottom:var(--s-8);}
 	.cs-tl-v-desc{font-size:0.875rem;color:var(--c-text3);margin-bottom:var(--s-16);line-height:1.7;}
-	.cs-tl-v-img{width:100%;max-width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);margin-top:var(--s-12);}
+	.cs-tl-v-img{width:100%;max-width:100%;aspect-ratio:16/9;background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:10px;font-family:var(--font-mono);margin-top:var(--s-12);}
 
 	/* Future block */
 	.cs-future-block{text-align:center;padding:var(--s-64) 0;}
-	.cs-future-img{width:100%;max-width:100%;aspect-ratio:16/9;margin:0 auto var(--s-72);background:var(--c-card);border-radius:16px;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:13px;font-family:var(--font-mono);}
+	.cs-future-img{width:100%;max-width:100%;aspect-ratio:16/9;margin:0 auto var(--s-72);background:var(--c-card);border-radius:0;display:flex;align-items:center;justify-content:center;color:var(--c-text3);font-size:13px;font-family:var(--font-mono);}
 	.cs-future-cn{font-size:clamp(1.2rem,2vw,1.5rem);font-weight:400;color:var(--c-text);margin-bottom:var(--s-24);line-height:1.7;}
 	.cs-future-en{font-size:0.9375rem;font-weight:300;color:var(--c-text3);font-style:italic;line-height:1.7;}
 
@@ -608,7 +608,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     .cs-hero-sub { font-size: 1rem; color: var(--c-text3); font-family: var(--font-mono); margin-bottom: 2.5rem; }
     .cs-hero-desc { font-size: 1.0625rem; color: var(--c-text2); line-height: 1.85; margin-bottom: 0.5rem; }
     .cs-hero-meta { font-size: 0.8125rem; color: var(--c-text3); }
-    .cs-img-placeholder { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-family: var(--font-mono); font-size: 0.9rem; border: 1px solid var(--c-border); transition: border-color 0.3s ease; margin: 1.5rem 0 2rem 0; }
+    .cs-img-placeholder { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius:0; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-family: var(--font-mono); font-size: 0.9rem; border: 1px solid var(--c-border); transition: border-color 0.3s ease; margin: 1.5rem 0 2rem 0; }
     .cs-img-placeholder:hover { border-color: var(--c-brand); }
     .cs-ai-layout { display: grid; grid-template-columns: 300px 1fr; gap: 4rem; align-items: start; padding: 1rem 0 4rem; }
     .cs-ai-sidebar { position: sticky; top: 2rem; display: flex; flex-direction: column; gap: 2.5rem; }
@@ -621,7 +621,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     .cs-ai-sb-value.highlight { font-weight: 400; color: var(--c-text); }
     .cs-ai-sb-value .en { color: var(--c-text3); font-size: 0.75rem; display: block; line-height: 1.65; }
     .cs-ai-sb-tools { display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; margin-top: 0.25rem; }
-    .cs-ai-sb-tools span { background: var(--c-card); border: 1px solid var(--c-border); border-radius: 999px; padding: 0.2rem 0.8rem; font-size: 0.7rem; font-family: var(--font-mono); color: var(--c-text2); letter-spacing: 0.03em; transition: all 0.2s; }
+    .cs-ai-sb-tools span { background: var(--c-card); border: 1px solid var(--c-border); border-radius:0; padding: 0.2rem 0.8rem; font-size: 0.7rem; font-family: var(--font-mono); color: var(--c-text2); letter-spacing: 0.03em; transition: all 0.2s; }
     .cs-ai-sb-tools span:hover { border-color: var(--c-brand); color: var(--c-text); }
     .cs-ai-content { max-width: 780px; }
     .cs-ai-section { margin-bottom: 5rem; }
@@ -635,7 +635,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     .cs-evo-card:hover { transform: translateY(-4px); }
     .cs-evo-card-num { font-size: 0.75rem; color: var(--c-brand); font-family: var(--font-mono); letter-spacing: 0.08em; margin-bottom: 0.5rem; }
     .cs-evo-card-title { font-size: 1.1rem; font-weight: 400; color: var(--c-text); margin-bottom: 0.75rem; line-height: 1.4; }
-    .cs-evo-card-img { width: 100%; aspect-ratio: 4 / 3; background: var(--c-card); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--c-border); transition: border-color 0.3s; }
+    .cs-evo-card-img { width: 100%; aspect-ratio: 4 / 3; background: var(--c-card); border-radius:0; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.8rem; font-family: var(--font-mono); margin-bottom: 1rem; border: 1px solid var(--c-border); transition: border-color 0.3s; }
     .cs-evo-card-img:hover { border-color: var(--c-brand); }
     .cs-evo-card-desc { font-size: 0.8125rem; color: var(--c-text3); line-height: 1.7; }
     .cs-evo-description { max-width: 100%; margin-top: 0.5rem; }
@@ -644,31 +644,31 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     .cs-flow, .cs-motion { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 1.5rem 1rem; background: var(--c-surface); border-radius: var(--r-card); flex-wrap: wrap; border: 1px solid var(--c-border); transition: border-color 0.3s; }
     .cs-flow:hover, .cs-motion:hover { border-color: var(--c-brand); }
     .cs-flow-step, .cs-motion-step { text-align: center; flex: 0 0 auto; }
-    .cs-flow-step-box { min-width: 90px; padding: 0.75rem 1rem; background: var(--c-card); border-radius: 12px; color: var(--c-text2); font-size: 0.85rem; font-family: var(--font-mono); margin-bottom: 0.25rem; border: 1px solid transparent; transition: all 0.2s; }
+    .cs-flow-step-box { min-width: 90px; padding: 0.75rem 1rem; background: var(--c-card); border-radius:0; color: var(--c-text2); font-size: 0.85rem; font-family: var(--font-mono); margin-bottom: 0.25rem; border: 1px solid transparent; transition: all 0.2s; }
     .cs-flow-step:hover .cs-flow-step-box, .cs-motion-step:hover { color: var(--c-text); border-color: var(--c-brand); }
     .cs-flow-step-label { font-size: 0.6875rem; color: var(--c-text3); }
     .cs-flow-arrow, .cs-motion-arrow { color: var(--c-text3); font-size: 1.2rem; flex-shrink: 0; align-self: flex-start; margin-top: 24px; line-height: 1; }
-    .cs-motion-step { padding: 0.75rem 1.25rem; background: var(--c-card); border-radius: 12px; font-size: 0.9375rem; color: var(--c-text2); border: 1px solid transparent; transition: all 0.2s; }
+    .cs-motion-step { padding: 0.75rem 1.25rem; background: var(--c-card); border-radius:0; font-size: 0.9375rem; color: var(--c-text2); border: 1px solid transparent; transition: all 0.2s; }
     .cs-challenge-worlds { display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; margin: 2rem 0 2.5rem; align-items: start; }
     .cs-cw-col { display: flex; flex-direction: column; gap: 0.75rem; background: var(--c-surface); padding: 1.5rem 1rem; border-radius: var(--r-card); border: 1px solid var(--c-border); transition: border-color 0.3s; }
     .cs-cw-col:hover { border-color: var(--c-brand); }
     .cs-cw-label { font-size: 0.9375rem; font-weight: 500; color: var(--c-text); letter-spacing: 0.04em; margin-bottom: 0.25rem; }
     .cs-cw-item { display: flex; align-items: center; gap: 0.75rem; font-size: 1rem; color: var(--c-text2); font-weight: 300; }
-    .cs-cw-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .cs-cw-dot { width: 6px; height: 6px; border-radius:0; flex-shrink: 0; }
     .cs-cw-dot.ai { background: var(--c-brand); }
     .cs-cw-dot.robot { background: var(--c-text3); }
     .cs-cw-divider { width: 1px; background: var(--c-border); align-self: stretch; opacity: 0.5; }
-    .cs-color-table { display: flex; flex-direction: column; margin: 2rem 0; border-radius: 16px; overflow: hidden; border: 1px solid var(--c-border); }
+    .cs-color-table { display: flex; flex-direction: column; margin: 2rem 0; border-radius:0; overflow: hidden; border: 1px solid var(--c-border); }
     .cs-color-row { display: grid; grid-template-columns: 1fr 60px 1fr; background: var(--c-card); }
     .cs-color-row:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.04); }
     .cs-color-row.header { background: transparent; }
     .cs-color-row.header .cs-color-cell { font-size: 0.75rem; color: var(--c-text3); font-family: var(--font-mono); letter-spacing: 0.05em; padding: 0.75rem 1.5rem; }
     .cs-color-cell { padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 1rem; font-size: 0.9375rem; color: var(--c-text2); line-height: 1.6; }
-    .cs-color-swatch { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; border: 1px solid var(--c-border); }
+    .cs-color-swatch { width: 36px; height: 36px; border-radius:0; flex-shrink: 0; border: 1px solid var(--c-border); }
     .cs-color-mid { display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 1rem; }
     .cs-achievements { display: flex; flex-direction: column; gap: 3.5rem; margin-top: 2.5rem; }
     .cs-ach-item { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
-    .cs-ach-img { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.9rem; font-family: var(--font-mono); border: 1px solid var(--c-border); transition: border-color 0.3s; margin-bottom: 0.5rem; }
+    .cs-ach-img { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius:0; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.9rem; font-family: var(--font-mono); border: 1px solid var(--c-border); transition: border-color 0.3s; margin-bottom: 0.5rem; }
     .cs-ach-img:hover { border-color: var(--c-brand); }
     .cs-ach-meta { display: flex; justify-content: space-between; align-items: baseline; padding: 0 0.25rem; }
     .cs-ach-title { font-size: 1.125rem; font-weight: 400; color: var(--c-text); }
@@ -679,10 +679,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     .cs-tl-v-year { font-size: 0.875rem; font-weight: 500; color: var(--c-brand); font-family: var(--font-mono); padding-top: 3px; }
     .cs-tl-v-title { font-size: 1.125rem; font-weight: 400; color: var(--c-text); margin-bottom: 0.25rem; }
     .cs-tl-v-desc { font-size: 0.875rem; color: var(--c-text3); margin-bottom: 0.75rem; line-height: 1.7; }
-    .cs-tl-v-img { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.8rem; font-family: var(--font-mono); margin-top: 0.5rem; border: 1px solid var(--c-border); transition: border-color 0.3s; }
+    .cs-tl-v-img { width: 100%; aspect-ratio: 16 / 9; background: var(--c-card); border-radius:0; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.8rem; font-family: var(--font-mono); margin-top: 0.5rem; border: 1px solid var(--c-border); transition: border-color 0.3s; }
     .cs-tl-v-img:hover { border-color: var(--c-brand); }
     .cs-future-block { text-align: center; padding: 2rem 0; }
-    .cs-future-img { width: 100%; aspect-ratio: 16 / 9; margin: 0 auto 2.5rem; background: var(--c-card); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.9rem; font-family: var(--font-mono); border: 1px solid var(--c-border); transition: border-color 0.3s; }
+    .cs-future-img { width: 100%; aspect-ratio: 16 / 9; margin: 0 auto 2.5rem; background: var(--c-card); border-radius:0; display: flex; align-items: center; justify-content: center; color: var(--c-text3); font-size: 0.9rem; font-family: var(--font-mono); border: 1px solid var(--c-border); transition: border-color 0.3s; }
     .cs-future-img:hover { border-color: var(--c-brand); }
     .cs-future-cn { font-size: clamp(1.2rem, 2vw, 1.5rem); font-weight: 400; color: var(--c-text); margin-bottom: 1.5rem; line-height: 1.7; }
     .cs-future-en { font-size: 0.9375rem; font-weight: 300; color: var(--c-text3); font-style: italic; line-height: 1.7; }
@@ -875,7 +875,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div style="padding-top: 1rem; padding-bottom: 2rem;">
     <div class="cs-hero-title">AI绘画机器人</div>
     <div class="cs-hero-sub">AI Painting Robot</div>
-    <img src="绘画图片/香港.png" alt="香港展示" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:contain;display:block;margin:1.5rem 0 2rem 0;background:var(--c-card);">
+    <img src="绘画图片/香港.png" alt="香港展示" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:contain;display:block;margin:1.5rem 0 2rem 0;background:var(--c-card);">
     <div class="cs-hero-desc">从AI生成内容，到机器人真实创造，再到人与机器共同创作</div>
     <div class="cs-hero-meta">From AI Generation to Human-Robot Co-Creation</div>
   </div>
@@ -926,19 +926,19 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段一</div>
             <div class="cs-evo-card-title">机器人自动绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/福_22s.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/福_22s.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:0;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">机器人完成基础绘画动作</div>
           </div>
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段二</div>
             <div class="cs-evo-card-title">AI驱动机器人绘画</div>
-            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/笔触.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:cover;display:block;"></video></div>
+            <div class="cs-evo-card-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/笔触.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:4/3;border-radius:0;object-fit:cover;display:block;"></video></div>
             <div class="cs-evo-card-desc">建立AI内容到机器人动作的转换流程</div>
           </div>
           <div class="cs-evo-card">
             <div class="cs-evo-card-num">阶段三</div>
             <div class="cs-evo-card-title">人与机器人共同创作</div>
-            <div class="cs-evo-card-img"><img src="绘画图片/人机绘画.png" alt="人机共同创作" style="width:100%;height:100%;aspect-ratio:4/3;border-radius:16px;object-fit:contain;display:block;"></div>
+            <div class="cs-evo-card-img"><img src="绘画图片/人机绘画.png" alt="人机共同创作" style="width:100%;height:100%;aspect-ratio:4/3;border-radius:0;object-fit:contain;display:block;"></div>
             <div class="cs-evo-card-desc">探索未来人机共创模式</div>
           </div>
         </div>
@@ -980,18 +980,18 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0;">
           <div style="text-align: center;">
             <div style="font-size: 0.9375rem; font-weight: 400; color: var(--c-text); margin-bottom: 0.5rem;">AI 生成结果</div>
-            <img src="绘画图片/IMG_2584%201.png" alt="AI生成" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:contain;display:block;">
+            <img src="绘画图片/IMG_2584%201.png" alt="AI生成" style="width:100%;aspect-ratio:4/3;border-radius:0;object-fit:contain;display:block;">
           </div>
           <div style="text-align: center;">
             <div style="font-size: 0.9375rem; font-weight: 400; color: var(--c-text); margin-bottom: 0.5rem;">机器人实际绘画</div>
-            <img src="绘画图片/d5d05d98afadd8dc37c655d3b345dfd3%201.png" alt="机器人作品" style="width:100%;aspect-ratio:4/3;border-radius:16px;object-fit:contain;display:block;">
+            <img src="绘画图片/d5d05d98afadd8dc37c655d3b345dfd3%201.png" alt="机器人作品" style="width:100%;aspect-ratio:4/3;border-radius:0;object-fit:contain;display:block;">
           </div>
         </div>
         <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; justify-content: center;">
-          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius: 999px; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Color 颜色偏差</span>
-          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius: 999px; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Brush 笔触差异</span>
-          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius: 999px; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Motion 路径误差</span>
-          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius: 999px; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Material 材料差异</span>
+          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius:0; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Color 颜色偏差</span>
+          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius:0; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Brush 笔触差异</span>
+          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius:0; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Motion 路径误差</span>
+          <span style="padding: 0.4rem 1.2rem; border: 1px solid var(--c-border); border-radius:0; font-size: 0.8125rem; color: var(--c-text2); font-family: var(--font-mono);">Material 材料差异</span>
         </div>
       </div>
 
@@ -1052,28 +1052,28 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
           <div style="font-size: clamp(1.1rem, 1.7vw, 1.35rem); font-weight: 400; color: var(--c-text); margin-bottom: 0.25rem;">03 机械臂绘画路径优化</div>
           <div style="font-size: 0.6875rem; font-weight: 300; color: var(--c-text3); font-family: var(--font-mono); margin-bottom: 1rem; letter-spacing: 0.04em;">Robotic Motion Design</div>
           <div class="cs-ai-sec-text"><p>优化机器人完成：蘸取颜料、清理画笔、更换颜色、绘制路径</p></div>
-          <div class="robot-process" id="robotProcess" style="position:relative;width:100%;max-width:780px;margin:2rem 0;border-radius:16px;overflow:hidden;background:var(--c-card);">
+          <div class="robot-process" id="robotProcess" style="position:relative;width:100%;max-width:780px;margin:2rem 0;border-radius:0;overflow:hidden;background:var(--c-card);">
     <img src="绘画图片/路径.png" alt="robot" style="width:100%;height:auto;display:block;">
     <svg class="process-svg" viewBox="0 0 1057 1154" preserveAspectRatio="xMidYMid slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;">
         <path class="path-seg seg1" d="M 455 600 C 440 660 420 730 400 790 C 398 810 397 818 396 823" />
         <path class="path-seg seg2" d="M 396 823 C 390 860 385 900 380 930 C 378 945 374 955 372 958" />
         <path class="path-seg seg3" d="M 372 958 C 400 940 440 910 480 880 C 520 850 540 835 553 827" />
     </svg>
-    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:43.1%;top:52.0%;">1</div>
-    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:37.5%;top:71.4%;">2</div>
-    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:52.4%;top:71.7%;">4</div>
-    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:50%;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:35.2%;top:83.0%;">3</div>
-    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(43.1% + 20px);top:52.0%;">取笔</div>
-    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translate(-100%,-50%);left:calc(37.5% - 20px);top:71.4%;">蘸颜料</div>
-    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(52.4% + 20px);top:71.7%;">清洗</div>
-    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:999px;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(35.2% + 20px);top:83.0%;">绘画</div>
+    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:0;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:43.1%;top:52.0%;">1</div>
+    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:0;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:37.5%;top:71.4%;">2</div>
+    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:0;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:52.4%;top:71.7%;">4</div>
+    <div style="position:absolute;pointer-events:none;width:28px;height:28px;border-radius:0;border:2px solid #fff;background:rgba(0,0,0,0.8);box-shadow:0 0 8px rgba(255,255,255,0.7);display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:12px;font-weight:500;transform:translate(-50%,-50%);left:35.2%;top:83.0%;">3</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:0;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(43.1% + 20px);top:52.0%;">取笔</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:0;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translate(-100%,-50%);left:calc(37.5% - 20px);top:71.4%;">蘸颜料</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:0;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(52.4% + 20px);top:71.7%;">清洗</div>
+    <div style="position:absolute;pointer-events:none;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);background:rgba(255,255,255,0.06);border:0.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.9);border-radius:0;padding:5px 14px;font-size:12px;letter-spacing:0.04em;font-weight:400;transform:translateY(-50%);left:calc(35.2% + 20px);top:83.0%;">绘画</div>
 </div>
         </div>
         <div style="margin-top: 3rem;">
           <div style="font-size: clamp(1.1rem, 1.7vw, 1.35rem); font-weight: 400; color: var(--c-text); margin-bottom: 0.25rem;">04 硬件交互优化</div>
           <div style="font-size: 0.6875rem; font-weight: 300; color: var(--c-text3); font-family: var(--font-mono); margin-bottom: 1rem; letter-spacing: 0.04em;">Hardware Interaction</div>
           <div class="cs-ai-sec-text"><p>参与机械臂换笔结构优化解决：自动换笔、多颜色切换、连续绘画</p></div>
-          <img src="绘画图片/硬件笔工具.jpg" alt="机械结构" style="width:100%;aspect-ratio:16/10;border-radius:16px;object-fit:contain;display:block;margin:0.5rem 0 0 0;background:var(--c-card);">
+          <img src="绘画图片/硬件笔工具.jpg" alt="机械结构" style="width:100%;aspect-ratio:16/10;border-radius:0;object-fit:contain;display:block;margin:0.5rem 0 0 0;background:var(--c-card);">
         </div>
       </div>
 
@@ -1082,7 +1082,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">04 产品成长过程</div>
         <div class="cs-ai-sec-en">Evolution</div>
         <div class="cs-timeline-v">
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:12px;aspect-ratio:auto;min-height:auto;overflow:hidden;">
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:0;aspect-ratio:auto;min-height:auto;overflow:hidden;">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" style="width:100%;display:block;">
     <defs>
       <linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#00b894"/></linearGradient>
@@ -1105,9 +1105,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <rect x="12" y="310" width="1176" height="18" rx="9" fill="#12121f"/><circle cx="30" cy="319" r="4" fill="#a855f7"/><text x="38" y="323" fill="#aaaacc" font-size="6">人机协同</text><circle cx="105" cy="319" r="4" fill="#3b82f6"/><text x="113" y="323" fill="#aaaacc" font-size="6">AI生成绘画</text><circle cx="190" cy="319" r="4" fill="#22d3ee"/><text x="198" y="323" fill="#aaaacc" font-size="6">机器人控制</text><circle cx="275" cy="319" r="4" fill="#f59e0b"/><text x="283" y="323" fill="#aaaacc" font-size="6">视觉反馈</text><text x="360" y="323" fill="#555577" font-size="6">|</text><text x="378" y="323" fill="#8888aa" font-size="6">借鉴指数最高：Paul · D.O.U.G. · e-David · SketcherX · CloudPainter · FRIDA</text>
   </svg>
 </div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:12px;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;"></video></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:12px;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:0;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></video></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
         </div>
       </div>
 
@@ -1116,10 +1116,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">05 项目成果</div>
         <div class="cs-ai-sec-en">Achievement</div>
         <div class="cs-achievements">
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
-          <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/IMG_4652.JPG" alt="客户合作" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">Human × Robot</span><span class="cs-ach-desc">展台亮相 · 2026</span></div></div>
-          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/英伟达_30s.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
-          <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/39.JPG" alt="安永展会" style="width:100%;height:100%;border-radius:16px;object-fit:cover;display:block;;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">安永创新展</span><span class="cs-ach-desc">客户合作意向</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="绘画机器人/绘画机器人-裁剪版.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">未来中国</span><span class="cs-ach-desc">东方卫视 · 2025</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/IMG_4652.JPG" alt="客户合作" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">Human × Robot</span><span class="cs-ach-desc">展台亮相 · 2026</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/绘画图片/英伟达_30s.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></video></div><div class="cs-ach-meta"><span class="cs-ach-title">GTC Annual Event</span><span class="cs-ach-desc">NVIDIA</span></div></div>
+          <div class="cs-ach-item"><div class="cs-ach-img"><img src="绘画图片/39.JPG" alt="安永展会" style="width:100%;height:100%;border-radius:0;object-fit:cover;display:block;;display:block;background:var(--c-card);"></div><div class="cs-ach-meta"><span class="cs-ach-title">安永创新展</span><span class="cs-ach-desc">客户合作意向</span></div></div>
         </div>
       </div>
 
@@ -1128,7 +1128,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">06 未来探索</div>
         <div class="cs-ai-sec-en">Future</div>
         <div class="cs-future-block">
-          <div class="cs-future-img"><img src="绘画图片/未来%201.png" alt="人与机器人一起绘画" style="width:100%;border-radius:16px;object-fit:contain;display:block;background:var(--c-card);"></div>
+          <div class="cs-future-img"><img src="绘画图片/未来%201.png" alt="人与机器人一起绘画" style="width:100%;border-radius:0;object-fit:contain;display:block;background:var(--c-card);"></div>
           <div class="cs-future-cn">未来的机器人并不是替代创造者<br>而是成为人的创造伙伴</div>
           <div class="cs-future-en">Robots will not replace creativity.<br>They will expand it.</div>
         </div>
@@ -1153,7 +1153,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div style="padding-top: 1rem; padding-bottom: 2rem;">
     <div class="cs-hero-title" style="font-size:clamp(2rem,4vw,3rem);">全自主AI超显微机器人 Demo</div>
     <div class="cs-hero-sub">AI Autonomous Manipulation Demo</div>
-    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/显微/显微.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
+    <video onmouseenter="this.play()" onmouseleave="this.pause()" src="https://lancheng-videos.oss-cn-hangzhou.aliyuncs.com/显微/显微.mp4" muted loop playsinline preload="metadata" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;"></video>
     <div class="cs-hero-desc">展示AI视觉识别、机器人力控与精细操作能力，最终于WAIC正式亮相</div>
     <div class="cs-hero-meta">Role · Product Planning · Project Management</div>
   </div>
@@ -1184,10 +1184,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);margin-bottom:1rem;">Demo探索</div>
         <div class="cs-ai-sec-text"><p>从多种食材中筛选出最能体现AI识别、力控与视觉效果的展示对象</p></div>
         <div style="display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:center;margin:1.5rem 0;font-family:var(--font-mono);color:var(--c-text2);font-size:0.9rem;">
-          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">鱼泡</span>
-          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">鸡蛋</span>
-          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">果冻</span>
-          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:999px;border-color:var(--c-brand);color:var(--c-text);">鹌鹑蛋 ✓</span>
+          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">鱼泡</span>
+          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">鸡蛋</span>
+          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">果冻</span>
+          <span style="background:var(--c-card);padding:0.4rem 1.2rem;border-radius:0;border-color:var(--c-brand);color:var(--c-text);">鹌鹑蛋 ✓</span>
         </div>
       </div>
       <div class="cs-ai-section">
@@ -1199,7 +1199,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">04</div><div class="cs-ai-sec-en">AI + Robot Pipeline</div>
         <div class="cs-ai-sec-title" style="font-size:clamp(1.6rem,2.6vw,2rem);margin-bottom:1rem;">AI + 机器人链路</div>
         <div class="cs-flow-wrap"><div class="cs-flow"><div class="cs-flow-step"><div class="cs-flow-step-box">摄像头</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">AI识别</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">定位</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">抓取</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">力控剥壳</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">完成</div></div></div></div>
-        <img src="显微/显微.png" alt="显微系统" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:contain;display:block;margin-top:1.5rem;background:var(--c-card);">
+        <img src="显微/显微.png" alt="显微系统" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:contain;display:block;margin-top:1.5rem;background:var(--c-card);">
       </div>
       <div class="cs-ai-section">
         <div class="cs-ai-sec-num">05</div><div class="cs-ai-sec-en">Product Iteration</div>
@@ -1225,7 +1225,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
 <div style="padding-top:2rem;padding-bottom:1rem;">
   <div class="cs-hero-title">骨科手术机器人</div>
   <div class="cs-hero-sub">Orthopedic Surgical Robot</div>
-  <img src="骨科/骨2.png" alt="骨科机器人主视觉" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;">
+  <img src="骨科/骨2.png" alt="骨科机器人主视觉" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;margin:1.5rem 0 2rem 0;">
   <div class="cs-hero-desc">负责脚踝关节置换、膝关节置换软件产品设计、交互设计及工业外观设计</div>
   <div class="cs-hero-meta">Product Design · Interaction Design · Industrial Design</div>
 </div>
@@ -1239,12 +1239,12 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <div class="cs-ai-sb-group"><div class="cs-ai-sb-label">工具<br>Tools</div><div class="cs-ai-sb-tools"><span>Figma</span><span>Illustrator</span><span>Blender</span><span>After Effects</span><span>SolidWorks</span></div></div>
   </aside>
   <div class="cs-ai-content">
-    <div class="cs-ai-section"><div class="cs-ai-sec-num">01</div><div class="cs-ai-sec-en">Project Overview</div><div class="cs-ai-sec-text" style="max-width:100%;"><p>骨科机器人需要帮助医生完成术前规划、术中导航及假体植入项目覆盖脚踝关节置换与膝关节置换两大适应症，要求软件在保证精度的同时，降低医生认知负荷</p></div><div class="img-grid-2" style="margin-top:1.5rem;gap:1.5rem;"><img src="骨科/骨1.png" alt="手术场景" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"><img src="骨科/骨科背景.png" alt="手术场景2" style="width:100%;aspect-ratio:16/9;border-radius:16px;object-fit:cover;display:block;"></div></div>
+    <div class="cs-ai-section"><div class="cs-ai-sec-num">01</div><div class="cs-ai-sec-en">Project Overview</div><div class="cs-ai-sec-text" style="max-width:100%;"><p>骨科机器人需要帮助医生完成术前规划、术中导航及假体植入项目覆盖脚踝关节置换与膝关节置换两大适应症，要求软件在保证精度的同时，降低医生认知负荷</p></div><div class="img-grid-2" style="margin-top:1.5rem;gap:1.5rem;"><img src="骨科/骨1.png" alt="手术场景" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"><img src="骨科/骨科背景.png" alt="手术场景2" style="width:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></div></div>
     <div class="cs-ai-section"><div class="cs-ai-sec-num">02</div><div class="cs-ai-sec-en">Challenge</div><div class="cs-ai-sec-text"><p>手术流程复杂，涉及多个步骤，且每一步都不允许出错</p></div><div class="cs-flow-wrap"><div class="cs-flow"><div class="cs-flow-step"><div class="cs-flow-step-box">CT导入</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">三维重建</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">配准</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">规划</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">导航</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">截骨</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">植入</div></div></div></div></div>
     <div class="cs-ai-section"><div class="cs-ai-sec-num">03</div><div class="cs-ai-sec-en">Product Flow</div><div class="cs-flow-wrap"><div class="cs-flow"><div class="cs-flow-step"><div class="cs-flow-step-box">患者导入</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">病例</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">规划</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">注册</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">导航</div></div><span class="cs-flow-arrow">→</span><div class="cs-flow-step"><div class="cs-flow-step-box">完成</div></div></div></div></div>
     <div class="cs-ai-section"><div class="cs-ai-sec-num">04</div><div class="cs-ai-sec-en">Interaction Design</div><div class="cs-ai-sec-text"><p>假体选择 · 配准 · 导航——围绕医生操作习惯设计关键交互节点</p></div></div>
     <div class="cs-ai-section"><div class="cs-ai-sec-num">05</div><div class="cs-ai-sec-en">Software UI</div><div class="cs-ai-sec-text"><p>界面布局围绕医生视线与操作动线设计，关键信息一目了然</p></div></div>
-    <div class="cs-ai-section"><div class="cs-ai-sec-num">06</div><div class="cs-ai-sec-en">Design System</div><div class="cs-ai-sec-text"><p>建立统一医疗设计规范，提高研发效率，确保多端一致性</p></div><div style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;justify-content:flex-start;margin:1rem 0;font-family:var(--font-mono);color:var(--c-text2);font-size:0.85rem;"><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">Color</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">Icon</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">Component</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:999px;border:1px solid var(--c-border);">Typography</span></div></div>
+    <div class="cs-ai-section"><div class="cs-ai-sec-num">06</div><div class="cs-ai-sec-en">Design System</div><div class="cs-ai-sec-text"><p>建立统一医疗设计规范，提高研发效率，确保多端一致性</p></div><div style="display:flex;flex-wrap:wrap;gap:0.5rem 1.5rem;justify-content:flex-start;margin:1rem 0;font-family:var(--font-mono);color:var(--c-text2);font-size:0.85rem;"><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">Color</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">Icon</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">Component</span><span style="background:var(--c-card);padding:0.3rem 1.2rem;border-radius:0;border:1px solid var(--c-border);">Typography</span></div></div>
     <div class="cs-ai-section"><div class="cs-ai-sec-num">07</div><div class="cs-ai-sec-en">Outcome</div><div class="cs-outcomes"><div class="cs-outcome"><p class="co-val">研发完成</p><p class="co-lbl">产品状态</p></div><div class="cs-outcome"><p class="co-val">精度达标</p><p class="co-lbl">核心指标</p></div><div class="cs-outcome"><p class="co-val">注册推进</p><p class="co-lbl">认证阶段</p></div><div class="cs-outcome"><p class="co-val">量产基础</p><p class="co-lbl">后续阶段</p></div></div></div>
   </div>
 </div>
@@ -1267,7 +1267,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div class="cs-hero-meta">Product Planning · Concept Design · AI Exploration</div>
 
   <!-- 产品演示视频 -->
-  <div style="width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin:1.5rem 0 0 0;background:var(--c-card);border:1px solid var(--c-border);">
+  <div style="width:100%;aspect-ratio:16/9;border-radius:0;overflow:hidden;margin:1.5rem 0 0 0;background:var(--c-card);border:1px solid var(--c-border);">
     <video onmouseenter="this.play()" onmouseleave="this.pause()" src="洗澡/云百生按刷助浴椅%203.mp4" muted loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;"></video>
   </div>
 </div>
@@ -1286,9 +1286,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <!-- 01 项目背景 -->
     <div class="cs-ai-section"><div class="cs-ai-sec-num">01</div><div class="cs-ai-sec-en">Project Background</div><div class="cs-ai-sec-text" style="max-width:none;"><p>随着老龄化程度不断提高，养老护理需求持续增长助浴作为护理过程中风险最高、劳动强度最大的环节之一，对护理人员和老人都提出了更高要求公司希望探索机器人在养老护理场景中的应用可能性，为未来产品规划提供方向</p></div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem;">
-      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">2.8亿</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">60岁以上人口</div></div>
-      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">40%</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">护理人力缺口</div></div>
-      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">Top 3</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">护理风险环节</div></div>
+      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">2.8亿</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">60岁以上人口</div></div>
+      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">40%</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">护理人力缺口</div></div>
+      <div style="text-align:center;padding:1.5rem 0.5rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;"><div style="font-size:2rem;font-weight:300;color:var(--c-text);">Top 3</div><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);margin-top:0.25rem;">护理风险环节</div></div>
     </div></div>
 
     <!-- 02 核心挑战 -->
@@ -1301,41 +1301,41 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <!-- 03 调研与竞品分析 -->
     <div class="cs-ai-section"><div class="cs-ai-sec-num">03</div><div class="cs-ai-sec-en">Research &amp; Competitive Analysis</div><div class="cs-ai-sec-text" style="max-width:none;"><p>整理已有调研成果，分析养老护理流程与用户反馈同时调研国内外护理机器人案例，从外观、功能、应用场景等维度进行分析，总结产品机会</p></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem;">
-      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">日本 · 搬运辅助型</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">移动辅助为主，助浴场景空白</div></div>
-      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">欧洲 · 智能护理床</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">集成度高，交互复杂</div></div>
-      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">国内 · 洗浴设备</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">功能单一，护理流程不完整</div></div>
-      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">新兴 · 概念探索</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">技术驱动，缺乏场景验证</div></div>
+      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">日本 · 搬运辅助型</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">移动辅助为主，助浴场景空白</div></div>
+      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">欧洲 · 智能护理床</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">集成度高，交互复杂</div></div>
+      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">国内 · 洗浴设备</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">功能单一，护理流程不完整</div></div>
+      <div style="background:var(--c-card);border:1px solid var(--c-border);border-radius:0;padding:1rem 1.25rem;"><div style="font-size:0.7rem;color:var(--c-text3);font-family:var(--font-mono);">新兴 · 概念探索</div><div style="font-size:0.85rem;color:var(--c-text2);margin-top:0.25rem;">技术驱动，缺乏场景验证</div></div>
     </div>
     <div style="margin-top:1.5rem;padding:1rem 1.5rem;border-left:2px solid var(--c-brand);background:var(--c-card);border-radius:var(--r-card);"><div style="font-size:0.7rem;font-family:var(--font-mono);color:var(--c-text3);letter-spacing:0.06em;margin-bottom:0.25rem;">核心洞察</div><div style="font-size:0.9rem;color:var(--c-text2);line-height:1.7;">机器人辅助护理，而不是替代护理——在保障安全与尊严的前提下，降低护理人员劳动强度</div></div></div>
 
     <!-- 04 产品方向探索 -->
     <div class="cs-ai-section"><div class="cs-ai-sec-num">04</div><div class="cs-ai-sec-en">Product Direction</div><div class="cs-ai-sec-text" style="max-width:none;"><p>结合调研资料与竞品分析，协助团队探索未来助浴机器人的产品方向，输出三个产品方向，协助产品定位决策</p></div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:1.5rem;">
-      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">①</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">辅助护理</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">降低劳动强度</div></div>
-      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">②</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">居家护理</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">未来家庭场景</div></div>
-      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:16px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">③</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">智能助浴</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">安全与尊严并重</div></div>
+      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">①</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">辅助护理</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">降低劳动强度</div></div>
+      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">②</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">居家护理</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">未来家庭场景</div></div>
+      <div style="text-align:center;padding:1.5rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><div style="font-size:1.5rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">③</div><div style="font-size:1rem;font-weight:400;color:var(--c-text);margin-top:0.5rem;">智能助浴</div><div style="font-size:0.8rem;color:var(--c-text3);margin-top:0.25rem;">安全与尊严并重</div></div>
     </div></div>
 
     <!-- 05 我的贡献 -->
     <div class="cs-ai-section"><div class="cs-ai-sec-num">05</div><div class="cs-ai-sec-en">My Contribution</div><div class="cs-ai-sec-text" style="max-width:none;"><p>推动项目从调研到概念落地的全过程</p></div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.5rem;">
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">①</span><span style="font-size:0.85rem;color:var(--c-text2);">整理调研资料，梳理用户需求</span></div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">②</span><span style="font-size:0.85rem;color:var(--c-text2);">分析国内外竞品，总结机会点</span></div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">③</span><span style="font-size:0.85rem;color:var(--c-text2);">输出三个产品方向，支持决策</span></div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">④</span><span style="font-size:0.85rem;color:var(--c-text2);">利用 AI 快速生成概念方案</span></div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">⑤</span><span style="font-size:0.85rem;color:var(--c-text2);">制作 AI 宣传视频用于展示</span></div>
-      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:12px;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">⑥</span><span style="font-size:0.85rem;color:var(--c-text2);">支持方案汇报与团队沟通</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">①</span><span style="font-size:0.85rem;color:var(--c-text2);">整理调研资料，梳理用户需求</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">②</span><span style="font-size:0.85rem;color:var(--c-text2);">分析国内外竞品，总结机会点</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">③</span><span style="font-size:0.85rem;color:var(--c-text2);">输出三个产品方向，支持决策</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">④</span><span style="font-size:0.85rem;color:var(--c-text2);">利用 AI 快速生成概念方案</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">⑤</span><span style="font-size:0.85rem;color:var(--c-text2);">制作 AI 宣传视频用于展示</span></div>
+      <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem 1rem;background:var(--c-card);border:1px solid var(--c-border);border-radius:0;transition:all 0.3s;" onmouseover="this.style.borderColor='var(--c-brand)';" onmouseout="this.style.borderColor='var(--c-border)';"><span style="font-size:1rem;font-weight:300;color:var(--c-brand);font-family:var(--font-mono);">⑥</span><span style="font-size:0.85rem;color:var(--c-text2);">支持方案汇报与团队沟通</span></div>
     </div></div>
 
     <!-- 06 AI 赋能产品设计 -->
     <div class="cs-ai-section"><div class="cs-ai-sec-num">06</div><div class="cs-ai-sec-en">AI-Enhanced Process</div><div class="cs-ai-sec-text" style="max-width:none;"><p>AI 不是目的，而是提升产品概念验证效率的工具利用 AI 工具快速产出产品概念图与方案，并制作宣传视频用于项目汇报与商务展示</p></div>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem;margin-top:1.5rem;padding:1rem 1.5rem;background:var(--c-card);border-radius:var(--r-card);border:1px solid var(--c-border);">
-      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:999px;font-size:0.75rem;color:var(--c-text2);">调研资料整理</span><span style="color:var(--c-text3);">→</span>
-      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:999px;font-size:0.75rem;color:var(--c-text2);">竞品分析</span><span style="color:var(--c-text3);">→</span>
-      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:999px;font-size:0.75rem;color:var(--c-text2);">产品方向策划</span><span style="color:var(--c-text3);">→</span>
-      <span style="padding:0.4rem 1rem;background:rgba(15,98,254,0.08);border:1px solid var(--c-brand);border-radius:999px;font-size:0.75rem;color:var(--c-brand);">AI 概念生成</span><span style="color:var(--c-text3);">→</span>
-      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:999px;font-size:0.75rem;color:var(--c-text2);">人工优化</span><span style="color:var(--c-text3);">→</span>
-      <span style="padding:0.4rem 1rem;background:rgba(15,98,254,0.08);border:1px solid var(--c-brand);border-radius:999px;font-size:0.75rem;color:var(--c-brand);">项目展示</span>
+      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:0;font-size:0.75rem;color:var(--c-text2);">调研资料整理</span><span style="color:var(--c-text3);">→</span>
+      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:0;font-size:0.75rem;color:var(--c-text2);">竞品分析</span><span style="color:var(--c-text3);">→</span>
+      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:0;font-size:0.75rem;color:var(--c-text2);">产品方向策划</span><span style="color:var(--c-text3);">→</span>
+      <span style="padding:0.4rem 1rem;background:rgba(15,98,254,0.08);border:1px solid var(--c-brand);border-radius:0;font-size:0.75rem;color:var(--c-brand);">AI 概念生成</span><span style="color:var(--c-text3);">→</span>
+      <span style="padding:0.4rem 1rem;background:var(--c-surface);border-radius:0;font-size:0.75rem;color:var(--c-text2);">人工优化</span><span style="color:var(--c-text3);">→</span>
+      <span style="padding:0.4rem 1rem;background:rgba(15,98,254,0.08);border:1px solid var(--c-brand);border-radius:0;font-size:0.75rem;color:var(--c-brand);">项目展示</span>
     </div></div>
 
     <!-- 07 项目成果 -->
@@ -1378,7 +1378,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
   <div class="modal-card">
     <button class="modal-close" id="modal-close-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/></svg></button>
     <div class="modal-qr">
-      <div class="modal-qr-img"><img src="IMG_0001.jpg" alt="QR" style="width:100%;height:100%;object-fit:cover;border-radius:14px;"></div>
+      <div class="modal-qr-img"><img src="IMG_0001.jpg" alt="QR" style="width:100%;height:100%;object-fit:cover;border-radius:0;"></div>
       <p class="qr-hint">微信扫码</p>
       <p class="qr-id">lancheng_ara</p>
     </div>
