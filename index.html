@@ -1580,17 +1580,14 @@ var contactObserver = new IntersectionObserver(function(entries) {
 var contactSection = document.getElementById('contact');
 if (contactSection) contactObserver.observe(contactSection);
 
-/* ===== Safari video autoplay kick ===== */
-  // Safari needs explicit play() after DOM ready
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      document.querySelectorAll('video[autoplay]').forEach(function(v) {
-        v.muted = true;
-        v.playsInline = true;
-        v.play().catch(function(){});
-      });
-    }, 500);
-  });
+/* ===== Safari: play all videos on first user touch ===== */
+  document.addEventListener('touchstart', function wakeAll() {
+    document.querySelectorAll('video[autoplay]').forEach(function(v) {
+      v.muted = true; v.playsInline = true;
+      v.play().catch(function(){});
+    });
+    document.removeEventListener('touchstart', wakeAll);
+  }, {passive: true, once: true});
 
   /* ===== 打招呼 video — play when About is visible ===== */
 var helloVideo = document.getElementById('hello-video');
