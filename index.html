@@ -1596,21 +1596,25 @@ if (helloVideo) {
     WeixinJSBridge.invoke('getNetworkType', {}, playViaBridge);
   }, false);
 
-  // 3) User interaction — retry up to 5 times, wake ALL videos
-  var interactionTries = 0, MAX_TRIES = 5;
+  // 3) User interaction — retry infinitely, wake ALL videos
+  var interactionTries = 0;
   var ALL_VIDEOS = '.case-visual video, .cs-evo-card-img video, .cs-tl-v-item video, .cs-ach-item video, .case-overlay video, .about-avatar-frame video';
-  function onInteraction() {
-    if (interactionTries >= MAX_TRIES) return;
+  function wakeAllVideos() {
     interactionTries++;
     helloVideo.play().catch(function(){});
-    // Wake all hover-play videos after first user gesture (critical for WeChat)
     document.querySelectorAll(ALL_VIDEOS).forEach(function(v) {
       v.play().catch(function(){});
     });
   }
-  document.addEventListener('touchstart', onInteraction, {passive: true});
-  document.addEventListener('touchmove',  onInteraction, {passive: true});
-  document.addEventListener('click',      onInteraction, {passive: true});
+  // Safari: scroll also counts as interaction for video playback
+  var scrollWakeTimeout;
+  document.addEventListener('scroll', function() {
+    clearTimeout(scrollWakeTimeout);
+    scrollWakeTimeout = setTimeout(wakeAllVideos, 150);
+  }, {passive: true});
+  document.addEventListener('touchstart', wakeAllVideos, {passive: true});
+  document.addEventListener('touchmove',  wakeAllVideos, {passive: true});
+  document.addEventListener('click',      wakeAllVideos, {passive: true});
 
   // 4) IntersectionObserver fallback
   if (aboutSection) {
