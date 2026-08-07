@@ -72,7 +72,7 @@ if(track)observer.observe(track);
 --font-mono:"IBM Plex Mono",monospace;
 
 /* Spacing — 8px system */
---s-8:0.5rem;--s-16:1rem;--s-24:1.5rem;--s-32:2rem;--s-48:3rem;--s-64:4rem;--s-96:6rem;--s-160:10rem;
+--s-8:0.5rem;--s-12:0.75rem;--s-16:1rem;--s-24:1.5rem;--s-32:2rem;--s-48:3rem;--s-64:4rem;--s-96:6rem;--s-160:10rem;
 --content-max:1280px;
 --pad-desktop:clamp(2rem,5vw,5rem);
 --pad-tablet:clamp(1.5rem,4vw,3rem);
@@ -746,10 +746,10 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
       .cs-color-row { grid-template-columns: 1fr 30px 1fr; }
       .cs-color-cell { font-size: 0.8125rem; gap: 0.5rem; padding: 0.75rem; }
       .cs-achievements { gap: 2.5rem; }
-      .cs-tl-v-item { grid-template-columns: 70px 1fr; gap: 1rem; padding: 1.25rem 0; }
+      .cs-tl-v-item { grid-template-columns: 70px 1fr; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--c-border); }
       .cs-tl-v-title { margin-bottom: 0.5rem; }
-      .cs-tl-v-desc { margin-bottom: 0.75rem; }
-      .cs-tl-v-img { margin-top: 0.75rem; }
+      .cs-tl-v-desc { margin-bottom: 1rem; }
+      .cs-tl-v-img { margin-top: 1rem; }
       .cs-flow, .cs-motion { flex-direction: column; gap: 0.5rem; }
       .cs-flow-arrow, .cs-motion-arrow { transform: rotate(90deg); }
     }
@@ -1128,7 +1128,7 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
         <div class="cs-ai-sec-num">04 产品成长过程</div>
         <div class="cs-ai-sec-en">Evolution</div>
         <div class="cs-timeline-v">
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:0;aspect-ratio:auto;min-height:auto;overflow:hidden;">
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2024.10</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">项目探索</div><div class="cs-tl-v-desc">调研全球绘画机器人案例</div><div class="cs-tl-v-img" style="background:#0a0a12;display:block;padding:0;border-radius:0;aspect-ratio:auto;min-height:auto;overflow:hidden;">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" style="width:100%;display:block;">
     <defs>
       <linearGradient id="gh" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6c5ce7"/><stop offset="100%" stop-color="#00b894"/></linearGradient>
@@ -1151,9 +1151,9 @@ a.modal-info-val{text-decoration:none;transition:color var(--dur-fast) var(--eas
     <rect x="12" y="310" width="1176" height="18" rx="9" fill="#12121f"/><circle cx="30" cy="319" r="4" fill="#a855f7"/><text x="38" y="323" fill="#aaaacc" font-size="6">人机协同</text><circle cx="105" cy="319" r="4" fill="#3b82f6"/><text x="113" y="323" fill="#aaaacc" font-size="6">AI生成绘画</text><circle cx="190" cy="319" r="4" fill="#22d3ee"/><text x="198" y="323" fill="#aaaacc" font-size="6">机器人控制</text><circle cx="275" cy="319" r="4" fill="#f59e0b"/><text x="283" y="323" fill="#aaaacc" font-size="6">视觉反馈</text><text x="360" y="323" fill="#555577" font-size="6">|</text><text x="378" y="323" fill="#8888aa" font-size="6">借鉴指数最高：Paul · D.O.U.G. · e-David · SketcherX · CloudPainter · FRIDA</text>
   </svg>
 </div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2026</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:0;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></video></div></div></div>
-          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2024.10</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">AI模型接入</div><div class="cs-tl-v-desc">建立AI与机械臂连接</div><div class="cs-tl-v-img"><img src="显微/技术流程.png" alt="技术流程" style="width:100%;border-radius:0;object-fit:contain;display:block;background:var(--c-card);"></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2024.11</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">系统优化</div><div class="cs-tl-v-desc">颜色、路径、笔触优化</div><div class="cs-tl-v-img"><video onmouseenter="this.play()" onmouseleave="this.pause()" src="1320.MP4" muted loop playsinline preload="metadata" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;"></video></div></div></div>
+          <div class="cs-tl-v-item"><div class="cs-tl-v-year">2025.05</div><div class="cs-tl-v-body"><div class="cs-tl-v-title">人机共创</div><div class="cs-tl-v-desc">人与机器人共同绘画</div><div class="cs-tl-v-img"><img src="绘画图片/9198a972dca20f940d98b610326b35.JPG" alt="交互现场" style="width:100%;height:100%;aspect-ratio:16/9;border-radius:0;object-fit:cover;display:block;background:var(--c-card);"></div></div></div>
         </div>
       </div>
 
